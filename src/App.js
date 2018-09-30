@@ -34,25 +34,8 @@ class App extends Component {
         </header>
         <div id="header-content-separator"></div>
         <div id="content-container">
-          <ContentContainers>
-          {/* <Switch>
-            <Route exact path='/Home' render={(props) => <HomePageContainer />}
-            />
-            <Route exact path='/News' render={(props) => <NewsPageContainer />}
-            />
-            <Route exact path='/Teams' render={(props) => <TeamsPageContainer />}
-            />
-            <Route exact path='/Matches' render={(props) => <MatchesPageContainer />}
-            />
-            <Route exact path='/Player Rankings' render={(props) => <PlayerRankingPageContainer />}
-            />
-            <Route exact path='/Teams/:teamId' component= {TeamIdPage}
-            />
 
-
-
-          </Switch> */}
-        </ContentContainers>
+        <ContentContainers />
         </div>
       </div>
     );

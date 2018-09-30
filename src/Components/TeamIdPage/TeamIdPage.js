@@ -40,6 +40,8 @@ class TeamIdPage extends React.Component {
       )
     }
   )
+    if (currentmembers.length===0 && !this.state.loaderActive) {showmembers= <div> No players found</div>
+    }
     return  (
 
 
