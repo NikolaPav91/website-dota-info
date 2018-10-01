@@ -10,26 +10,36 @@ import PlayerRankingPageContainer from './Components/PlayerRankingPage/PlayerRan
 import TeamIdPage from './Components/TeamIdPage/TeamIdPage';
 import ContentContainers from './ContentContainers';
 class App extends Component {
+  constructor (props) {
+    super(props);
+    this.state= {
+    }
+  }
   render() {
+    let currenturl= this.props.location.pathname;
+    if (currenturl==="/") {currenturl="/Home"}
     return (
       <div className="App">
-        <header id="app-header">
-          <div id="header-top-container">
+        <div id="navi-bar-bg">
+          <div id="navi-bar-container">
             <div id="logo-container">
-              NEKI "LOGO"
+              <img src="/dota-logo.png"></img>
             </div>
-            <div id='login-container'>
-              Link za "fake" login
+            <MenuBarContainer
+              menuButtons={["Home", "News", "Teams", "Matches", "Player Rankings"]}
+              activeName={currenturl}
+            />
+            <div id="search-container"> <input type="text" placeholder="Search.."></input>
+            <button type="submit"><i class="fa fa-search"></i></button>
             </div>
           </div>
-          <div id="header-bottom-container">
-            <div id="menu-bar">
-              <MenuBarContainer
-                menuButtons={["Home", "News", "Teams", "Matches", "Player Rankings"]}
-              />
+        </div>
+        <header id="app-header">
+          <div id="header-top-container">
+
+            <div id='login-container'>
+              {this.props.location.pathname}
             </div>
-            <div id="search-container"> <input type="text" placeholder="Search.."></input>
-            <button type="submit"><i class="fa fa-search"></i></button></div>
           </div>
         </header>
         <div id="header-content-separator"></div>

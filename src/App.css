@@ -20,71 +20,41 @@ html { font-size: 1em; }
   color: white;
   background-color: #191b1e;
   min-height: 100vh;
+  width: 100%;
 
 }
 
-
-
-#app-header {
-  background-color: #191b1e;
-  height: 120px;
-  color: white;
+#navi-bar-bg {
+  width: 100%;
   display: flex;
-  flex-flow: column;
-  align-items: center;
+  justify-content: center;
 }
 
-#header-top-container {
-  width: 1150px;
-  height: 70%;
+#navi-bar-container {
+  width: 1000px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-
+  background-color: pink;
+  align-items: flex-end;
 }
 
 #logo-container {
-  width: 250px;
-  justify-content: center;
   height: 100%;
   display: flex;
-  align-items: center;
-  color:white;
-  font-size: 2.5em;
-  font-family: LogoFont1
-}
-
-#login-container {
-  text-align: left;
-  height: 100%;
-  position: relative;
-  color: white;
-}
-
-
-#header-bottom-container {
-  width: 1150px;
-  height: 30%;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
 #menu-bar {
-  height: 100%;
   display: flex;
   align-items: center;
-  border: 2px solid #e01134;
-  border-bottom: none;
-  padding: 1px;
-  padding-bottom: 3px;
-  border-radius: 5px;
+  width: 600px;
+  background-color: orange;
 }
 
 .Menu-link {
   padding: 5px 20px;
   color: white;
-  font-size: 1.3em;
+  font-size: 1.2em;
   text-decoration: none;
   margin-right: 1px;
   position: relative;
@@ -106,8 +76,8 @@ html { font-size: 1em; }
 }
 
 #search-container {
-  width: 250px;
-  height: 100%;
+  width: 200px;
+  height: 40px;
   text-align: left;
   display: flex;
   align-items: center;
@@ -142,6 +112,47 @@ html { font-size: 1em; }
 #search-container>button:hover {
   color: #e01134;
 }
+
+#app-header {
+  background-color: #191b1e;
+  height: 120px;
+  color: white;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+#header-top-container {
+  width: 1150px;
+  height: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+
+
+#login-container {
+  text-align: left;
+  height: 100%;
+  position: relative;
+  color: white;
+}
+
+
+#header-bottom-container {
+  width: 1150px;
+  height: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+
+
 
 
 @media (max-width: 1150px) {
