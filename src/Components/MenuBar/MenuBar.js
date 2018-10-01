@@ -12,7 +12,7 @@ class MenuBar extends React.Component {
         {menubarbuttons.map((item, index)=>{
           return <MenuBarLink
             text={item}
-            active= {"/" + item===this.props.activeName}
+            active= {this.props.currentURL.startsWith("/" + item)}
           />
         }
       )}

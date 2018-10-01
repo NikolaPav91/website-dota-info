@@ -10,11 +10,6 @@ import PlayerRankingPageContainer from './Components/PlayerRankingPage/PlayerRan
 import TeamIdPage from './Components/TeamIdPage/TeamIdPage';
 import ContentContainers from './ContentContainers';
 class App extends Component {
-  constructor (props) {
-    super(props);
-    this.state= {
-    }
-  }
   render() {
     let currenturl= this.props.location.pathname;
     if (currenturl==="/") {currenturl="/Home"}
@@ -22,27 +17,23 @@ class App extends Component {
       <div className="App">
         <div id="navi-bar-bg">
           <div id="navi-bar-container">
-            <div id="logo-container">
-              <img src="/dota-logo.png"></img>
-            </div>
             <MenuBarContainer
               menuButtons={["Home", "News", "Teams", "Matches", "Player Rankings"]}
-              activeName={currenturl}
+              currentURL={currenturl}
             />
             <div id="search-container"> <input type="text" placeholder="Search.."></input>
             <button type="submit"><i class="fa fa-search"></i></button>
             </div>
           </div>
         </div>
-        <header id="app-header">
+        <header id="header-container">
           <div id="header-top-container">
 
             <div id='login-container'>
-              {this.props.location.pathname}
+              {currenturl}
             </div>
           </div>
         </header>
-        <div id="header-content-separator"></div>
         <div id="content-container">
 
         <ContentContainers />

@@ -18,7 +18,6 @@ html { font-size: 1em; }
 .App {
   font-family: CustomFont;
   color: white;
-  background-color: #191b1e;
   min-height: 100vh;
   width: 100%;
 
@@ -28,32 +27,26 @@ html { font-size: 1em; }
   width: 100%;
   display: flex;
   justify-content: center;
+  height: 56px;
+  background-image: url(http://cdn.dota2.com/apps/dota2/images/header/header_bg.png);
 }
 
 #navi-bar-container {
-  width: 1000px;
+  width: 1100px;
   display: flex;
   justify-content: space-between;
-  background-color: pink;
   align-items: flex-end;
-}
-
-#logo-container {
-  height: 100%;
-  display: flex;
-  align-items: center;
 }
 
 #menu-bar {
   display: flex;
   align-items: center;
   width: 600px;
-  background-color: orange;
 }
 
 .Menu-link {
   padding: 5px 20px;
-  color: white;
+  color: #cecece;
   font-size: 1.2em;
   text-decoration: none;
   margin-right: 1px;
@@ -61,7 +54,7 @@ html { font-size: 1em; }
 }
 
 .Menu-link:hover {
-  color: gray;
+  color: white;
 }
 
 
@@ -69,10 +62,11 @@ html { font-size: 1em; }
   content:"";
   position: absolute;
   bottom: 0px;
-  left: 0px;
-  height: 3px;
-  background-color: white;
-  width: 100%;
+  left: 10%;
+  height: 2px;
+  background-color: #cecece;
+  width: 80%;
+
 }
 
 #search-container {
@@ -113,17 +107,15 @@ html { font-size: 1em; }
   color: #e01134;
 }
 
-#app-header {
-  background-color: #191b1e;
-  height: 120px;
-  color: white;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
+#header-container {
+  height: 290px;
+  background-image: url(http://cdn.dota2.com/apps/dota2/images/blogfiles/bg_five_heroes.jpg);
+  
+
 }
 
 #header-top-container {
-  width: 1150px;
+  width: 1100px;
   height: 70%;
   display: flex;
   justify-content: space-between;
@@ -142,7 +134,7 @@ html { font-size: 1em; }
 
 
 #header-bottom-container {
-  width: 1150px;
+  width: 1100px;
   height: 30%;
   display: flex;
   justify-content: space-between;
@@ -155,16 +147,10 @@ html { font-size: 1em; }
 
 
 
-@media (max-width: 1150px) {
+@media (max-width: 1100px) {
   #header-top-container, #header-bottom-container {
     width: 100%;
   }
-}
-
-#header-content-separator {
-  width: 100%;
-  height: 10px;
-  background-color: #e01134;
 }
 
 #content-container {
@@ -175,8 +161,8 @@ html { font-size: 1em; }
 }
 
 #content-teams {
-  margin-top: 40px;
-  width: 1150px;
+  margin-top: 10px;
+  width: 1100px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -192,7 +178,7 @@ html { font-size: 1em; }
 .Team-container {
   width: 250px;
   height: 200px;
-  margin: 15px 0px;
+  margin: 15px 1px;
   border: 1px solid white;
   border-radius: 10px;
   display: flex;
