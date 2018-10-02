@@ -12,7 +12,7 @@ const ContentContainers= ()=> (
   <Switch>
     <Route exact path='/' render={(props) => <HomePageContainer />}
     />
-    <Route exact path='/Home' render={(props) => <HomePageContainer />}
+    <Route exact path='/About' render={(props) => <HomePageContainer />}
     />
     <Route exact path='/News' render={(props) => <NewsPageContainer />}
     />
@@ -20,7 +20,7 @@ const ContentContainers= ()=> (
     />
     <Route exact path='/Matches' render={(props) => <MatchesPageContainer />}
     />
-    <Route exact path='/Player Rankings' render={(props) => <PlayerRankingPageContainer />}
+    <Route exact path='/The International' render={(props) => <PlayerRankingPageContainer />}
     />
 
 

@@ -12,13 +12,13 @@ import ContentContainers from './ContentContainers';
 class App extends Component {
   render() {
     let currenturl= this.props.location.pathname;
-    if (currenturl==="/") {currenturl="/Home"}
+    if (currenturl==="/") {currenturl="/About"}
     return (
       <div className="App">
         <div id="navi-bar-bg">
           <div id="navi-bar-container">
             <MenuBarContainer
-              menuButtons={["Home", "News", "Teams", "Matches", "Player Rankings"]}
+              menuButtons={["About", "News", "Teams", "Matches", "The International"]}
               currentURL={currenturl}
             />
             <div id="search-container"> <input type="text" placeholder="Search.."></input>
@@ -26,15 +26,7 @@ class App extends Component {
             </div>
           </div>
         </div>
-        <header id="header-container">
-          <div id="header-top-container">
-
-            <div id='login-container'>
-              {currenturl}
-            </div>
-          </div>
-        </header>
-        <div id="content-container">
+        <div id="content-bg">
 
         <ContentContainers />
         </div>
