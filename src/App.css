@@ -15,10 +15,12 @@
  /* #191b1e is black */
 
 html { font-size: 1em; }
+body {
+}
 .App {
   font-family: CustomFont;
   color: white;
-  min-height: 100vh;
+  min-height: 700px;
   width: 100%;
   background-color: #191a1b
 
@@ -160,8 +162,6 @@ html { font-size: 1em; }
 /* VAZNOOOO */
 .Content-container {
   width: 1100px;
-  padding: 0px;
-  position: relative;
 }
  /* VAZNOOOOOOOO */
 iframe {

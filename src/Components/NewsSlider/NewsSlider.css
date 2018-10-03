@@ -1,0 +1,33 @@
+
+.Sliderstory-picture {
+  width: auto;
+  height: 100%;
+  display: block;
+}
+
+.Sliderstory-info-container {
+  height: 100%;
+  width: 35%;
+  background-color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Sliderstory-info-content {
+  height: 70%;
+  width: 80%;
+  background: black;
+}
+
+.Sliderstory {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+#slider {
+  height: 100%;
+  width: 98%;
+  background: red;
+}
