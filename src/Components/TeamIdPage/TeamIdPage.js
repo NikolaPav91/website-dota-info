@@ -45,7 +45,7 @@ class TeamIdPage extends React.Component {
     return  (
 
 
-      <div>  <Loader className={loaderclass}></Loader> {showmembers}</div>
+      <div className="All-content-container">  <Loader className={loaderclass}></Loader> {showmembers}</div>
     );
   }
 }

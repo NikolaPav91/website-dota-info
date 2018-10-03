@@ -75,7 +75,7 @@ class TeamsPage extends React.Component {
    </Link>
    ) })
     return (
-      <div className= "content-container-home">
+      <div className= "All-content-container">
         <header className="header-picture1"></header>
       <div id="content-teams">
         <Loader className={loaderclass}></Loader>

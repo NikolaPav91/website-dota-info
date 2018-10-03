@@ -26,10 +26,9 @@ class App extends Component {
             </div>
           </div>
         </div>
-        <div id="content-bg">
-
+        
         <ContentContainers />
-        </div>
+
       </div>
     );
   }

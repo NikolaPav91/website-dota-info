@@ -20,7 +20,7 @@ html { font-size: 1em; }
   color: white;
   min-height: 100vh;
   width: 100%;
-  background-color: #010101
+  background-color: #191a1b
 
 }
 
@@ -144,20 +144,29 @@ html { font-size: 1em; }
   background-image: url(http://cdn.dota2.com/apps/dota2/images/blog/play/bg_04.jpg);
 
 }
-
-#home-inner-bg01 {
-  background: #ca9b314d;
+.Home-inner-bg {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
+}
+#home-inner-bg01 {
+  /* background: #ca9b314d; */
+
 
 }
 
-.Content-container-home {
+
+/* VAZNOOOO */
+.Content-container {
   width: 1100px;
-  background-color: red;
-  height: 100%;
+  padding: 0px;
+  position: relative;
+}
+ /* VAZNOOOOOOOO */
+iframe {
+  border: 0px;
+  margin: 0px;
 }
 
 #content-container-home01 {
@@ -167,22 +176,50 @@ html { font-size: 1em; }
 
 }
 
+#content-home01, #content-home02, #content-home03 {
+  width: 550px;
+  font-family: 'Radiance';
+  position: relative;
+  bottom: 35px;
+}
 #content-home01 {
-  width: 50%;
-  height: 70%;
-  background-color: blue;
+
+}
+#content-home01>h1, #content-home02>h1, #content-home03>h1 {
+  font-size: 2em;
+  padding: 0 10px;
+}
+#content-home01>p, #content-home02>p, #content-home03>p {
+  font-size: 1.4em;
+  line-height: 1.5em;
+  padding: 0 10px;
 }
 
 #home-container-bg02 {
   background-image: url(http://cdn.dota2.com/apps/dota2/images/blog/play/bg_05.jpg);
 }
+#content-container-home02 {
+  display: flex;
+  align-items: center;
+}
+#content-container-home03 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
 
 #home-container-bg03 {
   background-image: url(http://cdn.dota2.com/apps/dota2/images/blog/play/bg_06.jpg);
-
+  box-shadow: -0px -25px 50px #191a1b inset,-0px 15px 50px black inset;
+}
+#home-container-bg04 {
+  height: 720px;
+  background-image: url(http://cdn.dota2.com/apps/dota2/images/blog/play/bg_02.jpg);
 }
 
+
 .Container-bg {
+
   background-repeat: no-repeat;
   margin-right: auto;
   margin-left: auto;
@@ -192,6 +229,9 @@ html { font-size: 1em; }
   height: 600px;
   background-position: center;
   box-shadow: -0px 15px 50px black inset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -212,12 +252,18 @@ html { font-size: 1em; }
   position: relative;
 }
 
-.content-container-home {
+.All-content-container {
   display: flex;
   flex-flow: column;
   width: 100%;
   align-items: center;
 }
+
+/* .YT-home {
+  width: 1100px;
+  height: auto;
+} */
+
 
 #content-teams {
   margin-top: 10px;
