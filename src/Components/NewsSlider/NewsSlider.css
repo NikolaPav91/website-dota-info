@@ -1,4 +1,13 @@
-
+#slider {
+  height: 400px;
+  width: 100%;
+  background: green;
+  display: flex;
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+}
 .Sliderstory-picture {
   width: auto;
   height: 100%;
@@ -7,7 +16,7 @@
 
 .Sliderstory-info-container {
   height: 100%;
-  width: 35%;
+  width: 388.9px;
   background-color: blue;
   display: flex;
   justify-content: center;
@@ -23,11 +32,43 @@
 .Sliderstory {
   height: 100%;
   width: 100%;
+  display: none;
+}
+
+.Sliderstory.Next-story {
+  position: absolute;
+  left: 1100px;
+
   display: flex;
 }
 
-#slider {
-  height: 100%;
-  width: 98%;
-  background: red;
+.Sliderstory.Story-showing {
+  position:absolute;
+  left: 0px;
+  display: flex;
+  transition: left 1s linear 0s;
+
+}
+
+.Sliderstory.Story-removing {
+  position: absolute;
+  left: -1100px;
+  display: flex;
+  transition: left 1s linear 0s;
+}
+
+
+#slider-navigation {
+  width: 1100px;
+  height: 20px;
+  background-color: red;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Sliderbuttons {
+  color: black;
+
+  background-color: white;
+  height: 80%;
 }

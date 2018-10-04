@@ -13,11 +13,13 @@ class NewsPage extends React.PureComponent {
     return (
       <div className="All-content-container">
         <div id="news-container-bg01">
-          <div id="content-news01">
+
             <NewsSlider
             />
-          </div>
         </div>
+        <div className="testdiv" id="testdiv1"></div>
+        <div className="testdiv" id="testdiv2"></div>
+        <div className="testdiv" id="testdiv3"></div>
         <p className="App-intro">
               This is the News page.
         </p>
