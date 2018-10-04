@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import NewsSlider from '../NewsSlider/NewsSlider'
-import './NewsPage.css'
+import News from './News';
+import NewsSlider from '../NewsSlider/NewsSlider';
+import './NewsPage.css';
 
 class NewsPage extends React.PureComponent {
 
@@ -14,7 +15,7 @@ class NewsPage extends React.PureComponent {
       <div className="All-content-container">
         <div id="news-container-bg01">
 
-            <NewsSlider
+            <NewsSlider currentNews={News}
             />
         </div>
         <div className="testdiv" id="testdiv1"></div>

@@ -1,7 +1,7 @@
 import React from 'react';
-import News from './News';
 import './NewsSlider.css';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom'
 
 
 
@@ -9,7 +9,6 @@ export default class NewsSlider extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      currentNews: News,
       showingStoryIndex: 0,
       buttonClick: false,
     }
@@ -23,13 +22,15 @@ export default class NewsSlider extends React.PureComponent {
       showingStoryIndex: index,
       buttonClick: true,
     });
-    if (document.querySelector('.Story-showing')) {document.querySelector('.Story-showing').style.transition="none";}
-    if (document.querySelector('.Story-removing')){document.querySelector('.Story-removing').style.transition="none";}
+    let stories= document.querySelectorAll('.Sliderstory');
+    for (let story of stories) {
+      story.style.transition="none";
+    }
   }
 
   sliderOnTimeChange() {
     let nextstoryindex= this.state.showingStoryIndex+1;
-    if (this.state.currentNews.length=== nextstoryindex) {
+    if (this.props.currentNews.length=== nextstoryindex) {
       nextstoryindex= 0
     }
     this.setState({
@@ -42,22 +43,28 @@ export default class NewsSlider extends React.PureComponent {
   }
 
   render() {
-    let currentnews=this.state.currentNews;
+    let currentnews=this.props.currentNews;
     let shownews=currentnews.map((item,index)=> {
       return (
       <li
         className= { classNames({
           'Sliderstory': true,
-          'Next-story': ((index===this.state.showingStoryIndex+1) || (index===this.state.showingStoryIndex-currentnews.length +1)) && !this.state.buttonClick,
+          'Next-story': ((index===this.state.showingStoryIndex+1) || (index===this.state.showingStoryIndex-currentnews.length +1)),
           'Story-showing': index===this.state.showingStoryIndex,
-          'Story-removing': ((index===this.state.showingStoryIndex-1) || (index===this.state.showingStoryIndex + currentnews.length -1 )) && !this.state.buttonClick,
+          'Story-removing': ((index===this.state.showingStoryIndex-1) || (index===this.state.showingStoryIndex + currentnews.length -1 )),
           })}
         storyIndex={index} >
 
         <img className="Sliderstory-picture" src={item.picturesrc}></img>
         <div className="Sliderstory-info-container">
           <div className="Sliderstory-info-content">
-            {item.title}
+            <h3>{item.title}</h3>
+            <p> {item.text.slice(0,200)}... </p>
+            <Link
+              className='Read-more-button'
+              to={'/News/'+ item.id}>
+              <div>Read More</div>
+            </Link>
           </div>
         </div>
       </li>

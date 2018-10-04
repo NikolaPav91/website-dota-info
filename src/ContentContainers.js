@@ -6,6 +6,8 @@ import NewsPageContainer from './Components/NewsPage/NewsPage';
 import MatchesPageContainer from './Components/MatchesPage/MatchesPage';
 import PlayerRankingPageContainer from './Components/PlayerRankingPage/PlayerRankingPage';
 import TeamIdPage from './Components/TeamIdPage/TeamIdPage';
+import News from './Components/NewsPage/News';
+import NewsIdPage from './Components/NewsIdPage/NewsIdPage';
 
 
 const ContentContainers= ()=> (
@@ -24,9 +26,11 @@ const ContentContainers= ()=> (
     />
 
 
-    <Route exact path='/Teams/:teamId'  render={(props) => <TeamIdPage bla={props}/>}
-    />
+    {/* <Route exact path='/Teams/:teamId'  render={(props) => <TeamIdPage bla={props}/>}
+    /> */}
     <Route exact path='/Teams/:teamId' component= {TeamIdPage}
+    />
+    <Route exact path='/News/:newsId' render={(props) => <NewsIdPage currentNews={News} routerprops={props}/>}
     />
 
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Loader from '../Loader/Loader';
 import classNames from 'classnames';
 
@@ -17,7 +16,8 @@ class TeamIdPage extends React.Component {
       loaderActive: true,
     })
     fetch('https://api.opendota.com/api/teams/' +
-    this.props.bla.match.params.teamId +"/players")
+    this.props.match.params.teamId +"/players")
+    // sa render this.props.propsName(bla).match.params.teamId
     .then(response=> {console.log(response.status); return response})
     .then(response=> response.json())
     .then(response =>
