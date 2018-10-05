@@ -10,7 +10,7 @@ const News=[
     cheering for the Brazilian teams is not well documented so far. We asked a real SA
     expert to teach us five memes and chat phrases we can use in the future.
     <br/><br/><br/>
-    {{{https://www.youtube.com/watch?v=v7TkQNLKaHg}}} `,
+      <iframe className="NewsId-video" src="https://www.youtube.com/watch?v=v7TkQNLKaHg" allowfullscreen="true"></iframe>`,
   },
   { id: "002",
     title: "PVP Esports Championship ready for kick-off",
@@ -26,7 +26,7 @@ const News=[
     @fortnitegame</a> <a href="https://t.co/NKsQ7vQoyx">pic.twitter.com/NKsQ7vQoyx</a>
     </p>&mdash; FaZe Tfue (@TTfue) <a
     href="https://twitter.com/TTfue/status/1047573506865549313?ref_src=twsrc%5Etfw">
-    October 3, 2018</a></blockquote>" <br>
+    October 3, 2018</a></blockquote> <br>
 
     Billed as Singapore’s biggest esports event, the PVP Esports Championship has a
     raft of major sponsors. With that, big names are needed to justify the investment.
