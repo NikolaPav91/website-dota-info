@@ -264,6 +264,12 @@ iframe {
   height: auto;
 } */
 
+#content-teams-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 #content-teams {
   margin-top: 10px;
   width: 1100px;
@@ -282,7 +288,7 @@ iframe {
 .Team-container {
   width: 250px;
   height: 200px;
-  margin: 15px 1px;
+  margin: 15px 4px;
   border: 1px solid white;
   border-radius: 10px;
   display: flex;

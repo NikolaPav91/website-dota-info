@@ -36,7 +36,8 @@ class TeamIdPage extends React.Component {
     let currentmembers= this.state.currentMembers;
     let showmembers= currentmembers.map((item)=> {
       return (
-        <div> {item.name} </div>
+        <div className="Player-info-container">
+           {item.name} </div>
       )
     }
   )
@@ -45,7 +46,14 @@ class TeamIdPage extends React.Component {
     return  (
 
 
-      <div className="All-content-container">  <Loader className={loaderclass}></Loader> {showmembers}</div>
+      <div className="All-content-container">
+        <header className="header-picture1"></header>
+        <Loader className={loaderclass}></Loader>
+        <div className="Team-info-container">
+          
+        </div>
+        {showmembers}
+      </div>
     );
   }
 }
