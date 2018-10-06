@@ -22,11 +22,11 @@ class App extends Component {
               currentURL={currenturl}
             />
             <div id="search-container"> <input type="text" placeholder="Search.."></input>
-            <button type="submit"><i class="fa fa-search"></i></button>
+            <button type="submit"><i className="fa fa-search"></i></button>
             </div>
           </div>
         </div>
-        
+
         <ContentContainers />
 
       </div>
