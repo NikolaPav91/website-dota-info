@@ -59,7 +59,9 @@ export default class NewsSlider extends React.PureComponent {
         <div className="Sliderstory-info-container">
           <div className="Sliderstory-info-content">
             <h3>{item.title}</h3>
-            <p> {item.text.slice(0,200)}... </p>
+
+            {/*Finds the first item that is not a twitterwidget  */}
+            <p> {item.text.find(item=>item.startsWith("tweetId='")===false).slice(0,200)}... </p>
             <Link
               className='Read-more-button'
               to={'/News/'+ item.id}>
