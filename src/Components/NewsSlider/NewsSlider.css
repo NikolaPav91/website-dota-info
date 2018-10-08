@@ -1,9 +1,9 @@
 #slider {
   height: 410px;
   width: 100%;
-  background: green;
   display: flex;
   position: relative;
+  background-color: black;
   margin: 0px;
   padding: 0px;
   overflow: hidden;
@@ -17,7 +17,6 @@
 .Sliderstory-info-container {
   height: 100%;
   width: 388.9px;
-  background-color: blue;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,7 +62,7 @@
   position:absolute;
   left: 0px;
   display: flex;
-  transition: left 1s linear 0s;
+  transition: left 0.5s linear 0s;
 
 }
 
@@ -71,7 +70,7 @@
   position: absolute;
   left: -1100px;
   display: flex;
-  transition: left 1s linear 0s;
+  transition: left 0.5s linear 0s;
 }
 
 
@@ -88,4 +87,8 @@
 
   background-color: white;
   height: 80%;
+}
+
+.Sliderbuttons.Active {
+  background: pink;
 }

@@ -39,42 +39,50 @@ export default class NewsSlider extends React.PureComponent {
   }
   componentDidMount() {
 
-    this.intervalId = setInterval(()=>this.sliderOnTimeChange(), 3000);
+    this.intervalId = setInterval(()=>this.sliderOnTimeChange(), 4500);
   }
 
   render() {
     let currentnews=this.props.currentNews;
     let shownews=currentnews.map((item,index)=> {
+      let slidertext= item.text.find(item=>item.startsWith("tweetId='")===false).slice(0,200);
+      let slidertextend='...'
+      if (slidertext.endsWith('.')===true) {
+        slidertextend='..'
+      }
+      let sliderstoryclass= classNames({
+        'Sliderstory': true,
+        'Next-story': ((index===this.state.showingStoryIndex+1) || (index===this.state.showingStoryIndex-currentnews.length +1)),
+        'Story-showing': index===this.state.showingStoryIndex,
+        'Story-removing': ((index===this.state.showingStoryIndex-1) || (index===this.state.showingStoryIndex + currentnews.length -1 )),
+        })
       return (
-      <li
-        className= { classNames({
-          'Sliderstory': true,
-          'Next-story': ((index===this.state.showingStoryIndex+1) || (index===this.state.showingStoryIndex-currentnews.length +1)),
-          'Story-showing': index===this.state.showingStoryIndex,
-          'Story-removing': ((index===this.state.showingStoryIndex-1) || (index===this.state.showingStoryIndex + currentnews.length -1 )),
-          })}
-        storyIndex={index} >
+        <li className= {sliderstoryclass} storyIndex={index}>
+          <img className="Sliderstory-picture" src={item.picturesrc}></img>
+          <div className="Sliderstory-info-container">
+            <div className="Sliderstory-info-content">
+              <h3>{item.title}</h3>
 
-        <img className="Sliderstory-picture" src={item.picturesrc}></img>
-        <div className="Sliderstory-info-container">
-          <div className="Sliderstory-info-content">
-            <h3>{item.title}</h3>
-
-            {/*Finds the first item that is not a twitterwidget  */}
-            <p> {item.text.find(item=>item.startsWith("tweetId='")===false).slice(0,200)}... </p>
-            <Link
-              className='Read-more-button'
-              to={'/News/'+ item.id}>
-              <div>Read More</div>
-            </Link>
+              {/*Finds the first item that is not a twitterwidget  */}
+              <p dangerouslySetInnerHTML={{__html: slidertext + slidertextend}}></p>
+              <Link
+                className='Read-more-button'
+                to={'/News/'+ item.id}>
+                <div>Read More</div>
+              </Link>
+            </div>
           </div>
-        </div>
-      </li>
-    )})
+        </li>
+      )
+    })
     let numberofbuttons= currentnews.length;
     let sliderbuttons= currentnews.map((item, index)=>{
       return (
-        <div className="Sliderbuttons"
+        <div className={ classNames({
+          "Sliderbuttons": true,
+          "Active": index===this.state.showingStoryIndex,
+        })
+        }
           style={{width: 1100/numberofbuttons -2 +"px"}}
           onClick={()=>this.onSliderButtonClick(index)}
           sliderIndex={index}> {index}</div>

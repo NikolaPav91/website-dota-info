@@ -1,7 +1,7 @@
 import React from 'react';
 import Script from 'react-load-script';
 import { Tweet } from 'react-twitter-widgets';
-
+import './NewsIdPage.css'
 export default class NewsIdPage extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -22,19 +22,15 @@ export default class NewsIdPage extends React.PureComponent {
       /> )}
       else {
         return (
-          <div dangerouslySetInnerHTML={{__html: item}}></div>
+          <div className="Story-text-container" dangerouslySetInnerHTML={{__html: item}}></div>
       )}
     })
     let storyHTML=(<div dangerouslySetInnerHTML={{__html: story.text}}></div>)
     return (
-      <div>
-      <div>
-        <Tweet tweetId='1047573506865549313'
-        />
+      <div className= "All-content-container">
+      <div className="News-id-content">
       <div>{story.title}</div>
-      <iframe className="NewsId-video"
-        src="https://www.youtube-nocookie.com/embed/v7TkQNLKaHg?rel=0"
-        allowfullscreen="true"></iframe>
+
         {storyshow}
       </div>
 
