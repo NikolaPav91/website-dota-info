@@ -18,9 +18,11 @@ class NewsPage extends React.PureComponent {
             <NewsSlider currentNews={News}
             />
         </div>
-        <div className="testdiv" id="testdiv1"></div>
-        <div className="testdiv" id="testdiv2"></div>
-        <div className="testdiv" id="testdiv3"></div>
+        <div className="" id="news-container-bg02">
+          <div id="content-news02">
+
+          </div>
+        </div>
         <p className="App-intro">
               This is the News page.
         </p>

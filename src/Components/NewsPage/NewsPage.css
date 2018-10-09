@@ -13,3 +13,16 @@
   /* overflow: hidden; */
   flex-flow: column;
 }
+#news-container-bg02 {
+  height: 700px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: pink;
+}
+#content-news02 {
+  height: 100%;
+  width: 1100px;
+  display: flex;
+  background-color: skyblue;
+}
