@@ -1,0 +1,17 @@
+.News-id-content {
+  width: 800px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.News-id-video {
+  width: 90%;
+  height: 480px;
+}
+
+.Story-text-container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}

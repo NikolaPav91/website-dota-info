@@ -1,7 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import News from './News';
+import NewsSlider from '../NewsSlider/NewsSlider';
+import './NewsPage.css';
 
-class NewsPage extends React.Component {
+class NewsPage extends React.PureComponent {
 
   componentDidMount() {
       this.props.setActiveIndex(1);
@@ -9,9 +12,21 @@ class NewsPage extends React.Component {
 
   render() {
     return (
-      <p className="App-intro">
+      <div className="All-content-container">
+        <div id="news-container-bg01">
+
+            <NewsSlider currentNews={News}
+            />
+        </div>
+        <div className="" id="news-container-bg02">
+          <div id="content-news02">
+
+          </div>
+        </div>
+        <p className="App-intro">
               This is the News page.
-            </p>
+        </p>
+      </div>
     )
   }
 }

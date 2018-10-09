@@ -11,49 +11,24 @@ import TeamIdPage from './Components/TeamIdPage/TeamIdPage';
 import ContentContainers from './ContentContainers';
 class App extends Component {
   render() {
+    let currenturl= this.props.location.pathname;
+    if (currenturl==="/") {currenturl="/About"}
     return (
       <div className="App">
-        <header id="app-header">
-          <div id="header-top-container">
-            <div id="logo-container">
-              NEKI "LOGO"
-            </div>
-            <div id='login-container'>
-              Link za "fake" login
-            </div>
-          </div>
-          <div id="header-bottom-container">
-            <div id="menu-bar">
-              <MenuBarContainer
-                menuButtons={["Home", "News", "Teams", "Matches", "Player Rankings"]}
-              />
-            </div>
+        <div id="navi-bar-bg">
+          <div id="navi-bar-container">
+            <MenuBarContainer
+              menuButtons={["About", "News", "Teams", "Matches", "The International"]}
+              currentURL={currenturl}
+            />
             <div id="search-container"> <input type="text" placeholder="Search.."></input>
-            <button type="submit"><i class="fa fa-search"></i></button></div>
+            <button type="submit"><i className="fa fa-search"></i></button>
+            </div>
           </div>
-        </header>
-        <div id="header-content-separator"></div>
-        <div id="content-container">
-          <ContentContainers>
-          {/* <Switch>
-            <Route exact path='/Home' render={(props) => <HomePageContainer />}
-            />
-            <Route exact path='/News' render={(props) => <NewsPageContainer />}
-            />
-            <Route exact path='/Teams' render={(props) => <TeamsPageContainer />}
-            />
-            <Route exact path='/Matches' render={(props) => <MatchesPageContainer />}
-            />
-            <Route exact path='/Player Rankings' render={(props) => <PlayerRankingPageContainer />}
-            />
-            <Route exact path='/Teams/:teamId' component= {TeamIdPage}
-            />
-
-
-
-          </Switch> */}
-        </ContentContainers>
         </div>
+
+        <ContentContainers />
+
       </div>
     );
   }

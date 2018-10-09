@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Loader from '../Loader/Loader';
 import classNames from 'classnames';
 
@@ -17,7 +16,8 @@ class TeamIdPage extends React.Component {
       loaderActive: true,
     })
     fetch('https://api.opendota.com/api/teams/' +
-    this.props.bla.match.params.teamId +"/players")
+    this.props.match.params.teamId +"/players")
+    // sa render this.props.propsName(bla).match.params.teamId
     .then(response=> {console.log(response.status); return response})
     .then(response=> response.json())
     .then(response =>
@@ -36,14 +36,24 @@ class TeamIdPage extends React.Component {
     let currentmembers= this.state.currentMembers;
     let showmembers= currentmembers.map((item)=> {
       return (
-        <div> {item.name} </div>
+        <div className="Player-info-container">
+           {item.name} </div>
       )
     }
   )
+    if (currentmembers.length===0 && !this.state.loaderActive) {showmembers= <div> No players found</div>
+    }
     return  (
 
 
-      <div>  <Loader className={loaderclass}></Loader> {showmembers}</div>
+      <div className="All-content-container">
+        <header className="header-picture1"></header>
+        <Loader className={loaderclass}></Loader>
+        <div className="Team-info-container">
+          
+        </div>
+        {showmembers}
+      </div>
     );
   }
 }

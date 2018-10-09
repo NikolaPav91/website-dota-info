@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 import classNames from 'classnames';
+import TeamContainer from '../TeamContainer/TeamContainer'
 
 class TeamsPage extends React.Component {
   constructor(props) {
@@ -41,44 +42,26 @@ class TeamsPage extends React.Component {
 
     let topteams= this.state.topSixteen;
     let showtopteams= topteams.map((item)=> {
-      let picturesrc=item.logo;
-      let name= item.name;
-      let tag= item.tag;
-      if (picturesrc===null) {
-        picturesrc="no-image-icon.png"
-      }
-      if (!name) {name="?"};
-      if (!tag) {tag="?"};
        return (
          <Link
            to={'/Teams/'+ item.id }
            className="Team-link">
-      <div className="Team-container">
-        <div className="Team-top-container">
-          <img src={picturesrc} className="Teamlogo"></img>
-          <p><span className="Team-textlabels">Name:</span> <span className="Team-name-block">{name}</span> </p>
-          <p><span className="Team-textlabels">Tag:</span> {tag} </p>
-        </div>
-        <div className="Team-bottom-container">
-          <p><span className="Team-textlabels">Wins: </span>{item.wins}</p>
-          <p><span className="Team-textlabels">Losses: </span>{item.losses}</p>
-          <p><span className="Team-textlabels"> EloRating: </span>{item.eloRating} </p>
-          <div className= "Rank-container">
-            <span>Rank:</span>
-            <img className="Rank-symbol" src="images.png"></img>
 
-            <span className="Rank-number">{item.rank}. </span>
-          </div>
-        </div>
-
-     </div>
-   </Link>
+           <TeamContainer
+             teamInfo={item}
+           />
+         </Link>
    ) })
     return (
+      <div className= "All-content-container">
+        <header className="header-picture1"></header>
+        <div id="content-teams-container">
       <div id="content-teams">
         <Loader className={loaderclass}></Loader>
         {showtopteams}
       </div>
+    </div>
+    </div>
     )
   }
 }
