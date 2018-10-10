@@ -6,9 +6,12 @@
 
 .Recentstory-container {
   width: 45%;
-  height: 300px;
+  height: 340px;
   border: 3px solid black;
   margin-top: 10px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
 }
 
 .Recentstory-picture {
@@ -16,9 +19,16 @@
   height: auto;
 }
 
+.Recentstory-title {
+  height: 40px;
+  background: orange;
+  display: flex;
+  align-items: center;
+}
+
 .Recentstory-teaser {
   width: 100%;
-  height: 25%;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  height: 110px;
+  background: pink;
+  margin: 0px;
 }

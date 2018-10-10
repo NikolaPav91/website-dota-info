@@ -12,8 +12,8 @@ const RecentStories= ({recentNews})=> {
     return (
       <div className="Recentstory-container">
         <img src={item.picturesrc} className="Recentstory-picture"></img>
-        <div>{item.title}</div>
-        <div className="Recentstory-teaser" dangerouslySetInnerHTML={{__html: storyteaser + storyteaserend}}></div>
+        <div className="Recentstory-title">{item.title}</div>
+        <p className="Recentstory-teaser" dangerouslySetInnerHTML={{__html: storyteaser + storyteaserend}}></p>
       </div>
     )
   }
