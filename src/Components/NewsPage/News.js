@@ -166,6 +166,102 @@ const News=[
 
     ]
 
+  },
+  {
+    id:"005",
+    picturesrc:"https://cdn0.gamesports.net/content_teasers/75000/75101.jpg?1539176943",
+    title: "Na’vi make the cut at Autumn Brawl",
+    text: [`
+      The post-Dendi era is off to a steady start for Natus Vincere. Despite missing out on qualifying for
+      The Kuala Lumpur Major, they will participate at DreamLeague Season 10, and now they have made the
+      playoff stage of the Maincast Autumn Brawl. <br/><br/>
+
+      <h3>SoNNeikO leads his team into the knockout stage</h3>
+      Placed into Group B, Na’vi kicked things off in the double-elimination format against Nemiga Gaming.
+      Surrendering a slight early lead, they eventually asserted their dominance to record a 28-minute, 31-18 win.
+      In the Winners’ Match they faced Elements Pro Gaming, and it was a similarly dominant performance.
+      A 27-minute match saw them build a 20k advantage, sealing the win with a 25-9 difference in kills. <br/><br/>
+
+      Elsewhere in the group, Elements had beaten Madjor Atendari comprehensively to set up their encounter with Na’Vi.
+      With Nemiga defeating madjor in the Losers’ Match, they then went on to defeat Elements in the decider. <br/><br/>
+
+      <h3>Former Odium players head Group A</h3>
+      In Group A it was NoPangolier, a team including former Odium players Andrey 'Ghostik' Kadyk, Krivulya 'Cema' Semion
+      and Aibek 'Naive-' Tokayev, who led the way. They first took down Troels 'syndereN' Nielsen’s HappyGuys,
+      and then defeated Team Spirit in the Winners’ Match. <br/><br/>
+
+      It was Spirit who then made it through to the Playoffs, defeating Happy Guys 2-1 in the decider after they had
+      earlier won against the all-Russian squad of TpB in their opening match. <br/><br/>
+
+      <h3>Underdogs overcome Group C </h3>
+      With former Virtus.pro carry Vadim 'Sedoy' Musorin, UNDERDOGS pipped the more established CIS names of Espada and Team Empire
+      to win Group C. They defeated the former in their opening match — Sedoy going big on Mirana — before taking down the latter
+      in the Winners’ Match, this time with Duulat 'StormC4t' Subankulov recording a perfect 15-0-16 game. <br/><br/>
+
+      Espada took second spot, having defeated WU TANG in the Losers’ Match. They then took a straightforward decider 2-0 against Empire,
+      who had earlier defeated WU TANG in their decider before losing to Underdogs. <br/><br/>
+
+      <h3>Russians ‘strike’ it big in Group D </h3>
+      It was Winstrike who took the spoils in Group D, recording a pair of snowball wins. First, they took down Uruk-High,
+      then the Belarusians of FCDB Esports in the Winners’ Match, sealing their place in the Playoffs. <br/><br/>
+
+      Team Lithium joined them, bouncing back after a loss to FCDB to defeat URUK-HIGH in the Losers’ Match. They fell in the first game
+      of the decider to FCDB in their rematch, but took the next two to cement second place in the group. <br/><br/>
+
+      <h3>Big names join for Playoffs</h3>
+      Now comes the Round of 12, with the eight qualifiers playing each other for a spot in the Quarter-Finals. There,
+      the four invited teams will join the fray. <br/>
+      NoPangolier will face off against Espada with Gambit Esports waiting in the wings, while the winner of Natus Vincere against
+      Team Lithium faces off against Team Secret — which could mean Danil 'Dendi' Ishutin faces his old side for the first time. <br/><br/>
+
+      The final two matches see Underdogs take on Spirit for the chance to go up against Virtus.pro, while Winstrike
+      and Nemiga do battle for a meeting with Ninjas in Pyjamas. <br/><br/><br/>
+
+
+      Who will take the overall Autumn Brawl title?  `
+    ],
+  },
+  {
+    id: "006",
+    picturesrc: "https://cdn0.gamesports.net/content_teasers/75000/75095.jpg?1539165883",
+    title: "LeBron hits back at Lil’s removal claims",
+    text:[
+      `It seems that Ilya 'Lil' Ilyuk is rarely out of the headlines these days, often for the wrong reasons. After throwing shade at former
+      team-mate Nikola 'LeBronDota' Popovic regarding his removal from Natus Vincere, the latter has now had his say.<br/><br/>
+
+      <h3>Lil with the opening salvo</h3>
+      LeBron departed Natus Vincere back in May. On his personal Twitch stream (the clip, translated from Russian by cybersport.com,
+      can be seen here, Lil was asked about the removal — and promptly went on the offensive. `,
+
+      `QUOTEDIV:'LeBron played very poorly, very poorly, couldn’t even hit the right button at the EPICENTER XL. I asked everyone to
+      replace him while we still had options. Plus he honestly brought very little from his position. He played very poorly and wasn’t saying
+      jack shit during the game. You have to do something as a position 5. If you’re not coordinating the team, you can at least do some kind
+      of micro calls. He wasn’t doing anything at all.'`,
+
+      `Lil painted a picture of LeBron being completely ineffective and deserving of his removal from the side — something the Elements Pro Gaming
+      support has now rejected.`,
+
+      `tweetId='1048415074933719040'`,
+
+      `<h3>A tough year for Lil…</h3>`,
+
+      `QUOTEDIV:'We told him directly that the team is not pleased with his play and that he must change his attitude to Dota as a whole.
+      Based on Genting and practice results before and after the event, we realized that the decision had to be made.
+      — Roman Dvoryankin, Virtus.Pro General Manager'`,
+
+      `It’s fair to say that it’s not been a good year for Lil. First, the Ukrainian was transferred from Virtus.pro to Natus Vincere,
+      then removed from that roster, and now his pet project Odium has folded after little more than a month. <br/><br/>
+
+      As early as the day after his removal from Virtus.pro, Lil attacked his former teammates, claiming he was backstabbed by VP,
+      and specifically Roman 'RAMZES666' Kushnarev and Vladimir 'No[o]ne' Minenko. VP’s general manager put paid to that claim in his response,
+      adding that the decision was unanimous among the remaining four players, himself and the coach. <br/><br/>
+
+      Then, Natus Vincere revealed that Lil would not be part of their 2018/19 roster, following failure to qualify for The International 2018.
+      He decided to set up his own team, Odium — but that project also met a disappointing end. <br/><br/>
+
+      What’s next for Lil? Can he bounce back from yet more controversy?`
+
+    ]
   }
 ];
 

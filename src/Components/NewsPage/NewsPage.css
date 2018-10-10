@@ -14,7 +14,7 @@
   flex-flow: column;
 }
 #news-container-bg02 {
-  height: 700px;
+  height: 1200px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -25,4 +25,15 @@
   width: 1100px;
   display: flex;
   background-color: skyblue;
+  justify-content: space-between;
+}
+#recent-stories-container {
+  background-color: red;
+  width: 60%;
+  height: 100%;
+}
+#recent-matches-container {
+  background-color: lightgreen;
+  width: 30%;
+  height: 100%;
 }

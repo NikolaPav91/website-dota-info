@@ -30,7 +30,7 @@ export default class NewsSlider extends React.PureComponent {
 
   sliderOnTimeChange() {
     let nextstoryindex= this.state.showingStoryIndex+1;
-    if (this.props.currentNews.length=== nextstoryindex) {
+    if (this.props.sliderNews.length=== nextstoryindex) {
       nextstoryindex= 0
     }
     this.setState({
@@ -43,8 +43,8 @@ export default class NewsSlider extends React.PureComponent {
   }
 
   render() {
-    let currentnews=this.props.currentNews;
-    let shownews=currentnews.map((item,index)=> {
+    let lastfourstories=this.props.sliderNews.reverse();
+    let shownews=lastfourstories.map((item,index)=> {
       let slidertext= item.text.find(item=>item.startsWith("tweetId='")===false).slice(0,200);
       let slidertextend='...'
       if (slidertext.endsWith('.')===true) {
@@ -52,9 +52,9 @@ export default class NewsSlider extends React.PureComponent {
       }
       let sliderstoryclass= classNames({
         'Sliderstory': true,
-        'Next-story': ((index===this.state.showingStoryIndex+1) || (index===this.state.showingStoryIndex-currentnews.length +1)),
+        'Next-story': ((index===this.state.showingStoryIndex+1) || (index===this.state.showingStoryIndex-lastfourstories.length +1)),
         'Story-showing': index===this.state.showingStoryIndex,
-        'Story-removing': ((index===this.state.showingStoryIndex-1) || (index===this.state.showingStoryIndex + currentnews.length -1 )),
+        'Story-removing': ((index===this.state.showingStoryIndex-1) || (index===this.state.showingStoryIndex + lastfourstories.length -1 )),
         })
       return (
         <li className= {sliderstoryclass} storyIndex={index}>
@@ -75,8 +75,8 @@ export default class NewsSlider extends React.PureComponent {
         </li>
       )
     })
-    let numberofbuttons= currentnews.length;
-    let sliderbuttons= currentnews.map((item, index)=>{
+    let numberofbuttons= lastfourstories.length;
+    let sliderbuttons= lastfourstories.map((item, index)=>{
       return (
         <div className={ classNames({
           "Sliderbuttons": true,
