@@ -43,9 +43,9 @@ export default class NewsSlider extends React.PureComponent {
   }
 
   render() {
-    let lastfourstories=this.props.sliderNews.reverse();
+    let lastfourstories=this.props.sliderNews;
     let shownews=lastfourstories.map((item,index)=> {
-      let slidertext= item.text.find(item=>item.startsWith("tweetId='")===false).slice(0,200);
+      let slidertext= item.teaser.slice(0,200);
       let slidertextend='...'
       if (slidertext.endsWith('.')===true) {
         slidertextend='..'

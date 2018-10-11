@@ -5,6 +5,10 @@ const News=[
   { id: "001",
     title: "5 South American memes & chat phrases you need to know",
     picturesrc: "https://cdn0.gamesports.net/content_teasers/74000/74792.jpg?1538479878",
+    teaser: `paiN Gaming and paiN X are two up and rising teams and are the masterpieces
+    of Brazilian Dota 2. Finally South America has the attention it deserves. However,
+    cheering for the Brazilian teams is not well documented so far. We asked a real SA
+    expert to teach us five memes and chat phrases we can use in the future.`,
     text: [
       `paiN Gaming and paiN X are two up and rising teams and are the masterpieces
       of Brazilian Dota 2. Finally South America has the attention it deserves. However,
@@ -18,6 +22,9 @@ const News=[
   },
   { id: "002",
     title: "PVP Esports Championship ready for kick-off",
+    teaser: `Set in the island city-state of Singapore, the PVP Esports Championship
+    gets under way this weekend with $200,000 on the line for the Dota 2 victors.
+    Who will take home the grand prize? Here’s our guide to proceedings.`,
     picturesrc: "https://cdn0.gamesports.net/content_teasers/74000/74813.jpg?1538499969",
     text: [
       `Set in the island city-state of Singapore, the PVP Esports Championship
@@ -81,6 +88,7 @@ const News=[
     id: "003",
     picturesrc: "https://cdn0.gamesports.net/content_teasers/74000/74804.jpg?1538490556",
     title: "Red Bull announce bizarre Guardians event",
+    teaser: `Red Bull Esports are back with another weird Dota 2 event, Guardians, in which strategy — and substitutes — are the keys to victory.`,
     text: [
       "Red Bull Esports are back with another weird Dota 2 event, Guardians, in which strategy — and substitutes — are the keys to victory.",
 
@@ -117,6 +125,8 @@ const News=[
     id: "004",
     picturesrc: "https://cdn0.gamesports.net/content_teasers/74000/74978.jpg?1538996672",
     title: "Home advantage not enough as Secret win PVP Esports Championship",
+    teaser: `Hometown hero Daryl 'iceiceice' Koh was unable to lead his Fnatic team to victory in Singapore
+    as an epic Grand Final saw Team Secret claim the $80,000 first prize.`,
     text: [
       `Hometown hero Daryl 'iceiceice' Koh was unable to lead his Fnatic team to victory in Singapore
       as an epic Grand Final saw Team Secret claim the $80,000 first prize. <br/>`,
@@ -171,6 +181,9 @@ const News=[
     id:"005",
     picturesrc:"https://cdn0.gamesports.net/content_teasers/75000/75101.jpg?1539176943",
     title: "Na’vi make the cut at Autumn Brawl",
+    teaser: `The post-Dendi era is off to a steady start for Natus Vincere. Despite missing out on qualifying for
+    The Kuala Lumpur Major, they will participate at DreamLeague Season 10, and now they have made the
+    playoff stage of the Maincast Autumn Brawl.`,
     text: [`
       The post-Dendi era is off to a steady start for Natus Vincere. Despite missing out on qualifying for
       The Kuala Lumpur Major, they will participate at DreamLeague Season 10, and now they have made the
@@ -225,6 +238,8 @@ const News=[
     id: "006",
     picturesrc: "https://cdn0.gamesports.net/content_teasers/75000/75095.jpg?1539165883",
     title: "LeBron hits back at Lil’s removal claims",
+    teaser: `It seems that Ilya 'Lil' Ilyuk is rarely out of the headlines these days, often for the wrong reasons. After throwing shade at former
+    team-mate Nikola 'LeBronDota' Popovic regarding his removal from Natus Vincere, the latter has now had his say.`,
     text:[
       `It seems that Ilya 'Lil' Ilyuk is rarely out of the headlines these days, often for the wrong reasons. After throwing shade at former
       team-mate Nikola 'LeBronDota' Popovic regarding his removal from Natus Vincere, the latter has now had his say.<br/><br/>

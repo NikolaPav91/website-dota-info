@@ -4,7 +4,7 @@ import './RecentStories.css'
 const RecentStories= ({recentNews})=> {
   let lastsixstories=recentNews.reverse().slice(0,6);
   let showstories= lastsixstories.map((item)=> {
-    let storyteaser= item.text.find(item=>item.startsWith("tweetId='")===false).slice(0,200);
+    let storyteaser= item.teaser.slice(0,200);
     let storyteaserend='...'
     if (storyteaser.endsWith('.')===true) {
       storyteaserend='..'
