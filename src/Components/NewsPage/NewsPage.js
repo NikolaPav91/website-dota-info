@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import News from './News';
 import NewsSlider from '../NewsSlider/NewsSlider';
 import './NewsPage.css';
-import RecentStories from '../RecentStories/RecentStories'
+import RecentStories from '../RecentStories/RecentStories';
+import RecentMatches from '../RecentMatches/RecentMatches';
 
 class NewsPage extends React.PureComponent {
 
@@ -24,9 +25,7 @@ class NewsPage extends React.PureComponent {
 
 
               <RecentStories recentNews={News}/>
-            <div id="recent-matches-container">
-
-            </div>
+              <RecentMatches />
           </div>
         </div>
         <p className="App-intro">

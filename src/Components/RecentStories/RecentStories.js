@@ -1,5 +1,5 @@
 import React from 'react';
-import './RecentStories.css'
+import './RecentStories.css';
 
 const RecentStories= ({recentNews})=> {
   let lastsixstories=recentNews.reverse().slice(0,6);
