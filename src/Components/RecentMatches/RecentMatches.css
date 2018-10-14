@@ -1,7 +1,35 @@
+.Result-container {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Result-dire-team {
+  justify-content: flex-end;
+}
+
+.Result-container>div {
+  height: 100%;
+  width: 40%;
+  display: flex;
+  align-items: center;
+}
+
+.Result-container>div>* {
+  margin: 05px 5px;
+}
+
 .Even-row {
   background-color: pink;
 }
 
 .Uneven-row {
   background-color: orange;
+}
+
+.Result-teamlogo {
+  height: 30px;
+  width: 30px;
 }
