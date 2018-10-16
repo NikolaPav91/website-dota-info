@@ -21,6 +21,7 @@ class App extends Component {
               menuButtons={["About", "News", "Teams", "The International"]}
               currentURL={currenturl}
               subLink=""
+              className="Menu-link"
             />
             <div id="search-container"> <input type="text" placeholder="Search.."></input>
             <button type="submit"><i className="fa fa-search"></i></button>

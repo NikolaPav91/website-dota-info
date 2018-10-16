@@ -21,12 +21,13 @@ class PageTheInternational extends React.PureComponent {
               menuButtons={["Overview", "Standings", "Media", "Teams"]}
               currentURL={currenturl}
               subLink="The International/"
+              className="Menu-link"
             />
           </div>
 
           </div>
           <div id="international-content-bg01">
-            
+
           </div>
         </div>
     )
