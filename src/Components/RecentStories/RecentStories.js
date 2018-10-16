@@ -1,5 +1,6 @@
 import React from 'react';
 import './RecentStories.css';
+import { Link } from 'react-router-dom';
 
 const RecentStories= ({recentNews})=> {
   let lastsixstories=recentNews.reverse().slice(0,6);
@@ -10,11 +11,13 @@ const RecentStories= ({recentNews})=> {
       storyteaserend='..'
     }
     return (
-      <div className="Recentstory-container">
+    <Link to={'/News/'+ item.id} className="Recentstory-container">
+      <div>
         <img src={item.picturesrc} className="Recentstory-picture"></img>
         <div className="Recentstory-title">{item.title}</div>
         <p className="Recentstory-teaser" dangerouslySetInnerHTML={{__html: storyteaser + storyteaserend}}></p>
       </div>
+    </Link>
     )
   }
 )

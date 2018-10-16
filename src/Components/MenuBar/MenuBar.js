@@ -8,11 +8,12 @@ class MenuBar extends React.Component {
   render(){
     let menubarbuttons= this.props.menuButtons;
     return(
-      <div id="menu-bar">
+      <div className="Menu-bar">
         {menubarbuttons.map((item, index)=>{
           return <MenuBarLink
             text={item}
-            active= {this.props.currentURL.startsWith("/" + item)}
+            active= {this.props.currentURL.startsWith("/" +this.props.subLink+ item)}
+            subLink={this.props.subLink}
           />
         }
       )}

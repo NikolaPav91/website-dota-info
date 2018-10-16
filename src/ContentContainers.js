@@ -4,7 +4,7 @@ import TeamsPageContainer from './Components/TeamsPage/TeamsPage';
 import HomePageContainer from './Components/HomePage/HomePage';
 import NewsPageContainer from './Components/NewsPage/NewsPage';
 import MatchesPageContainer from './Components/MatchesPage/MatchesPage';
-import PlayerRankingPageContainer from './Components/PlayerRankingPage/PlayerRankingPage';
+import PageTheInternationalContainer from './Components/PageTheInternational/PageTheInternational';
 import TeamIdPage from './Components/TeamIdPage/TeamIdPage';
 import News from './Components/NewsPage/News';
 import NewsIdPage from './Components/NewsIdPage/NewsIdPage';
@@ -22,7 +22,7 @@ const ContentContainers= ()=> (
     />
     <Route exact path='/Matches' render={(props) => <MatchesPageContainer />}
     />
-    <Route exact path='/The International' render={(props) => <PlayerRankingPageContainer />}
+    <Route path='/The International' render={(props) => <PageTheInternationalContainer routerprops={props} />}
     />
 
 

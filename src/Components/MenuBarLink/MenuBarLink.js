@@ -10,10 +10,13 @@ export default class MenuBarLink extends React.Component {
       'Active-menulink': this.props.active,
     })
 
+    let location=this.props.text;
+    if (location==="The International") {location="The International/Overview"}
+
     return(
       <Link
         className={menulinkclass}
-        to={'/'+ this.props.text}>
+        to={'/'+this.props.subLink+location}>
         {this.props.text}
       </Link>
     )

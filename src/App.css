@@ -20,9 +20,9 @@ body {
 .App {
   font-family: CustomFont;
   color: white;
-  min-height: 700px;
+  min-height: 900px;
   width: 100%;
-  background-color: #191a1b
+  background-color: black;
 
 }
 
@@ -43,10 +43,9 @@ body {
   align-items: flex-end;
 }
 
-#menu-bar {
+.Menu-bar {
   display: flex;
   align-items: center;
-  width: 600px;
 }
 
 .Menu-link {

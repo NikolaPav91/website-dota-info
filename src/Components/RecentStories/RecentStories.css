@@ -5,6 +5,8 @@
 }
 
 .Recentstory-container {
+  text-decoration: none;
+  color: white;
   width: 45%;
   height: 340px;
   border: 3px solid black;
