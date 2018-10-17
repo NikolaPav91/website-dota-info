@@ -2,6 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './PageTheInternational.css';
 import MenuBarContainer from '../MenuBar/MenuBar';
+import PageTIOverview from './PageTIOverview/PageTIOverview';
+import PageTIStandings from './PageTIStandings/PageTIStandings.js';
+import PageTITeams from './PageTITeams/PageTITeams';
+import PageTIMedia from './PageTIMedia/PageTIMedia';
+import { Switch, Route } from 'react-router-dom';
 
 class PageTheInternational extends React.PureComponent {
 
@@ -26,9 +31,19 @@ class PageTheInternational extends React.PureComponent {
           </div>
 
           </div>
-          <div id="international-content-bg01">
 
-          </div>
+          <Switch>
+            <Route exact path='/The International/Overview' render={(props) => <PageTIOverview />}
+            />
+
+            <Route exact path='/The International/Media' render={(props) => <PageTIMedia />}
+            />
+            <Route exact path='/The International/Teams' render={(props) => <PageTITeams />}
+            />
+            <Route exact path='/The International/Standings' render={(props) => <PageTIStandings />}
+            />
+          </Switch>
+
         </div>
     )
   }
