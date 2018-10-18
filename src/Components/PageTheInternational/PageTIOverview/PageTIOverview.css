@@ -119,7 +119,7 @@
   flex-flow: column;
   align-items: center;
   position: relative;
-  top: 40px;
+  margin-top: 40px;
 }
 
 #battlepass-logo {
