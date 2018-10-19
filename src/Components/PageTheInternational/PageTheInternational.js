@@ -32,6 +32,7 @@ class PageTheInternational extends React.PureComponent {
           </div>
 
           </div>
+          <div className="All-content-container" id="international-allpages-bg">
 
           <Switch>
             <Route exact path='/The International/Overview' render={(props) => <PageTIOverview />}
@@ -44,6 +45,7 @@ class PageTheInternational extends React.PureComponent {
             <Route exact path='/The International/Standings' render={(props) => <PageTIStandings teams={teamsarray} />}
             />
           </Switch>
+        </div>
 
         </div>
     )

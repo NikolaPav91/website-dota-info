@@ -35,11 +35,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: auto 75px;
-
+  background-color: #171612;
   display: flex;
-}
-#twitter-timeline {
-  background-color: skyblue;
 }
 
 .International-team-box:hover {

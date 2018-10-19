@@ -30,3 +30,7 @@ position: relative;
   justify-content: center;
   margin: auto;
 }
+
+#international-allpages-bg {
+  background-image: url(/bg_standard.jpg);
+}

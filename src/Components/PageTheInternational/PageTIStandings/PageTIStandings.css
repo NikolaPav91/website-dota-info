@@ -36,5 +36,8 @@
 }
 
 .Placement-row-container.Even-row {
-  background: gray;
+  background: black;
+}
+.Placement-row-container.Uneven-row {
+  background: #1f2125;
 }
