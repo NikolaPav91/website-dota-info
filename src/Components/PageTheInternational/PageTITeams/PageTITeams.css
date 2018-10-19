@@ -20,27 +20,54 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+
+.International-team-container {
+  margin: 10px 23px;
+  text-align: center;
+}
+.International-team-container>p {
+  margin: 7px
+}
 .International-team-box {
-  width: 221px;
+  width: 200px;
   height: 100px;
-  border: 2px solid white;
+  border: 2px solid #6c675f;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: auto 70px;
-  margin: 10px 23px;
+  background-size: auto 75px;
+
+  display: flex;
+}
+#twitter-timeline {
+  background-color: skyblue;
 }
 
+.International-team-box:hover {
+  border-color: #B2A16E
+}
 .Names-box {
   width: 100%;
   height: 100%;
   opacity: 0;
-  background-color: blue;
+  background-color: black;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+}
+.Names-box>p {
+  margin: 0px;
+  font-size: 0.8em;
+  color: gray;
+}
+.Names-box>p>span {
+  color: white;
+  font-weight: bold;
 }
 .Names-box:hover {
   opacity: 1;
 }
 
-@media only screen and (max-width : 1101px) {
+@media only screen and (max-width : 1020px) {
   .International-team-box {
     margin: 10px 7px;
   }

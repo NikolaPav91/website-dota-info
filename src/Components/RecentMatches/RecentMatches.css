@@ -21,11 +21,11 @@
   margin: 05px 5px;
 }
 
-.Even-row {
+.Result-container.Even-row {
   background-color: pink;
 }
 
-.Uneven-row {
+.Result-container.Uneven-row {
   background-color: orange;
 }
 

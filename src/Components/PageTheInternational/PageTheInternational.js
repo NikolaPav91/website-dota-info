@@ -7,6 +7,7 @@ import PageTIStandings from './PageTIStandings/PageTIStandings.js';
 import PageTITeams from './PageTITeams/PageTITeams';
 import PageTIMedia from './PageTIMedia/PageTIMedia';
 import { Switch, Route } from 'react-router-dom';
+import teamsarray from './TeamsArray.js';
 
 class PageTheInternational extends React.PureComponent {
 
@@ -38,9 +39,9 @@ class PageTheInternational extends React.PureComponent {
 
             <Route exact path='/The International/Media' render={(props) => <PageTIMedia />}
             />
-            <Route exact path='/The International/Teams' render={(props) => <PageTITeams />}
+            <Route exact path='/The International/Teams' render={(props) => <PageTITeams teams={teamsarray}/>}
             />
-            <Route exact path='/The International/Standings' render={(props) => <PageTIStandings />}
+            <Route exact path='/The International/Standings' render={(props) => <PageTIStandings teams={teamsarray} />}
             />
           </Switch>
 

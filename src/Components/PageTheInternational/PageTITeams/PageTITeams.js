@@ -13,7 +13,7 @@ class PageTITeams extends React.PureComponent {
         </div>
         <div id="international-teams-bg02">
           <div id="international-teams-content02">
-            <TeamsTI/>
+            <TeamsTI teams={this.props.teams}/>
           </div>
         </div>
       </div>
