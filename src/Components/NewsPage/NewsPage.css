@@ -1,6 +1,10 @@
+#page-news-allbg {
+  background-image: url(/bg_standard.jpg);
+}
 #news-container-bg01 {
   width: 100%;
-  height: 430px;
+  margin-top: 20px;
+  height: 420px;
   display: flex;
   justify-content: center;
 }
@@ -12,13 +16,13 @@
   padding: 0px;
   /* overflow: hidden; */
   flex-flow: column;
+  border: 1px solid white;
 }
 #news-container-bg02 {
   height: 1200px;
   width: 100%;
   display: flex;
   justify-content: center;
-  background: pink;
 }
 #content-news02 {
   height: 100%;
@@ -31,7 +35,6 @@
   height: 100%;
 }
 #recent-matches-container {
+  margin-top: 20px;
   width: 30%;
-  height: 100%;
-  background-color: skyblue;
 }

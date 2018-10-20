@@ -85,7 +85,7 @@ export default class NewsSlider extends React.PureComponent {
         }
           style={{width: 1100/numberofbuttons -2 +"px"}}
           onClick={()=>this.onSliderButtonClick(index)}
-          sliderIndex={index}> {index}</div>
+          sliderIndex={index}></div>
       )
     })
     return (

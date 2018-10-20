@@ -12,11 +12,11 @@ const RecentStories= ({recentNews})=> {
     }
     return (
     <Link to={'/News/'+ item.id} className="Recentstory-container">
-      <div>
+
         <img src={item.picturesrc} className="Recentstory-picture"></img>
         <div className="Recentstory-title">{item.title}</div>
         <p className="Recentstory-teaser" dangerouslySetInnerHTML={{__html: storyteaser + storyteaserend}}></p>
-      </div>
+      
     </Link>
     )
   }

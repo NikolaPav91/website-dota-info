@@ -3,7 +3,7 @@
   width: 100%;
   display: flex;
   position: relative;
-  background-color: black;
+  background-color: #1d1e21;
   margin: 0px;
   padding: 0px;
   overflow: hidden;
@@ -25,7 +25,6 @@
 .Sliderstory-info-content {
   height: 70%;
   width: 85%;
-  background: black;
 }
 .Sliderstory-info-content>p {
   font-size: 1.05em;
@@ -76,8 +75,7 @@
 
 #slider-navigation {
   width: 1100px;
-  height: 20px;
-  background-color: red;
+  height: 10px;
   display: flex;
   justify-content: space-between;
 }
@@ -85,10 +83,10 @@
 .Sliderbuttons {
   color: black;
 
-  background-color: white;
-  height: 80%;
+  background-color: #7d8482;
+  height: 100%;
 }
 
 .Sliderbuttons.Active {
-  background: pink;
+  background: red;
 }

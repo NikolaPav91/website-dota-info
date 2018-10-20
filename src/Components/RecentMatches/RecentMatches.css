@@ -22,11 +22,11 @@
 }
 
 .Result-container.Even-row {
-  background-color: pink;
+  background-color: #2c2d31
 }
 
 .Result-container.Uneven-row {
-  background-color: orange;
+  background-color: #0a1914
 }
 
 .Result-teamlogo {

@@ -51,8 +51,8 @@ class RecentMatches extends React.PureComponent {
       let showmatches= matches.map((item,index)=> {
         let resultcontainerclass=classNames({
           'Result-container': true,
-          'Even-row': index%2===0,
-          'Uneven-row': index % 2 ===1,
+          'Even-row': index%2===1,
+          'Uneven-row': index % 2 ===0,
         })
         let result= "1 : 0";
         if (item["radiant_win"]===false) {
@@ -84,6 +84,7 @@ class RecentMatches extends React.PureComponent {
     )
       return (
         <div id="recent-matches-container">
+          Recent games:
           <Loader className={loaderclass}></Loader>
           {showmatches}
         </div>

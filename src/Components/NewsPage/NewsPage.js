@@ -14,7 +14,7 @@ class NewsPage extends React.PureComponent {
 
   render() {
     return (
-      <div className="All-content-container">
+      <div className="All-content-container" id="page-news-allbg">
         <div id="news-container-bg01">
 
             <NewsSlider sliderNews={News.slice(-4).reverse()}
@@ -28,9 +28,6 @@ class NewsPage extends React.PureComponent {
               <RecentMatches />
           </div>
         </div>
-        <p className="App-intro">
-              This is the News page.
-        </p>
       </div>
     )
   }
