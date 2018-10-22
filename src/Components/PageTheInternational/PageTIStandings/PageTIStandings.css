@@ -1,0 +1,44 @@
+#international-standings-bg01{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#international-standings-content01 {
+  width: 700px;
+  margin-top: 50px;
+}
+
+#international-standings-table {
+  width: 100%;
+}
+
+.Placement-row-container {
+  height: 40px;
+}
+.Placement-row-container>.Col-1 {
+  width: 9%;
+}
+.Placement-row-container>.Col-2 {
+  width: 45%;
+}
+.Placement-row-container>.Col-2>a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.Placement-row-container img {
+  margin-right: 10px;
+  width: 25px;
+  max-height: 30px;
+}
+
+.Placement-row-container.Even-row {
+  background: black;
+}
+.Placement-row-container.Uneven-row {
+  background: #1f2125;
+}

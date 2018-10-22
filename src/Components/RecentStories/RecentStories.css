@@ -1,0 +1,42 @@
+#recent-stories-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.Recentstory-container {
+  text-decoration: none;
+  color: white;
+  width: 45%;
+  height: 350px;
+  border: 2px solid #7d8482;
+  border-radius: 0.5%;
+  margin-top: 20px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  background: #1d1e21;
+}
+
+.Recentstory-picture {
+  width: 99%;
+  height: auto;
+}
+
+.Recentstory-title {
+  width: 100%;
+  height: 60px;
+  /* background: orange; */
+  display: flex;
+  font-weight: bold;
+  font-size: 1.15em;
+  align-items: center;
+}
+
+.Recentstory-teaser {
+  width: 100%;
+  height: 110px;
+  /* background: pink; */
+  margin: 0px;
+}

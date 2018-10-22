@@ -1,0 +1,39 @@
+
+#international-header-bg {
+  width: 100%;
+  height: 300px;
+  background-image: url(http://cdn.dota2.com/apps/dota2/images/international2018/overview/bg_overview_header.jpg?v=4758185);
+  background-repeat: no-repeat;
+  background-position: top center;
+  margin-right: auto;
+margin-left: auto;
+position: relative;
+
+}
+
+#international-header-logo {
+  background-image: url(http://cdn.dota2.com/apps/dota2/images/international2018/overview/ti_logo.png);
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+
+#international-navibar-bg {
+  background-image: url(http://cdn.dota2.com/apps/dota2/images/international2018/overview/bg_overview_navbar.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 40px;
+
+}
+#international-navibar-content {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+#international-allpages-bg {
+  background-image: url(/bg_standard.jpg);
+  font-family: TIWatchingCustomFont;
+}
