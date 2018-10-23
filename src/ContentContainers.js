@@ -1,34 +1,34 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import TeamsPageContainer from './Components/TeamsPage/TeamsPage';
-import HomePageContainer from './Components/HomePage/HomePage';
-import NewsPageContainer from './Components/NewsPage/NewsPage';
-import MatchesPageContainer from './Components/MatchesPage/MatchesPage';
-import PageTheInternationalContainer from './Components/PageTheInternational/PageTheInternational';
-import TeamIdPage from './Components/TeamIdPage/TeamIdPage';
+import HomePage from './Components/HomePage/HomePage';
+import NewsPage from './Components/NewsPage/NewsPage';
+import HeroesPage from './Components/HeroesPage/HeroesPage';
+import PageTheInternational from './Components/PageTheInternational/PageTheInternational';
+import TeamIdPageContainer from './Components/TeamIdPage/TeamIdPage';
 import News from './Components/NewsPage/News';
 import NewsIdPage from './Components/NewsIdPage/NewsIdPage';
 
 
 const ContentContainers= ()=> (
   <Switch>
-    <Route exact path='/' render={(props) => <HomePageContainer />}
+    <Route exact path='/' render={(props) => <HomePage />}
     />
-    <Route exact path='/About' render={(props) => <HomePageContainer />}
+    <Route exact path='/About' render={(props) => <HomePage />}
     />
-    <Route exact path='/News' render={(props) => <NewsPageContainer />}
+    <Route exact path='/News' render={(props) => <NewsPage />}
     />
     <Route exact path='/Teams' render={(props) => <TeamsPageContainer />}
     />
-    <Route exact path='/Matches' render={(props) => <MatchesPageContainer />}
+    <Route exact path='/Heroes' render={(props) => <HeroesPage />}
     />
-    <Route path='/The International' render={(props) => <PageTheInternationalContainer routerprops={props} />}
+    <Route path='/The International' render={(props) => <PageTheInternational routerprops={props} />}
     />
 
 
     {/* <Route exact path='/Teams/:teamId'  render={(props) => <TeamIdPage bla={props}/>}
     /> */}
-    <Route exact path='/Teams/:teamId' component= {TeamIdPage}
+    <Route exact path='/Teams/:teamId' component= {TeamIdPageContainer}
     />
     <Route exact path='/News/:newsId' render={(props) => <NewsIdPage currentNews={News} routerprops={props}/>}
     />

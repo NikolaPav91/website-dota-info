@@ -23,15 +23,5 @@ class MenuBar extends React.Component {
   }
 }
 
-const mapStateToProps= (state) => {
-  return {
-    menuBarActiveIndex: state.activeIndex,
-  }
-}
 
-
-const MenuBarContainer= connect(
-  mapStateToProps
-)(MenuBar)
-
-export default MenuBarContainer
+export default MenuBar

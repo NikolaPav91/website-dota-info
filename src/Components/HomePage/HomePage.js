@@ -2,10 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import YouTube from 'react-youtube';
 
-class HomePage extends React.Component {
-  componentDidMount() {
-      this.props.setActiveIndex(0);
-    }
+class HomePage extends React.PureComponent {
 
   render() {
     return (
@@ -73,18 +70,5 @@ class HomePage extends React.Component {
   }
 }
 
-const mapDispatchToProps= (dispatch)=> {
-  return {
 
-    setActiveIndex: (index) => {
-      dispatch({
-        type: 'CHANGE_ACTIVE_INDEX',
-        index: index,
-      });
-    },
-  }
-}
-
-const HomePageContainer= connect(null, mapDispatchToProps)(HomePage);
-
-export default HomePageContainer
+export default HomePage

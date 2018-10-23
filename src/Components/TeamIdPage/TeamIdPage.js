@@ -50,7 +50,7 @@ class TeamIdPage extends React.Component {
         <header className="header-picture1"></header>
         <Loader className={loaderclass}></Loader>
         <div className="Team-info-container">
-          
+
         </div>
         {showmembers}
       </div>
@@ -61,10 +61,10 @@ class TeamIdPage extends React.Component {
 
 const mapStateToProps= (state) => {
   return {
-    teamId: state.visitingTeamId,
+    teamId: state.proTeams,
   }
 }
 
 const TeamIdPageContainer= connect(mapStateToProps, null)(TeamIdPage);
 
-export default TeamIdPage
+export default TeamIdPageContainer

@@ -17,11 +17,8 @@ class TeamsPage extends React.Component {
 
 
   componentDidMount() {
-    this.setState({
-      loaderActive: true,
-    })
+    if(this.props.proTeams===null || this.props.proTeams==='Something went wrong, pls try later'){
     fetch('https://api.opendota.com/api/teams')
-    .then(response=> {console.log(response.status); return response})
     .then(response=> response.json())
 
     .then(response =>
@@ -29,19 +26,21 @@ class TeamsPage extends React.Component {
       .slice(0,16)
       .map((item,index)=> {return {id: item["team_id"], name: item.name, tag: item.tag, logo: item["logo_url"],
        eloRating: item.rating, wins: item.wins, losses: item.losses, rank: index + 1, }}))
-    .then(response=> this.setState({loaderActive: false, topSixteen: response}))
-    .catch(alert);
-    this.props.setActiveIndex(2);
+    .then(response=>  this.props.setProTeams(response))
+    .catch(response=>this.props.setProTeams('Something went wrong, please try again later')); }
   }
 
   render(){
     let loaderclass= classNames({
-      'Loader': this.state.loaderActive,
-      'Display-none': !this.state.loaderActive
+      'Loader': !this.props.proTeams,
+      'Display-none': this.props.proTeams
     })
-
-    let topteams= this.state.topSixteen;
-    let showtopteams= topteams.map((item)=> {
+    let topteams= this.props.proTeams;
+    if (topteams===null) {topteams=[]}
+    let showtopteams;
+    if (topteams==='Something went wrong, pls try later') {showtopteams='Something went wrong, pls try later'}
+    else {
+    showtopteams= topteams.map((item)=> {
        return (
          <Link
            to={'/Teams/'+ item.id }
@@ -51,7 +50,9 @@ class TeamsPage extends React.Component {
              teamInfo={item}
            />
          </Link>
-   ) })
+       )
+     })
+   }
     return (
       <div className= "All-content-container">
         <header className="header-picture1"></header>
@@ -70,15 +71,21 @@ class TeamsPage extends React.Component {
 const mapDispatchToProps= (dispatch)=> {
   return {
 
-    setActiveIndex: (index) => {
+    setProTeams: (teams) => {
       dispatch({
-        type: 'CHANGE_ACTIVE_INDEX',
-        index: index,
+        type: 'SET_PRO_TEAMS',
+        teamList: teams,
       });
     },
   }
 }
 
-const TeamsPageContainer= connect(null, mapDispatchToProps)(TeamsPage);
+const mapStateToProps=(state)=> {
+  return {
+    proTeams: state.proTeams,
+  }
+}
+
+const TeamsPageContainer= connect(mapStateToProps, mapDispatchToProps)(TeamsPage);
 
 export default TeamsPageContainer

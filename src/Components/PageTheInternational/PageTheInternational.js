@@ -52,18 +52,4 @@ class PageTheInternational extends React.PureComponent {
   }
 }
 
-
-const mapDispatchToProps= (dispatch)=> {
-  return {
-
-    setActiveIndex: (index) => {
-      dispatch({
-        type: 'CHANGE_ACTIVE_INDEX',
-        index: index,
-      });
-    },
-  }
-}
-
-const PageTheInternationalContainer= connect(null, mapDispatchToProps)(PageTheInternational);
-export default PageTheInternationalContainer
+export default PageTheInternational

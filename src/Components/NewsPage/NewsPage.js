@@ -8,10 +8,6 @@ import RecentMatches from '../RecentMatches/RecentMatches';
 
 class NewsPage extends React.PureComponent {
 
-  componentDidMount() {
-      this.props.setActiveIndex(1);
-    }
-
   render() {
     return (
       <div className="All-content-container" id="page-news-allbg">
@@ -33,18 +29,5 @@ class NewsPage extends React.PureComponent {
   }
 }
 
-const mapDispatchToProps= (dispatch)=> {
-  return {
 
-    setActiveIndex: (index) => {
-      dispatch({
-        type: 'CHANGE_ACTIVE_INDEX',
-        index: index,
-      });
-    },
-  }
-}
-
-const NewsPageContainer= connect(null, mapDispatchToProps)(NewsPage);
-
-export default NewsPageContainer
+export default NewsPage

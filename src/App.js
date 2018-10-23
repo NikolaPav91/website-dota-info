@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import MenuBarContainer from './Components/MenuBar/MenuBar';
+import MenuBar from './Components/MenuBar/MenuBar';
 import { Switch, Route } from 'react-router-dom';
-import TeamsPageContainer from './Components/TeamsPage/TeamsPage';
-import HomePageContainer from './Components/HomePage/HomePage';
-import NewsPageContainer from './Components/NewsPage/NewsPage';
-import MatchesPageContainer from './Components/MatchesPage/MatchesPage';
-import PlayerRankingPageContainer from './Components/PlayerRankingPage/PlayerRankingPage';
-import TeamIdPage from './Components/TeamIdPage/TeamIdPage';
 import ContentContainers from './ContentContainers';
 class App extends Component {
   render() {
@@ -17,7 +11,7 @@ class App extends Component {
       <div className="App">
         <div id="navi-bar-bg">
           <div id="navi-bar-container">
-            <MenuBarContainer
+            <MenuBar
               menuButtons={["About", "News", "Teams", "The International"]}
               currentURL={currenturl}
               subLink=""
