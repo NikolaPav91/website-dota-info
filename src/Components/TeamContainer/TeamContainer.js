@@ -23,7 +23,7 @@ const TeamContainer= ({teamInfo})=> {
       <p><span className="Team-textlabels-teams-page"> EloRating: </span>{teamInfo.eloRating} </p>
       <div className= "Rank-container-teams-page">
         <span>Rank:</span>
-        <img className="Rank-symbol-teams-page" src="images.png"></img>
+        <img className="Rank-symbol-teams-page" src="/images.png"></img>
 
         <span className="Rank-number-teams-page">{teamInfo.rank}. </span>
       </div>

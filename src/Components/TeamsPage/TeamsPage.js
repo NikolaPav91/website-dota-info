@@ -24,8 +24,9 @@ class TeamsPage extends React.Component {
     .then(response =>
      response
       .slice(0,16)
-      .map((item,index)=> {return {id: item["team_id"], name: item.name, tag: item.tag, logo: item["logo_url"],
-       eloRating: item.rating, wins: item.wins, losses: item.losses, rank: index + 1, }}))
+      .map((item,index)=> {return {id: item["team_id"], name: item.name, tag: item.tag,
+      logo: item["logo_url"], eloRating: item.rating, wins: item.wins, losses: item.losses,
+      rank: index + 1, lastMatchTime: item["last_match_time"]  }}))
     .then(response=>  this.props.setProTeams(response))
     .catch(response=>this.props.setProTeams('Something went wrong, please try again later')); }
   }

@@ -28,7 +28,7 @@
 }
 
 .Team-top-container-teams-page> p, .Team-bottom-container-teams-page>p {
-  width: 140px;
+  width: 56%;
   padding: 5px 0px 5px 0px;
   margin: 0px;
 }
@@ -38,8 +38,8 @@
 }
 
 .Teamlogo-teams-page {
-  height: 90px;
-  width: 100px;
+  height: 90%;
+  width: 40%;
 
 }
 
@@ -57,11 +57,11 @@
 }
 
 .Rank-container-teams-page {
-  height: 70px;
+  height: 70%;
   font-size: 0.9em;
   display: flex;
   flex-flow: column wrap;
-  width: 100px;
+  width: 40%;
 }
 
 .Rank-number-teams-page {
@@ -69,6 +69,6 @@
 }
 
 .Rank-symbol-teams-page {
-  height: 33px;
-  width:33px;
+  height: 49%;
+  width: 33%;
 }

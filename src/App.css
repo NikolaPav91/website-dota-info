@@ -267,6 +267,7 @@ iframe {
   width: 100%;
   display: flex;
   justify-content: center;
+  background-image: url(/bg_standard.jpg);
 }
 
 #content-teams {
