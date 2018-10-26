@@ -4,7 +4,11 @@
   display: flex;
   flex-flow: column;
   align-items: center;
-  min-height: 600px;
+  min-height: 400px;
+}
+
+#error-page-teamId {
+  margin-top: 100px;
 }
 
 .Team-container-teamId-page{
@@ -40,4 +44,9 @@
 .Team-right-container-teamId-page span {
   color: #ca7;
   font-size: 0.65em;
+}
+
+.Player-flag {
+  width: 30px;
+  height: auto;
 }

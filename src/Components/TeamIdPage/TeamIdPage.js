@@ -4,7 +4,8 @@ import Loader from '../Loader/Loader';
 import classNames from 'classnames';
 import TeamContainer from '../TeamContainer/TeamContainer';
 import TeamInfoBox from './TeamInfoBox/TeamInfoBox';
-import './TeamIdPage.css'
+import './TeamIdPage.css';
+import Countries from './counties-api.js';
 
 class TeamIdPage extends React.Component {
   constructor(props) {
@@ -13,20 +14,23 @@ class TeamIdPage extends React.Component {
       currentMembers:[],
       teamInfo:{},
       errorMsg: null,
+      memberBonusInfo:null,
     }
   }
 
   getPlayers() {
     return (
-    fetch('https://api.opendota.com/api/teams/' +
-    this.props.match.params.teamId +"/players")
-    // sa render this.props.propsName(bla).match.params.teamId
-    // .then(response=> {console.log(response.status); return response})
-    .then(response=> response.json())
-    .then(response =>
-     response
-      .filter(item=> item["is_current_team_member"]===true))
-     )
+      fetch('https://api.opendota.com/api/teams/' +
+      this.props.match.params.teamId +"/players")
+      // sa render this.props.propsName(bla).match.params.teamId
+      // .then(response=> {console.log(response.status); return response})
+      .then(response=> response.json())
+      .then(response =>
+       response
+        .filter(item=> item["is_current_team_member"]===true)
+
+      )
+    )
   }
 
   getTeaminfo() {
@@ -61,14 +65,25 @@ class TeamIdPage extends React.Component {
       loaderActive: true,
     });
     this.getPlayersAndTeaminfo()
-    .then(([players, teaminfo])=> {
+    .then(([players,teaminfo])=> {
       this.setState({
-        loaderActive: false,
         currentMembers: players,
         teamInfo: teaminfo }); return [players,teaminfo]})
-    .catch(response => {this.setState({
-      errorMsg:"Something went wrong, please try again later",
-      loaderActive: false}) })
+    .then(([players,teaminfo])=>
+       [players.map(item=>
+        fetch('https://api.opendota.com/api/players/' + item["account_id"])
+        .then(response=>response.json())
+      ),teaminfo]
+    )
+    .then(async ([players,teaminfo])=> [await Promise.all(players),teaminfo]
+    )
+
+    .then( ([players,teaminfo])=> {this.setState({
+      loaderActive: false,
+      memberBonusInfo: players,
+      });
+    })
+    .catch(response => this.setState({loaderActive: false, errorMsg: "Something went wrong, try again"}))
   }
 
   render() {
@@ -80,15 +95,31 @@ class TeamIdPage extends React.Component {
     if (this.state.errorMsg) return (
       <div className="All-content-container">
         <header className="header-picture1"></header>
-        <div>{this.state.errorMsg}</div>
-        <Loader className={loaderclass}></Loader></div>)
+        <div id="page-teamId-allbg">
+        <div id="error-page-teamId">{this.state.errorMsg}</div>
+        <Loader className={loaderclass}></Loader></div>
+      </div>)
 
 
     let currentmembers= this.state.currentMembers;
-    let showmembers= currentmembers.map((item)=> {
+    let showmembers= currentmembers.map((item,index)=> {
+      let estimatemmr= "";
+      let flagurl;
+      let countryname;
+      if (this.state.memberBonusInfo !== null) {
+        estimatemmr=this.state.memberBonusInfo[index]["mmr_estimate"].estimate;
+        let countries=JSON.parse(Countries);
+        let country= countries.find(item=> item.alpha2Code===this.state.memberBonusInfo[index].profile.loccountrycode )
+        if (country===undefined) {
+          flagurl="/no-image-icon.png"; countryname="unknown"} else {
+          flagurl= country.flag; countryname=country.name}
+      }
+
       return (
         <div className="Player-info-container">
-           {item.name} </div>
+          <img className="Player-flag TeamId-page" src={flagurl}></img> {countryname}
+           <div className="Player-name"> {item.name}{estimatemmr} </div>
+         </div>
       )
     })
 

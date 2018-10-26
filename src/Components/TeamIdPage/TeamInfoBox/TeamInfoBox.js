@@ -5,7 +5,7 @@ const TeamInfoBox= ({teamInfo})=> {
   let picturesrc=teamInfo.logo;
 
   if (picturesrc===null) {
-    picturesrc="no-image-icon.png"
+    picturesrc="/no-image-icon.png"
   }
 
   return (

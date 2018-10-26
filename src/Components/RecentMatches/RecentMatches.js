@@ -30,9 +30,7 @@ class RecentMatches extends React.PureComponent {
       .map((item)=>
         fetch('https://api.opendota.com/api/matches/'+ item.id)
         .then(response=> response.json())
-
-    )
-
+      )
     )
     .then(async response=> await Promise.all(response)
     )
