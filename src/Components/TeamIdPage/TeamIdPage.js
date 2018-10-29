@@ -6,6 +6,7 @@ import TeamContainer from '../TeamContainer/TeamContainer';
 import TeamInfoBox from './TeamInfoBox/TeamInfoBox';
 import './TeamIdPage.css';
 import Countries from './counties-api.js';
+import TeamPlayersBox from './TeamPlayersBox/TeamPlayersBox';
 
 class TeamIdPage extends React.Component {
   constructor(props) {
@@ -101,30 +102,31 @@ class TeamIdPage extends React.Component {
       </div>)
 
 
-    let currentmembers= this.state.currentMembers;
-    let showmembers= currentmembers.map((item,index)=> {
-      let estimatemmr= "";
-      let flagurl;
-      let countryname;
-      if (this.state.memberBonusInfo !== null) {
-        estimatemmr=this.state.memberBonusInfo[index]["mmr_estimate"].estimate;
-        let countries=JSON.parse(Countries);
-        let country= countries.find(item=> item.alpha2Code===this.state.memberBonusInfo[index].profile.loccountrycode )
-        if (country===undefined) {
-          flagurl="/no-image-icon.png"; countryname="unknown"} else {
-          flagurl= country.flag; countryname=country.name}
-      }
-
-      return (
-        <div className="Player-info-container">
-          <img className="Player-flag TeamId-page" src={flagurl}></img> {countryname}
-           <div className="Player-name"> {item.name}{estimatemmr} </div>
-         </div>
-      )
-    })
-
-    if (currentmembers.length===0 && !this.state.loaderActive) {showmembers= <div> No players found</div>
-    }
+    // let currentmembers= this.state.currentMembers;
+    //
+    // let showmembers= currentmembers.map((item,index)=> {
+    //   let estimatemmr= "";
+    //   let flagurl;
+    //   let countryname;
+    //   if (this.state.memberBonusInfo !== null) {
+    //     estimatemmr=this.state.memberBonusInfo[index]["mmr_estimate"].estimate;
+    //     let countries=JSON.parse(Countries);
+    //     let country= countries.find(item=> item.alpha2Code===this.state.memberBonusInfo[index].profile.loccountrycode )
+    //     if (country===undefined) {
+    //       flagurl="/no-image-icon.png"; countryname="unknown"} else {
+    //       flagurl= country.flag; countryname=country.name}
+    //   }
+    //
+    //   return (
+    //     <div className="Player-info-container">
+    //       <img className="Player-flag TeamId-page" src={flagurl}></img> {countryname}
+    //        <div className="Player-name"> {item.name}{estimatemmr} </div>
+    //      </div>
+    //   )
+    // })
+    //
+    // if (currentmembers.length===0 && !this.state.loaderActive) {showmembers= <div> No players found</div>
+    // }
 
 
     let teaminfo= this.state.teamInfo;
@@ -149,8 +151,13 @@ class TeamIdPage extends React.Component {
           <div className="Content-left-container">
             <h1>{name} ({tag})</h1>
             <TeamInfoBox teamInfo={teaminfo}/>
+            <h3 className="Team-players-box-header">Current Players</h3>
+            <TeamPlayersBox
+              currentMembers={this.state.currentMembers}
+              memberBonusInfo={this.state.memberBonusInfo}
+              loaderActive={this.state.loaderActive}
+            />
           </div>
-          {showmembers}
         </div>
         </div>
       </div>
