@@ -2,12 +2,12 @@ import React from 'react';
 import Countries from '../counties-api.js';
 import classNames from 'classnames';
 
-const TeamPlayersBox= ({currentMembers,loaderActive, memberBonusInfo})=> {
+const TeamPlayersBox= ({currentMembers, memberBonusInfo})=> {
 
   let showmembers= currentMembers.map((item,index)=> {
     let membercontainerclass= classNames({
       'Player-info-container': true,
-      'Uneven-row': index%2===1,
+      'Uneven-row': index%2===0,
     })
     let estimatemmr= "";
     let flagurl;
@@ -32,7 +32,7 @@ const TeamPlayersBox= ({currentMembers,loaderActive, memberBonusInfo})=> {
     )
   })
 
-  if (currentMembers.length===0 && !loaderActive) return <div className="Team-no-players-box"> No players found</div>
+  if (currentMembers.length===0) return <div className="Team-no-players-box"> No players found</div>
   else {
     return <div className="Team-with-players-box">{showmembers}</div>
   }

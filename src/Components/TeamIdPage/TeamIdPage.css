@@ -7,6 +7,13 @@
   min-height: 400px;
 }
 
+.page-teamId-content01 {
+  display: flex;
+  justify-content: space-between;
+  width: 1100px;
+}
+
+
 #error-page-teamId {
   margin-top: 100px;
 }
@@ -22,7 +29,6 @@
   height: 300px;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 50px;
 }
 
 .Teamlogo-teamId-page{
@@ -54,6 +60,7 @@
 .Team-players-box-header {
   margin: 0px;
   margin-bottom: 10px;
+  margin-top: 50px;
 }
 
 .Team-with-players-box {
@@ -89,6 +96,7 @@
 
 .Country-label.TeamId-page {
   display: block;
+  margin-bottom: 3px;
 }
 
 .Player-country.TeamId-page {
@@ -98,6 +106,57 @@
   font-size: 0.95em;
 }
 .Player-flag.TeamId-page {
-  width: 24px;
-  height: auto;
+  width: auto;
+  height: 14px;
+}
+
+
+.Content-right-container {
+  width: 300px;
+}
+
+.Latest-matches-box-header {
+  margin-top: 150px;
+}
+
+.TeamId-result {
+  width: 15%;
+  margin-left: 10px;
+}
+
+.TeamId-result.Win {
+  color: green;
+}
+
+.TeamId-result.Loss {
+  color: red;
+}
+
+.Opposing-team-teamId {
+  min-width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.Opposing-team-logo-teamId {
+  height: 25px;
+  width: auto;
+}
+
+.Latest-match-container {
+  width: 100%;
+  border-color: gray;
+  border-right: 0px solid gray;
+  display: flex;
+  align-items: center;
+  height: 55px;
+  justify-content: space-between;
+}
+.Latest-match-container>div {
+
+}
+
+.Latest-match-container.Uneven-row {
+  background-color: black;
 }

@@ -2,11 +2,22 @@ import React from 'react';
 
 
 const TeamInfoBox= ({teamInfo})=> {
+  function timeConverter(UNIX_timestamp){
+  let a = new Date(UNIX_timestamp * 1000);
+  let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  let year = a.getFullYear();
+  let month = months[a.getMonth()];
+  let date = a.getDate();
+  let time = date + '. ' + month + ' ' + year ;
+  return time;
+}
   let picturesrc=teamInfo.logo;
 
   if (picturesrc===null) {
     picturesrc="/no-image-icon.png"
   }
+
+  let lastmatchtime= timeConverter(teamInfo.lastMatchTime);
 
   return (
   <div className="Team-container-teamId-page">
@@ -18,7 +29,7 @@ const TeamInfoBox= ({teamInfo})=> {
       <p><span className="Team-textlabels-teamId-page">Wins: </span>{teamInfo.wins}</p>
       <p><span className="Team-textlabels-teamId-page">Losses: </span>{teamInfo.losses}</p>
       <p><span className="Team-textlabels-teamId-page"> EloRating: </span>{teamInfo.eloRating} </p>
-      <p><span className="Team-textlabels-teamId-page">Last match played: </span>{teamInfo.lastMatchTime}</p>
+      <p><span className="Team-textlabels-teamId-page">Last match played: </span>{lastmatchtime}</p>
     </div>
  </div>
 )
