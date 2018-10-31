@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import TeamContainer from '../TeamContainer/TeamContainer';
 import TeamInfoBox from './TeamInfoBox/TeamInfoBox';
 import './TeamIdPage.css';
-import Countries from './counties-api.js';
 import TeamPlayersBox from './TeamPlayersBox/TeamPlayersBox';
 import TeamIdHeroesBox from './TeamIdHeroesBox/TeamIdHeroesBox';
 import TeamIdLatestMatchesBox from './TeamIdLatestMatches/TeamIdLatestMatches';

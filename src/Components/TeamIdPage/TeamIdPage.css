@@ -73,25 +73,31 @@
 
 
 
-.Player-info-container {
+.Player-info-container,.Hero-container-teamid {
   width: 100%;
   border-color: gray;
   border-right: 0px solid gray;
   display: flex;
   height: 55px;
 }
-.Player-info-container>div {
+.Player-info-container>div,.Hero-container-teamid>div {
   margin: 5px 10px;
   width: 30%;
 }
 
-.Player-info-container.Uneven-row {
+.Hero-name>div {
+  display: flex;
+  align-items: center;
+}
+
+.Player-info-container.Uneven-row,.Hero-container-teamid.Uneven-row {
   background-color: black;
 }
-.Player-info-label.TeamId-page{
+.Player-info-label.TeamId-page, .Hero-info-label-teamid{
   color: #ca7;
   font-size: 0.85em;
   display: block;
+  margin-bottom: 3px;
 }
 
 .Country-label.TeamId-page {
@@ -109,6 +115,14 @@
   width: auto;
   height: 14px;
 }
+
+
+.Hero-picture-teamid {
+  height: 20px;
+  width: auto;
+  margin-right: 2px;
+}
+
 
 
 .Content-right-container {
@@ -137,11 +151,13 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-right: 3px;
 }
 
 .Opposing-team-logo-teamId {
   height: 25px;
   width: auto;
+  margin-left: 2px;
 }
 
 .Latest-match-container {

@@ -1,21 +1,26 @@
 import React from 'react';
 import classNames from 'classnames';
+import heroes from './HeroesPictures-api';
 
 const TeamIdHeroesBox= ({mostPlayedHeroes})=> {
-
+  let heroesobj=JSON.parse(heroes);
   let showheroes= mostPlayedHeroes.map((item,index)=> {
     let herocontainerclass= classNames({
-      'Player-info-container': true,
+      'Hero-container-teamid': true,
       'Uneven-row': index%2===0,
     })
 
+    let heropicurl=heroesobj.find(heroitem=> heroitem.id===item["hero_id"])["url_small_portrait"];
+
     return (
       <div className={herocontainerclass}>
-        <div className="Player-name"><span className="Player-info-label TeamId-page">Hero:</span> {item["localized_name"]} </div>
-        <div className="Player-country TeamId-page">
-           <span className="Player-info-label TeamId-page Country-label">Games played:</span> {item["games_played"]}
+        <div className="Hero-name">
+          <span className="Hero-info-label-teamid">Hero:</span>
+          <div><img className="Hero-picture-teamid" src={heropicurl}></img> {item["localized_name"]} </div> </div>
+        <div className="Hero-games-played-teamid">
+           <span className="Hero-info-label-teamid">Games played:</span> {item["games_played"]}
          </div>
-         <div className="Player-mmr"><span className="Player-info-label TeamId-page">Wins:</span> {item.wins}</div>
+         <div className="Hero-wins-teamid"><span className="Hero-info-label-teamid">Wins:</span> {item.wins}</div>
        </div>
     )
   })
