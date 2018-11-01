@@ -1,6 +1,7 @@
 import React from 'react';
 import heroes from '../../MyDatabase/HeroPictures-json';
 import classNames from 'classnames';
+import HeroPictureContainer from './HeroPictureContainer';
 
 
 
@@ -12,19 +13,39 @@ class HeroeGroupContainer extends React.PureComponent {
     }
   }
 
-  setVisibeHeroDetails(id) {
-    let newid;
-    if (id===this.state.visibleHeroDetailsId) {
-      this.setState({
-        visibleHeroDetailsId: null,
-      })
-    } else {
+  updateContentCoord() {
+    let contentpos=document.getElementById('hero-page-content01').getBoundingClientRect();
     this.setState({
-      visibleHeroDetailsId: id,
-    })
+      contentCoords: contentpos,
+    });
   }
+
+
+
+  componentDidMount() {
+    this.updateContentCoord();
+    window.addEventListener("resize", ()=>this.updateContentCoord());
   }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateDimensions);
+  }
+
+
   render() {
+    // let heroinfodivs = document.querySelectorAll('.Hero-detail-container');
+    // for (let heroinfodiv of heroinfodivs) {
+    //   if (heroinfodiv !== null) {
+    //   if (heroinfodiv.getBoundingClientRect().left < this.state.contentCoords.left) {
+    //     heroinfodiv.dataset.lala=this.state.contentCoords.left;
+    //     heroinfodiv.dataset.trala=heroinfodiv.getBoundingClientRect().left;
+    //     heroinfodiv.style.left= '0px';
+    //     heroinfodiv.style.webkitTransform= '';
+    //     heroinfodiv.style.transform= 'translateX(0%)';
+    //   } else {heroinfodiv.dataset.lala=this.state.contentCoords.left;
+    //   heroinfodiv.dataset.trala=heroinfodiv.getBoundingClientRect().left;}
+    // }
+    // }
     let heroobj=JSON.parse(heroes);
     let toggleVisibility= (visibility)=>{!visibility}
     let showheroes= this.props.heroGroup.map((item)=>{
@@ -32,18 +53,37 @@ class HeroeGroupContainer extends React.PureComponent {
       if (item.id==121) {herourl=""} else {herourl= heroobj.find(hero=> hero.id==item.id)["url_small_portrait"]}
       let herodetailclass=classNames({
         'Hero-detail-container': true,
-        'Display-none': item.id!==this.state.visibleHeroDetailsId,
+        'Display-block': item.id==this.props.visibleHeroDetailsId,
       })
+        // if (item.id==this.props.visibleHeroDetailsId) {
+        //   this.setState({
+        //     visibleId: item.id,
+        //   })
+        // }
+        // if (this.state.visibleId) {
+        //   let heroinfodiv = document.querySelector('.Display-block');
+        //   if (heroinfodiv) {
+        //     if (heroinfodiv.getBoundingClientRect().left < this.state.contentCoords.left) {
+        //           heroinfodiv.style.left= '0px';
+        //           heroinfodiv.style.transform= 'translateX(0%)';
+        //     }
+        //   }
+        //
+        // }
       return (
-        <div>
-          <img src={herourl} onClick={()=>this.setVisibeHeroDetails(item.id)}
-            ></img><div className={herodetailclass}>{item.roles}</div>
+      <HeroPictureContainer
+        herourl={herourl}
+        setVisibeHeroDetails={()=>this.props.setVisibeHeroDetails(item.id)}
+        heroInfoClass={herodetailclass}
+        roles={item.roles}
+        contentCoords={this.state.contentCoords}
 
-        </div>
+      />
+
       )
     })
     return (
-      <div> {showheroes} </div>
+      <div className="Hero-group-container"> {showheroes} </div>
     )
   }
 

@@ -11,7 +11,22 @@ class HeroesPage extends React.PureComponent {
     }
   }
 
+  updateContentCoord() {
+    let contentpos=document.getElementById('hero-page-content01').getBoundingClientRect();
+    this.setState({
+      contentCoords: contentpos,
+    });
+  }
+
+
+  // componentWillUnmount() {
+  //   window.removeEventListener("resize", this.updateDimensions);
+  // }
+
   componentDidMount() {
+    // this.updateContentCoord();
+    // window.addEventListener("resize", ()=>this.updateContentCoord());
+
       fetch('https://api.opendota.com/api/heroes')
       .then(response=>response.json())
       .then(response=> this.setState({
@@ -19,11 +34,18 @@ class HeroesPage extends React.PureComponent {
       }))
     }
 
-    setVisibeHeroDetails(id) {
+  setVisibeHeroDetails(id) {
+    let newid;
+    if (id===this.state.visibleHeroDetailsId) {
+      this.setState({
+        visibleHeroDetailsId: null,
+      })
+    } else {
       this.setState({
         visibleHeroDetailsId: id,
       })
     }
+  }
 
   render() {
     const strHeroes= this.state.allHeroes.filter(item=>item["primary_attr"]==="str");
@@ -35,11 +57,18 @@ class HeroesPage extends React.PureComponent {
       <div className="All-content-container">
         <div id="hero-page-bg01">
           <div id="hero-page-content01">
-            <HeroeGroupContainer  setVisibeHeroDetails={()=> this.setVisibeHeroDetails}
+            <HeroeGroupContainer
+              setVisibeHeroDetails={(id)=> this.setVisibeHeroDetails(id)}
               visibleHeroDetailsId={this.state.visibleHeroDetailsId}
               heroGroup={strHeroes} />
-            <HeroeGroupContainer  heroGroup={agiHeroes} />
-            <HeroeGroupContainer  heroGroup={intHeroes} />
+            <HeroeGroupContainer
+              setVisibeHeroDetails={(id)=> this.setVisibeHeroDetails(id)}
+              visibleHeroDetailsId={this.state.visibleHeroDetailsId}
+              heroGroup={agiHeroes} />
+            <HeroeGroupContainer
+              setVisibeHeroDetails={(id)=> this.setVisibeHeroDetails(id)}
+              visibleHeroDetailsId={this.state.visibleHeroDetailsId}
+              heroGroup={intHeroes} />
           </div>
         </div>
       </div>
