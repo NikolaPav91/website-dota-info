@@ -7,7 +7,7 @@ import PageTIStandings from './PageTIStandings/PageTIStandings.js';
 import PageTITeams from './PageTITeams/PageTITeams';
 import PageTIMedia from './PageTIMedia/PageTIMedia';
 import { Switch, Route } from 'react-router-dom';
-import teamsarray from './TeamsArray.js';
+import teamsarray from '../MyDatabase/Teams-objects';
 
 class PageTheInternational extends React.PureComponent {
 

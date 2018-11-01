@@ -6,7 +6,7 @@ import NewsPage from './Components/NewsPage/NewsPage';
 import HeroesPage from './Components/HeroesPage/HeroesPage';
 import PageTheInternational from './Components/PageTheInternational/PageTheInternational';
 import TeamIdPageContainer from './Components/TeamIdPage/TeamIdPage';
-import News from './Components/NewsPage/News';
+import News from './Components/MyDatabase/News-objects';
 import NewsIdPage from './Components/NewsIdPage/NewsIdPage';
 
 

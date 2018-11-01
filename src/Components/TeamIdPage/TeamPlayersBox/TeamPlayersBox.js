@@ -1,5 +1,5 @@
 import React from 'react';
-import Countries from '../counties-api.js';
+import Countries from '../../MyDatabase/countries-json';
 import classNames from 'classnames';
 
 const TeamPlayersBox= ({currentMembers, memberBonusInfo})=> {

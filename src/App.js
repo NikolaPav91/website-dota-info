@@ -12,7 +12,7 @@ class App extends Component {
         <div id="navi-bar-bg">
           <div id="navi-bar-container">
             <MenuBar
-              menuButtons={["About", "News", "Teams", "The International"]}
+              menuButtons={["About", "News", "Teams", "The International", "Heroes"]}
               currentURL={currenturl}
               subLink=""
               className="Menu-link"

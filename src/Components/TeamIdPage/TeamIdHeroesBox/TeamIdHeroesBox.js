@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import heroes from './HeroesPictures-api';
+import heroes from '../../MyDatabase/HeroPictures-json';
 
 const TeamIdHeroesBox= ({mostPlayedHeroes})=> {
   let heroesobj=JSON.parse(heroes);
