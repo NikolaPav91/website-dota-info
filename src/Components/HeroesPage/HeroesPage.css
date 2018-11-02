@@ -13,6 +13,33 @@
 .Hero-group-container {
   width: 330px;
   display: flex;
+  flex-flow: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.Hero-group-header.Strength {
+  background-image: url(http://cdn.dota2.com/apps/dota2/images/heropedia/overviewicon_str.png)
+}
+.Hero-group-header.Agility {
+  background-image: url(http://cdn.dota2.com/apps/dota2/images/heropedia/overviewicon_agi.png)
+}
+.Hero-group-header.Intelligence {
+  background-image: url(http://cdn.dota2.com/apps/dota2/images/heropedia/overviewicon_int.png)
+}
+.Hero-group-header {
+  background-repeat: no-repeat;
+  height: 30px;
+  align-items: center;
+  display: flex;
+  padding-left: 45px;
+  margin-bottom: 30px;
+  margin-top: 10px;
+
+}
+
+.All-hero-pictures-container {
+  display: flex;
   flex-wrap: wrap;
 }
 
@@ -30,6 +57,20 @@
   z-index: 5;
   display: none;
 }
+
+
+.Hero-big-picture-heropage {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  top: -50%;
+  left: -50%;
+  width: 122px;
+  height: 68px;
+  border: 2px solid white;
+}
+
+
 
 .Display-block {
   display: block;

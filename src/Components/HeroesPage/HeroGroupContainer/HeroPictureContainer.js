@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 class HeroPictureContainer extends React.PureComponent {
   constructor(props) {
@@ -7,40 +8,36 @@ class HeroPictureContainer extends React.PureComponent {
       containerPositionCorected: false,
     }
   }
-    // ({herourl, setVisibeHeroDetails, heroInfoClass, roles, contentCoordsLeft})
+
+  setVisibeHeroDetails() {
+    this.props.setVisibeHeroDetails();
+
+
+
+  }
+
+  hideBigHeroPicAndDetails() {
+    this.props.setVisibeHeroDetails();
+  }
 
   render() {
-    let heroinfodiv = document.querySelector('.Display-block');
-    if (this.props.heroInfoClass.includes("Display-block") && heroinfodiv!==null) {
-      let heroinfocoords=heroinfodiv.getBoundingClientRect();
-      if (heroinfocoords.left < this.props.contentCoords.left) {
-            if (heroinfocoords.left -40 + heroinfocoords.width/2< this.props.contentCoords.left ) {
-              heroinfodiv.style.transform= 'translateX(0%)';
-              heroinfodiv.style.left= '0px';
-            } else {heroinfodiv.style.transform= 'translateX(0%)';
-            heroinfodiv.style.left= '-60px';}
-      }
-
-      if (heroinfocoords.right> this.props.contentCoords.right) {
-          if (heroinfocoords.right + 50 - heroinfocoords.width/2 > this.props.contentCoords.right) {
-            heroinfodiv.style.transform= 'translateX(-100%)';
-            heroinfodiv.style.left= '100%';
-          } else {
-            heroinfodiv.style.transform= 'translateX(-100%)';
-            heroinfodiv.style.left= '120px';
-          }
-
-      }
-    }
-    if (this.props.heroInfoClass.includes("Display-block")) {
-      this.setState({
-        containerPositionCorected: true,
-      })
-    }
+    let bigheropicclass= classNames({
+      "Hero-big-picture-heropage": true,
+      'Display-block': this.props.isBigHeroPic,
+    })
     return (
       <div className="Hero-picture-container-heropage">
-        <img src={this.props.herourl} onClick={()=>this.props.setVisibeHeroDetails()}></img>
-        <div className={this.props.heroInfoClass}>{this.props.roles}</div>
+        <img className="Hero-small-picture-heropage"
+          src={this.props.myHeroInfo["url_small_portrait"]}
+          onMouseEnter={()=> this.setVisibeHeroDetails() }
+          ></img>
+
+
+        <img className={bigheropicclass}
+          id={this.props.myHeroInfo.name}
+          onMouseLeave={()=>  this.setVisibeHeroDetails()}
+          src={this.props.myHeroInfo["url_large_portrait"]}></img>
+
       </div>
     )
   }

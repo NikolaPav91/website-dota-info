@@ -7,7 +7,7 @@ class HeroesPage extends React.PureComponent {
     super(props);
     this.state = {
       allHeroes:[],
-      visibleHeroDetailsId: null,
+      visibleHeroDetails: {},
     }
   }
 
@@ -19,13 +19,7 @@ class HeroesPage extends React.PureComponent {
   }
 
 
-  // componentWillUnmount() {
-  //   window.removeEventListener("resize", this.updateDimensions);
-  // }
-
   componentDidMount() {
-    // this.updateContentCoord();
-    // window.addEventListener("resize", ()=>this.updateContentCoord());
 
       fetch('https://api.opendota.com/api/heroes')
       .then(response=>response.json())
@@ -34,15 +28,15 @@ class HeroesPage extends React.PureComponent {
       }))
     }
 
-  setVisibeHeroDetails(id) {
-    let newid;
-    if (id===this.state.visibleHeroDetailsId) {
+  setVisibeHeroDetails(item) {
+    let newhero;
+    if (item===this.state.visibleHeroDetails) {
       this.setState({
-        visibleHeroDetailsId: null,
+        visibleHeroDetails: {},
       })
     } else {
       this.setState({
-        visibleHeroDetailsId: id,
+        visibleHeroDetails: item,
       })
     }
   }
@@ -55,20 +49,31 @@ class HeroesPage extends React.PureComponent {
 
     return (
       <div className="All-content-container">
+        <header className="header-picture1"></header>
+        <div style={{width:"400px"}}>
+          <div>Name: {this.state.visibleHeroDetails["localized_name"]}</div>
+          <div>Roles: {this.state.visibleHeroDetails.roles}</div>
+      </div>
         <div id="hero-page-bg01">
           <div id="hero-page-content01">
             <HeroeGroupContainer
-              setVisibeHeroDetails={(id)=> this.setVisibeHeroDetails(id)}
-              visibleHeroDetailsId={this.state.visibleHeroDetailsId}
-              heroGroup={strHeroes} />
+              setVisibeHeroDetails={(item)=> this.setVisibeHeroDetails(item)}
+              visibleHeroDetailsId={this.state.visibleHeroDetails.id}
+              heroGroup={strHeroes}
+              mainAttribute='Strength'
+             />
             <HeroeGroupContainer
-              setVisibeHeroDetails={(id)=> this.setVisibeHeroDetails(id)}
-              visibleHeroDetailsId={this.state.visibleHeroDetailsId}
-              heroGroup={agiHeroes} />
+              setVisibeHeroDetails={(item)=> this.setVisibeHeroDetails(item)}
+              visibleHeroDetailsId={this.state.visibleHeroDetails.id}
+              heroGroup={agiHeroes}
+              mainAttribute='Agility'
+            />
             <HeroeGroupContainer
-              setVisibeHeroDetails={(id)=> this.setVisibeHeroDetails(id)}
-              visibleHeroDetailsId={this.state.visibleHeroDetailsId}
-              heroGroup={intHeroes} />
+              setVisibeHeroDetails={(item)=> this.setVisibeHeroDetails(item)}
+              visibleHeroDetailsId={this.state.visibleHeroDetails.id}
+              heroGroup={intHeroes}
+              mainAttribute='Intelligence'
+            />
           </div>
         </div>
       </div>
