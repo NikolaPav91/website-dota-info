@@ -1,14 +1,51 @@
-#hero-page-content01 {
-  display: flex;
-  width: 1100px;
-  justify-content: space-between;
-}
-
 #hero-page-bg01 {
   width: 100%;
   display: flex;
   justify-content: center;
+  background-image: url(/bg_standard.jpg);
 }
+
+#hero-page-content01 {
+  display: flex;
+  width: 1100px;
+  flex-flow: column;
+  align-items: center;
+}
+
+#hero-info-container {
+  margin-top: 10px;
+  height: 100px;
+  width: 80%;
+  background: #1d1e21;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid white;
+}
+
+#hero-name-container-heropage {
+  letter-spacing: 0.5em;
+  font-size: 1.4em;
+}
+
+#hero-role-container {
+  margin-top: 15px;
+
+}
+#hero-role-container>span {
+  color:  darkgray;
+  font-weight: 100;
+}
+
+#all-hero-groups-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+
 
 .Hero-group-container {
   width: 330px;
@@ -16,6 +53,8 @@
   flex-flow: column;
   flex-wrap: wrap;
   align-items: center;
+  background: #1d1e21;
+  border: 1px solid white;
 }
 
 .Hero-group-header.Strength {
@@ -45,7 +84,7 @@
 
 .Hero-picture-container-heropage {
   position: relative;
-  margin: 0px 3px 0px 4px;
+  margin: 0px 4px 0px 3px;
 }
 
 .Hero-detail-container {
@@ -58,7 +97,6 @@
   display: none;
 }
 
-
 .Hero-big-picture-heropage {
   display: none;
   position: absolute;
@@ -70,8 +108,6 @@
   border: 2px solid white;
 }
 
-
-
-.Display-block {
+.Hero-big-picture-heropage.Block {
   display: block;
 }

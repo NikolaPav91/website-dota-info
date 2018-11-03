@@ -11,13 +11,6 @@ class HeroesPage extends React.PureComponent {
     }
   }
 
-  updateContentCoord() {
-    let contentpos=document.getElementById('hero-page-content01').getBoundingClientRect();
-    this.setState({
-      contentCoords: contentpos,
-    });
-  }
-
 
   componentDidMount() {
 
@@ -28,7 +21,7 @@ class HeroesPage extends React.PureComponent {
       }))
     }
 
-  setVisibeHeroDetails(item) {
+  setVisibleHeroDetails(item) {
     let newhero;
     if (item===this.state.visibleHeroDetails) {
       this.setState({
@@ -45,35 +38,47 @@ class HeroesPage extends React.PureComponent {
     const strHeroes= this.state.allHeroes.filter(item=>item["primary_attr"]==="str");
     const agiHeroes= this.state.allHeroes.filter(item=>item["primary_attr"]==="agi");
     const intHeroes= this.state.allHeroes.filter(item=>item["primary_attr"]==="int");
+    let heroname="CHOOSE A HERO";
+    let heroroles=[];
+    let heroatack="";
+    let herorolesdiv;
+    if (this.state.visibleHeroDetails["localized_name"] !== undefined) {
+      heroname=this.state.visibleHeroDetails["localized_name"].toUpperCase();
+      heroroles=this.state.visibleHeroDetails.roles.join(" - ");
+      heroatack=this.state.visibleHeroDetails["attack_type"] + " atack - "
+      herorolesdiv=<div id="hero-role-container">{heroatack} <span>{heroroles}</span></div>
+  }
 
 
     return (
       <div className="All-content-container">
         <header className="header-picture1"></header>
-        <div style={{width:"400px"}}>
-          <div>Name: {this.state.visibleHeroDetails["localized_name"]}</div>
-          <div>Roles: {this.state.visibleHeroDetails.roles}</div>
-      </div>
         <div id="hero-page-bg01">
           <div id="hero-page-content01">
-            <HeroeGroupContainer
-              setVisibeHeroDetails={(item)=> this.setVisibeHeroDetails(item)}
-              visibleHeroDetailsId={this.state.visibleHeroDetails.id}
-              heroGroup={strHeroes}
-              mainAttribute='Strength'
-             />
-            <HeroeGroupContainer
-              setVisibeHeroDetails={(item)=> this.setVisibeHeroDetails(item)}
-              visibleHeroDetailsId={this.state.visibleHeroDetails.id}
-              heroGroup={agiHeroes}
-              mainAttribute='Agility'
-            />
-            <HeroeGroupContainer
-              setVisibeHeroDetails={(item)=> this.setVisibeHeroDetails(item)}
-              visibleHeroDetailsId={this.state.visibleHeroDetails.id}
-              heroGroup={intHeroes}
-              mainAttribute='Intelligence'
-            />
+            <div id="hero-info-container">
+              <div id="hero-name-container-heropage"> {heroname}</div>
+              {herorolesdiv}
+            </div>
+            <div id="all-hero-groups-container">
+              <HeroeGroupContainer
+                setVisibleHeroDetails={(item)=> this.setVisibleHeroDetails(item)}
+                visibleHeroDetailsId={this.state.visibleHeroDetails.id}
+                heroGroup={strHeroes}
+                mainAttribute='Strength'
+               />
+              <HeroeGroupContainer
+                setVisibleHeroDetails={(item)=> this.setVisibleHeroDetails(item)}
+                visibleHeroDetailsId={this.state.visibleHeroDetails.id}
+                heroGroup={agiHeroes}
+                mainAttribute='Agility'
+              />
+              <HeroeGroupContainer
+                setVisibleHeroDetails={(item)=> this.setVisibleHeroDetails(item)}
+                visibleHeroDetailsId={this.state.visibleHeroDetails.id}
+                heroGroup={intHeroes}
+                mainAttribute='Intelligence'
+              />
+            </div>
           </div>
         </div>
       </div>
