@@ -13,6 +13,8 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-bottom: 40px;
+  padding-top: 20px;
 }
 #international-teams-content02 {
   width: 1100px;

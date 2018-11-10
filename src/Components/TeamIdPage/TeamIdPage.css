@@ -5,6 +5,7 @@
   flex-flow: column;
   align-items: center;
   min-height: 400px;
+  padding-bottom: 60px;
 }
 
 .page-teamId-content01 {
@@ -78,11 +79,27 @@
   border-color: gray;
   border-right: 0px solid gray;
   display: flex;
-  height: 55px;
+  justify-content: space-between;
+  min-height: 55px;
 }
-.Player-info-container>div,.Hero-container-teamid>div {
+.Player-name, .Player-country {
   margin: 5px 10px;
-  width: 30%;
+  width: 37%;
+}
+
+.Player-mmr {
+  width: 20%;
+    margin: 5px 10px;
+}
+
+.Hero-name, .Hero-games-played-teamid {
+  margin: 5px 10px;
+  width: 34%;
+}
+
+.Hero-wins-teamid {
+  margin: 5px 10px;
+  width: 20%;
 }
 
 .Hero-name>div {
@@ -120,7 +137,7 @@
 .Hero-picture-teamid {
   height: 20px;
   width: auto;
-  margin-right: 2px;
+  margin-right: 5px;
 }
 
 
@@ -151,7 +168,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-right: 3px;
+  margin-right: 10px;
 }
 
 .Opposing-team-logo-teamId {

@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import heroes from '../../MyDatabase/HeroPictures-json';
 
-const TeamIdHeroesBox= ({mostPlayedHeroes})=> {
+const TeamIdHeroesBox= ({mostPlayedHeroes, pageName})=> {
   let heroesobj=JSON.parse(heroes);
   let showheroes= mostPlayedHeroes.map((item,index)=> {
     let herocontainerclass= classNames({
@@ -10,17 +10,25 @@ const TeamIdHeroesBox= ({mostPlayedHeroes})=> {
       'Uneven-row': index%2===0,
     })
 
-    let heropicurl=heroesobj.find(heroitem=> heroitem.id===item["hero_id"])["url_small_portrait"];
+    let heroobj=heroesobj.find(heroitem=> heroitem.id==item["hero_id"]);
+    let heropicurl=heroobj["url_small_portrait"];
+    let heroname=heroobj["localized_name"];
+    let gamesplayed=item["games_played"];
+    let gameswon=item.wins;
+    if (pageName==='player page') {
+      gamesplayed=item.games;
+      gameswon=item.win;
+    }
 
     return (
       <div className={herocontainerclass}>
         <div className="Hero-name">
           <span className="Hero-info-label-teamid">Hero:</span>
-          <div><img className="Hero-picture-teamid" src={heropicurl}></img> {item["localized_name"]} </div> </div>
+          <div><img className="Hero-picture-teamid" src={heropicurl}></img> {heroname} </div> </div>
         <div className="Hero-games-played-teamid">
-           <span className="Hero-info-label-teamid">Games played:</span> {item["games_played"]}
+           <span className="Hero-info-label-teamid">Games played:</span> {gamesplayed}
          </div>
-         <div className="Hero-wins-teamid"><span className="Hero-info-label-teamid">Wins:</span> {item.wins}</div>
+         <div className="Hero-wins-teamid"><span className="Hero-info-label-teamid">Wins:</span> {gameswon} ({Math.round(gameswon/gamesplayed*1000)/10}%)</div>
        </div>
     )
   })

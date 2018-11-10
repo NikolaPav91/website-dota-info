@@ -4,13 +4,16 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 import classNames from 'classnames';
-import TeamContainer from '../TeamContainer/TeamContainer'
+import TeamContainer from '../TeamContainer/TeamContainer';
+import TeamsPagePageNumbers from './TeamsPagePageNumber/TeamsPagePageNumbers';
 
 class TeamsPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      topSixteen:[],
+      maxPages: null,
+      currentPage: 1,
+      loaderActive: true,
     }
   }
 
@@ -18,52 +21,98 @@ class TeamsPage extends React.Component {
 
   componentDidMount() {
     if(this.props.proTeams===null || this.props.proTeams==='Something went wrong, pls try later'){
-    fetch('https://api.opendota.com/api/teams')
-    .then(response=> response.json())
+      fetch('https://api.opendota.com/api/teams')
+      .then(response=> response.json())
+      .then(response=>  {this.props.setProTeams(response); this.setState({
+        loaderActive: false,
+        maxPages: Math.ceil(response.length/16),
+      })})
+      .catch(response=> { this.props.setProTeams('Something went wrong, please try again later'); this.setState({
+        loaderActive: false,
+      })});
+    }
 
-    .then(response =>
-     response
-      .slice(0,16)
-      .map((item,index)=> {return {id: item["team_id"], name: item.name, tag: item.tag,
-      logo: item["logo_url"], eloRating: item.rating, wins: item.wins, losses: item.losses,
-      rank: index + 1, lastMatchTime: item["last_match_time"]  }}))
-    .then(response=>  this.props.setProTeams(response))
-    .catch(response=>this.props.setProTeams('Something went wrong, please try again later')); }
+    if (this.props.proTeams) {
+      let maxpages=Math.ceil(this.props.proTeams.length/16);
+      this.setState({maxPages: maxpages, loaderActive: false, })
+    }
+
+
   }
 
+  setCurrentPage(n) {
+    this.setState({
+      currentPage: n,
+    });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.proTeams!== prevProps.proTeams) {
+      let maxpages=Math.ceil(this.props.proTeams.length/16);
+      this.setState({maxPages: maxpages })}
+  }
   render(){
-    let loaderclass= classNames({
-      'Loader': !this.props.proTeams,
-      'Display-none': this.props.proTeams
+    console.log(this.state.maxPages)
+    if (this.state.loaderActive) {
+      return (
+        <div className= "All-content-container">
+          <header className="header-picture1"></header>
+          <div id="teams-page-allbg">
+            <Loader className='Loader'></Loader>
+          </div>
+        </div>
+      )
+    }
+
+    if (this.props.proTeams==='Something went wrong, please try again later') {
+      return (
+        <div className= "All-content-container">
+          <header className="header-picture1"></header>
+          <div id="teams-page-allbg">
+            <div className="Error-message" id="error-message-teams">Something went wrong, please try again later</div>
+          </div>
+        </div>
+      )
+    }
+
+    let contentclass= classNames({
+      'Content-container': true,
+      'Display-none': !this.props.proTeams
     })
-    let topteams= this.props.proTeams;
-    if (topteams===null) {topteams=[]}
-    let showtopteams;
-    if (topteams==='Something went wrong, pls try later') {showtopteams='Something went wrong, pls try later'}
-    else {
-    showtopteams= topteams.map((item)=> {
+    let showtopteams= this.props.proTeams.slice((this.state.currentPage-1)*16, this.state.currentPage*16)
+      .map((item,index)=> {
        return (
          <Link
-           to={'/Teams/'+ item.id }
+           to={'/Teams/'+ item["team_id"] }
            className="Team-link">
 
            <TeamContainer
              teamInfo={item}
+             teamRank={index+1+ (this.state.currentPage-1)*16}
            />
          </Link>
        )
-     })
-   }
+     });
+
+
+
     return (
       <div className= "All-content-container">
         <header className="header-picture1"></header>
-        <div id="content-teams-container">
-      <div id="content-teams">
-        <Loader className={loaderclass}></Loader>
-        {showtopteams}
+        <div id="teams-page-allbg">
+          <div className='Content-container'>
+            <div id="content-teams">
+              {showtopteams}
+            </div>
+            <TeamsPagePageNumbers
+              currentPage={this.state.currentPage}
+              setCurrentPage={(n)=> this.setCurrentPage(n)}
+              maxPages={this.state.maxPages}
+            />
+
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
     )
   }
 }

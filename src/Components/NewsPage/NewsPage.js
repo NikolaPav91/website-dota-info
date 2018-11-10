@@ -21,7 +21,7 @@ class NewsPage extends React.PureComponent {
 
 
               <RecentStories recentNews={News}/>
-              <RecentMatches />
+              <RecentMatches containerId="news-page-recent-matches-container" />
           </div>
         </div>
       </div>

@@ -1,0 +1,160 @@
+.All-content-container.Green-pic-background {
+  background-image: url(/bg_standard.jpg);
+  min-height: 800px;
+}
+
+.Flag-playerid {
+  height: 25px;
+  width: auto;
+  margin-left: 10px;
+  margin-top: 4px;
+}
+.Player-name-playerid {
+  margin: 10px 0px 0px 15px;
+  display: flex;
+  align-items: center;
+  height: 38px;
+  font-size: 1.5em;
+}
+
+#playerid-content01 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.Player-info-container-playerid {
+  background-color: #1d1e21;
+  width: 660px;
+  height: 250px;
+  font-size: 1.4em;
+  display: flex;
+  margin-bottom: 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Player-name-and-picture-playerid {
+  height: 100%;
+  margin-left: 10px;
+}
+
+.Player-picture-playerid {
+  margin-top: 10px;
+  height: 170px;
+  width: auto;
+}
+
+.Player-info-right-container-playerid {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  height: 85%;
+  margin-right: 30px;
+  border-left: 2px solid gray;
+  padding-left: 20px;
+}
+
+.Player-info-labels-playerid {
+  color: #ca7;
+  font-size: 0.7em;
+  display: block;
+}
+
+.Team-logo-playerid {
+  margin-left: 10px;
+  height: 100%;
+  width: auto;
+}
+
+#player-stats {
+  width: 200px;
+  display: flex;
+  flex-flow: column;
+  background-color: #1d1e21;
+  height: 250px;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+#player-stats>div {
+
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#player-stats>div:first-child {
+  margin-top:5px;
+}
+
+#player-stats>div:last-child {
+  margin-bottom: 5px;
+}
+
+.Player-stats-label {
+  color: #ca7;
+}
+
+
+
+#playerid-content02 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Container-label-playerid {
+  margin-bottom: 5px;
+}
+
+#most-played-heroes-playerid {
+  width: 500px;
+}
+
+#teammates-container {
+  display: flex;
+  flex-flow: column;
+  width: 500px;
+  background: #1d1e21;
+}
+
+
+.Teammates-container-playerid {
+  width: 100%;
+  border-color: gray;
+  border-right: 0px solid gray;
+  display: flex;
+  justify-content: space-between;
+  height: 55px;
+}
+
+.Teammate-name-playerid {
+  margin: 5px 10px;
+  width: 40%;
+}
+.Teammate-games-played {
+  margin: 5px 10px;
+  width: 24%;
+}
+
+.Teammate-wins {
+  margin: 5px 10px;
+  width: 24%;
+}
+
+.Teammate-name-playerid>div {
+  display: flex;
+  align-items: center;
+}
+
+.Teammate-info-label{
+  color: #ca7;
+  font-size: 0.85em;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.Teammates-container-playerid.Uneven-row {
+  background-color: black;
+}

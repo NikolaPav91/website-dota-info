@@ -14,6 +14,11 @@
 /* #e01134 is red */
  /* #191b1e is black */
 
+a{
+  color:inherit;
+  text-decoration: none;
+}
+
 html { font-size: 1em; }
 body {
 }
@@ -82,6 +87,7 @@ body {
   text-align: left;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 #search-container> input {
@@ -113,6 +119,48 @@ body {
 #search-container>button:hover {
   color: #e01134;
 }
+
+.Search-all-results-container {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  max-height: 400px;
+  z-index: 15;
+  background: #1d1e21c8;
+}
+
+.Search-result-link {
+  height: 50px;
+  width: 100%;
+  overflow: hidden;
+  display: block;
+}
+.Search-result-item {
+  font-size: 0.9em;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+}
+.Search-result-link:hover {
+  outline: 1px solid white;
+}
+.Search-result-item>img {
+  margin-right: 5px;
+  margin-left: 3px;
+  max-height: 95%;
+  max-width: 50px;
+  width: 40px;
+  height: auto;
+  min-height: 30px;
+}
+
+
+
+
+
+
 
 .header-picture1 {
   width: 100%;
@@ -161,6 +209,8 @@ body {
 /* VAZNOOOO */
 .Content-container {
   width: 1100px;
+  display: flex;
+  flex-flow: column;
 }
  /* VAZNOOOOOOOO */
 iframe {
@@ -209,7 +259,6 @@ iframe {
 
 #home-container-bg03 {
   background-image: url(http://cdn.dota2.com/apps/dota2/images/blog/play/bg_06.jpg);
-  box-shadow: -0px -25px 50px #191a1b inset,-0px 15px 50px black inset;
 }
 #home-container-bg04 {
   height: 720px;
@@ -251,6 +300,7 @@ iframe {
   position: relative;
 }
 
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 .All-content-container {
   display: flex;
   flex-flow: column;
@@ -258,20 +308,45 @@ iframe {
   align-items: center;
 }
 
+.All-content-background {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  align-items: center;
+}
+
+.Content-width {
+  width: 1100px;
+}
+
+.Content-allbg {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url(/bg_standard.jpg);
+  padding-bottom: 40px;
+
+}
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 /* .YT-home {
   width: 1100px;
   height: auto;
 } */
 
-#content-teams-container {
+#teams-page-allbg {
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-flow: column;
+  align-items: center;
   background-image: url(/bg_standard.jpg);
+  padding-bottom: 50px;
+  min-height: 500px;
 }
 
 #content-teams {
-  margin-top: 10px;
+  margin-top: 20px;
   width: 1100px;
   display: flex;
   flex-flow: row wrap;
@@ -280,7 +355,70 @@ iframe {
 
 }
 
+#teams-page-number-list-container {
+  display: flex;
+  align-self: flex-end;
+  width: 40%;
+  justify-content: flex-end;
+}
+
+#teams-page-number-list-container>ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 0px;
+  margin: 0px;
+}
+
+#teams-page-number-list-container #teams-page-button-last {
+  margin-left: 15px;
+}
+#teams-page-number-list-container #teams-page-button-first {
+  margin-right: 15px;
+}
+#teams-page-number-list-container>ul>li {
+  margin-left: 2px;
+  margin-right: 2px;
+  cursor: pointer;
+}
+
+#teams-page-number-list-container>ul>li:hover {
+  color: #cecece;
+}
+
+.Current-page-number {
+  text-decoration: underline;
+}
+
+#teams-page-number-list-container select {
+  margin: 0 10px 0 10px;
+  border: none;
+  outline: none;
+}
+
 .Team-link {
   text-decoration: none;
   color: white;
+}
+
+#error-message-teams {
+  margin-top: 100px;
+}
+
+
+
+#footer {
+  display: flex;
+  justify-content: center;
+  height: 170px;
+  width: 100%;
+  background: black;
+  border-top: 1px solid white;
+}
+
+#footer-content {
+  width: 1100px;
+  display: flex;
+  justify-content: center;
+
 }

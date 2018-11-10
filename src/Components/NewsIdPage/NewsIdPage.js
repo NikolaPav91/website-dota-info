@@ -1,7 +1,9 @@
 import React from 'react';
 import Script from 'react-load-script';
 import { Tweet } from 'react-twitter-widgets';
-import './NewsIdPage.css'
+import './NewsIdPage.css';
+import RecentMatches from '../RecentMatches/RecentMatches';
+
 export default class NewsIdPage extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -13,7 +15,6 @@ export default class NewsIdPage extends React.PureComponent {
 
 
     render() {
-      document.querySelector('#twitterscript').onload=()=> {console.log('twitterscript loaded')};
     let story=this.props.currentNews.find((item)=> item.id===this.props.routerprops.match.params.newsId);
     let storyshow= story.text.map((item)=> {
       if (item.startsWith("tweetId='")===true){
@@ -27,14 +28,16 @@ export default class NewsIdPage extends React.PureComponent {
     })
     let storyHTML=(<div dangerouslySetInnerHTML={{__html: story.text}}></div>)
     return (
-      <div className= "All-content-container">
-      <div className="News-id-content">
-      <div>{story.title}</div>
-
-        {storyshow}
+      <div className= "Content-allbg">
+        <div id="newsid-content01" className="Content-width">
+          <div className="News-id-story">
+            <h1 className="Story-title-newsid">{story.title}</h1>
+            <img className="Title-picture-newsid" src={story.picturesrc}></img>
+              {storyshow}
+          </div>
+          <RecentMatches containerId="newsid-recent-matches-container"/>
+        </div>
       </div>
-
-    </div>
     )
   }
 }

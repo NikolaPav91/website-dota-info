@@ -5,7 +5,6 @@ import YouTube from 'react-youtube';
 
 class PageTIMedia extends React.PureComponent {
 
-
   render() {
     return (
       <div className="All-content-container" id="international-media-allbg">

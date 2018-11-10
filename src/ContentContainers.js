@@ -8,6 +8,7 @@ import PageTheInternational from './Components/PageTheInternational/PageTheInter
 import TeamIdPageContainer from './Components/TeamIdPage/TeamIdPage';
 import News from './Components/MyDatabase/News-objects';
 import NewsIdPage from './Components/NewsIdPage/NewsIdPage';
+import PlayerIdPageContainer from './Components/PlayerIdPage/PlayerIdPage';
 
 
 const ContentContainers= ()=> (
@@ -25,12 +26,13 @@ const ContentContainers= ()=> (
     <Route path='/The International' render={(props) => <PageTheInternational routerprops={props} />}
     />
 
-
-    {/* <Route exact path='/Teams/:teamId'  render={(props) => <TeamIdPage bla={props}/>}
-    /> */}
     <Route exact path='/Teams/:teamId' component= {TeamIdPageContainer}
     />
     <Route exact path='/News/:newsId' render={(props) => <NewsIdPage currentNews={News} routerprops={props}/>}
+    />
+    <Route exact path='/Teams/:teamId' component= {TeamIdPageContainer}
+    />
+    <Route exact path='/Player/:playerId' render= {(props)=> <PlayerIdPageContainer key={props.match.params.playerId} routerprops={props}/>}
     />
 
 

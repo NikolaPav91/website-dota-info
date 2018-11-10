@@ -3,6 +3,8 @@
   display: flex;
   justify-content: center;
   background-image: url(/bg_standard.jpg);
+  padding-bottom: 60px;
+  min-height: 400px;
 }
 
 #hero-page-content01 {
@@ -10,6 +12,7 @@
   width: 1100px;
   flex-flow: column;
   align-items: center;
+  margin-top: 10px;
 }
 
 #hero-info-container {
@@ -78,6 +81,7 @@
 }
 
 .All-hero-pictures-container {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
@@ -110,4 +114,8 @@
 
 .Hero-big-picture-heropage.Block {
   display: block;
+}
+
+#error-message-heroes {
+  margin-top: 80px;
 }

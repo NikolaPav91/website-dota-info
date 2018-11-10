@@ -3,7 +3,10 @@ import './App.css';
 import MenuBar from './Components/MenuBar/MenuBar';
 import { Switch, Route } from 'react-router-dom';
 import ContentContainers from './ContentContainers';
+import SearchFieldContainer from './Components/SearchField/SearchField';
+
 class App extends Component {
+
   render() {
     let currenturl= this.props.location.pathname;
     if (currenturl==="/") {currenturl="/About"}
@@ -17,13 +20,18 @@ class App extends Component {
               subLink=""
               className="Menu-link"
             />
-            <div id="search-container"> <input type="text" placeholder="Search.."></input>
-            <button type="submit"><i className="fa fa-search"></i></button>
-            </div>
+            <SearchFieldContainer />
+
           </div>
         </div>
-
         <ContentContainers />
+
+        <div id="footer">
+          <div id="footer-content">
+              THE FOOTER
+          </div>
+
+        </div>
 
       </div>
     );

@@ -2,12 +2,13 @@
   width: 250px;
   height: 200px;
   margin: 15px 4px;
-  border: 1px solid white;
+  border: 1px solid #1d1e21;
   border-radius: 10px;
   display: flex;
   flex-flow: column;
-  background-color: #191b1e;
-  box-shadow: 3px 3px white;
+  background-color: #1d1e21;
+  box-shadow: 3px 3px #1d1e21;
+  overflow: hidden;
 
   -webkit-transition: transform 1s; /* Safari */
     transition: transform 1s;
@@ -23,11 +24,21 @@
 .Team-top-container-teams-page {
   height: 50%;
   display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
+  justify-content: space-between;
 }
 
-.Team-top-container-teams-page> p, .Team-bottom-container-teams-page>p {
+.Team-top-container-teams-page>div {
+  width: 55%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+}
+
+.Team-top-container-teams-page p {
+  margin: 0px;
+}
+
+ .Team-bottom-container-teams-page>p {
   width: 56%;
   padding: 5px 0px 5px 0px;
   margin: 0px;
@@ -35,6 +46,8 @@
 
 .Team-name-block-teams-page {
   display: inline-block;
+  width: 95%;
+  word-break: break-word;
 }
 
 .Teamlogo-teams-page {
@@ -45,6 +58,7 @@
 
 .Team-textlabels-teams-page {
   font-size: 0.8em;
+  color: #ca7;
 }
 
 .Team-bottom-container-teams-page {
@@ -58,14 +72,24 @@
 
 .Rank-container-teams-page {
   height: 70%;
-  font-size: 0.9em;
   display: flex;
   flex-flow: column wrap;
   width: 40%;
+  justify-content: flex-end;
 }
 
+
 .Rank-number-teams-page {
- font-size: 3em;
+ font-size: 2.8em;
+ margin-left: 5px;
+}
+
+.Smaller-rank {
+  font-size: 2em;
+}
+
+.Smallest-rank {
+  font-size: 1.6em;
 }
 
 .Rank-symbol-teams-page {

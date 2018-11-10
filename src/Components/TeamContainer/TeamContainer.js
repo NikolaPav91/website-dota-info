@@ -1,8 +1,15 @@
 import React from 'react';
-import './TeamContainer.css'
+import './TeamContainer.css';
+import classNames from 'classnames';
 
-const TeamContainer= ({teamInfo})=> {
-  let picturesrc=teamInfo.logo;
+const TeamContainer= ({teamInfo,teamRank})=> {
+  let rankclass= classNames({
+    "Rank-number-teams-page": true,
+    'Smaller-rank': teamRank>99,
+    'Smallest-rank': teamRank>999,
+
+  })
+  let picturesrc=teamInfo["logo_url"];
   let name= teamInfo.name;
   let tag= teamInfo.tag;
   if (picturesrc===null) {
@@ -14,18 +21,20 @@ const TeamContainer= ({teamInfo})=> {
   <div className="Team-container-teams-page">
     <div className="Team-top-container-teams-page">
       <img src={picturesrc} className="Teamlogo-teams-page"></img>
-      <p><span className="Team-textlabels-teams-page">Name:</span> <span className="Team-name-block-teams-page">{name}</span> </p>
-      <p><span className="Team-textlabels-teams-page">Tag:</span> {tag} </p>
+      <div>
+        <p><span className="Team-textlabels-teams-page">Name:</span> <span className="Team-name-block-teams-page">{name}</span> </p>
+        <p><span className="Team-textlabels-teams-page">Tag:</span> {tag} </p>
+      </div>
     </div>
     <div className="Team-bottom-container-teams-page">
       <p><span className="Team-textlabels-teams-page">Wins: </span>{teamInfo.wins}</p>
       <p><span className="Team-textlabels-teams-page">Losses: </span>{teamInfo.losses}</p>
-      <p><span className="Team-textlabels-teams-page"> EloRating: </span>{teamInfo.eloRating} </p>
+      <p><span className="Team-textlabels-teams-page"> EloRating: </span>{teamInfo.rating} </p>
       <div className= "Rank-container-teams-page">
-        <span>Rank:</span>
+        <span className="Team-textlabels-teams-page">Rank:</span>
         <img className="Rank-symbol-teams-page" src="/images.png"></img>
 
-        <span className="Rank-number-teams-page">{teamInfo.rank}. </span>
+        <span className={rankclass}>{teamRank}. </span>
       </div>
     </div>
 

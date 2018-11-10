@@ -1,6 +1,7 @@
 import React from 'react';
 import HeroeGroupContainer from './HeroGroupContainer/HeroGroupContainer';
 import './HeroesPage.css';
+import Loader from '../Loader/Loader';
 
 class HeroesPage extends React.PureComponent {
   constructor(props) {
@@ -8,6 +9,7 @@ class HeroesPage extends React.PureComponent {
     this.state = {
       allHeroes:[],
       visibleHeroDetails: {},
+      loaderActive: true,
     }
   }
 
@@ -18,6 +20,11 @@ class HeroesPage extends React.PureComponent {
       .then(response=>response.json())
       .then(response=> this.setState({
         allHeroes: response,
+        loaderActive: false,
+      }))
+      .catch(response=> this.setState({
+        allHeroes: "Error",
+        loaderActive: false,
       }))
     }
 
@@ -35,6 +42,31 @@ class HeroesPage extends React.PureComponent {
   }
 
   render() {
+    if (this.state.allHeroes==="Error") {
+      return (
+        <div className="All-content-container">
+          <header className="header-picture1"></header>
+          <div id="hero-page-bg01">
+            <div id="error-message-heroes"> Something went wrong, please try again later</div>
+          </div>
+        </div>
+      )
+    }
+    if (this.state.loaderActive) {
+      return (
+        <div className="All-content-container">
+          <header className="header-picture1"></header>
+          <div id="hero-page-bg01">
+            <Loader className="Loader"/>
+          </div>
+        </div>
+      )
+    }
+
+
+
+
+
     const strHeroes= this.state.allHeroes.filter(item=>item["primary_attr"]==="str");
     const agiHeroes= this.state.allHeroes.filter(item=>item["primary_attr"]==="agi");
     const intHeroes= this.state.allHeroes.filter(item=>item["primary_attr"]==="int");

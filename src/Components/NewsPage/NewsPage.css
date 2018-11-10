@@ -1,5 +1,6 @@
 #page-news-allbg {
   background-image: url(/bg_standard.jpg);
+  padding-bottom: 100px;
 }
 #news-container-bg01 {
   width: 100%;
@@ -25,6 +26,7 @@
   justify-content: center;
 }
 #content-news02 {
+  margin-top: 20px;
   height: 100%;
   width: 1100px;
   display: flex;
@@ -34,7 +36,7 @@
   width: 67%;
   height: 100%;
 }
-#recent-matches-container {
+#news-page-recent-matches-container {
   margin-top: 20px;
   width: 30%;
 }

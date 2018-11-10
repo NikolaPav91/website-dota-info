@@ -20,7 +20,7 @@ class RecentMatches extends React.PureComponent {
     .then(response=> response.json())
     .then(response=>
       response
-      .filter(item=>(item.leagueid===10332 || item.leagueid===10269 || item.leagueid===10145))
+      .filter(item=>(item.leagueid===10326 || item.leagueid===10132 || item.leagueid===10145))
       .slice(0,32 )
       .map((item,index)=>{return {id: item["match_id"]
     }})
@@ -38,6 +38,10 @@ class RecentMatches extends React.PureComponent {
       loaderActive: false,
       latestMatches: response,
     }))
+    .catch(response=> this.setState({
+      loaderActive: false,
+      latestMatches: "Error"
+    }))
 
   }
     render() {
@@ -46,7 +50,11 @@ class RecentMatches extends React.PureComponent {
         'Display-none': !this.state.loaderActive
       })
       let matches= this.state.latestMatches;
-      let showmatches= matches.map((item,index)=> {
+      let showmatches;
+      if (this.state.latestMatches==="Error") {
+        showmatches= <div>Something went wrong, please try again later</div>
+      } else {
+      showmatches= matches.map((item,index)=> {
         let resultcontainerclass=classNames({
           'Result-container': true,
           'Even-row': index%2===1,
@@ -68,9 +76,6 @@ class RecentMatches extends React.PureComponent {
         if (!direname) {
           direname=item["dire_team"].name
         }
-
-
-
         return (
           <div className={resultcontainerclass}>
             <div className="Result-radiant-team"><img className="Result-teamlogo" src={radiantlogosrc}></img> <span>{radiantname}</span> </div>
@@ -80,8 +85,11 @@ class RecentMatches extends React.PureComponent {
         )
       }
     )
+  }
+
+
       return (
-        <div id="recent-matches-container">
+        <div id={this.props.containerId}>
           Recent games:
           <Loader className={loaderclass}></Loader>
           {showmatches}

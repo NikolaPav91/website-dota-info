@@ -7,11 +7,15 @@ import { Provider } from 'react-redux';
 import reducers from './reducers';
 import { createStore } from 'redux';
 import { BrowserRouter, Route } from 'react-router-dom';
+import './Polyfills';
+import ScrollToTopContainer from './ScrollToTop';
 
 ReactDOM.render(
   <Provider store={createStore(reducers)}>
-  <BrowserRouter>
+  <BrowserRouter onUpdate={ window.scrollTo(0, 0)}>
+    <ScrollToTopContainer>
     <Route path="/" component= {App} />
+    </ScrollToTopContainer>
   </BrowserRouter>
   </Provider>
   ,

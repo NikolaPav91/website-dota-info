@@ -43,8 +43,8 @@ export default class NewsSlider extends React.PureComponent {
   }
 
   render() {
-    let lastfourstories=this.props.sliderNews;
-    let shownews=lastfourstories.map((item,index)=> {
+    let slidernews=this.props.sliderNews;
+    let shownews=slidernews.map((item,index)=> {
       let slidertext= item.teaser.slice(0,200);
       let slidertextend='...'
       if (slidertext.endsWith('.')===true) {
@@ -52,9 +52,9 @@ export default class NewsSlider extends React.PureComponent {
       }
       let sliderstoryclass= classNames({
         'Sliderstory': true,
-        'Next-story': ((index===this.state.showingStoryIndex+1) || (index===this.state.showingStoryIndex-lastfourstories.length +1)),
+        'Next-story': ((index===this.state.showingStoryIndex+1) || (index===this.state.showingStoryIndex-slidernews.length +1)),
         'Story-showing': index===this.state.showingStoryIndex,
-        'Story-removing': ((index===this.state.showingStoryIndex-1) || (index===this.state.showingStoryIndex + lastfourstories.length -1 )),
+        'Story-removing': ((index===this.state.showingStoryIndex-1) || (index===this.state.showingStoryIndex + slidernews.length -1 )),
         })
       return (
         <li className= {sliderstoryclass} storyIndex={index}>
@@ -75,8 +75,8 @@ export default class NewsSlider extends React.PureComponent {
         </li>
       )
     })
-    let numberofbuttons= lastfourstories.length;
-    let sliderbuttons= lastfourstories.map((item, index)=>{
+    let numberofbuttons= slidernews.length;
+    let sliderbuttons= slidernews.map((item, index)=>{
       return (
         <div className={ classNames({
           "Sliderbuttons": true,

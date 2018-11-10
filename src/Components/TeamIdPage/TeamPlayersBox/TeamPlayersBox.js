@@ -1,6 +1,7 @@
 import React from 'react';
 import Countries from '../../MyDatabase/countries-json';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 const TeamPlayersBox= ({currentMembers, memberBonusInfo})=> {
 
@@ -22,13 +23,15 @@ const TeamPlayersBox= ({currentMembers, memberBonusInfo})=> {
     }
 
     return (
-      <div className={membercontainerclass}>
+      <Link to={'/Player/' + item["account_id"]} className={membercontainerclass}>
+
         <div className="Player-name"><span className="Player-info-label TeamId-page">Nickname:</span> {item.name} </div>
         <div className="Player-country TeamId-page">
            <span className="Player-info-label TeamId-page Country-label">Country:</span> <img className="Player-flag TeamId-page" src={flagurl}></img> {countryname}
          </div>
          <div className="Player-mmr"><span className="Player-info-label TeamId-page">Esimated MMR:</span> {estimatemmr}</div>
-       </div>
+
+     </Link>
     )
   })
 

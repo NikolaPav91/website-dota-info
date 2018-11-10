@@ -11,13 +11,13 @@ const TeamInfoBox= ({teamInfo})=> {
   let time = date + '. ' + month + ' ' + year ;
   return time;
 }
-  let picturesrc=teamInfo.logo;
+  let picturesrc=teamInfo["logo_url"];
 
   if (picturesrc===null) {
     picturesrc="/no-image-icon.png"
   }
 
-  let lastmatchtime= timeConverter(teamInfo.lastMatchTime);
+  let lastmatchtime= timeConverter(teamInfo["last_match_time"]);
 
   return (
   <div className="Team-container-teamId-page">
