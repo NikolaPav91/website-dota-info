@@ -18,6 +18,7 @@ class PlayerIdPage extends React.PureComponent {
       playerStats: [],
       winAndLossNr:{},
       loaderActive: true,
+      errorMessage: null,
     }
   }
 
@@ -112,24 +113,44 @@ class PlayerIdPage extends React.PureComponent {
         mostPlayedHeroes: response[3],
         playerStats: response[4],
         winAndLossNr: response[5],
+        loaderActive: false,
       }) )
-      .then(response=> {
+      .catch(response=>
         this.setState({
           loaderActive: false,
-        });
-        return response
-      })
+          errorMessage: 'Something went wrong, please try again.',
+        })
+      )
   }
 
   render() {
-    let contentclass= classNames({
-      'Content-width': true,
-      'Display-none': this.state.loaderActive,
-    });
-    let loaderclass= classNames({
-      'Loader': true,
-      'Display-none': !this.state.loaderActive,
-    });
+
+
+
+    if (this.state.loaderActive) {
+      return (
+        <div className="All-content-container">
+          <header className="header-picture1"></header>
+          <div className="All-content-container Green-background">
+            <Loader className='Loader'></Loader>
+          </div>
+        </div>
+
+      )
+    }
+
+
+    if (this.state.errorMessage) {
+      return (
+        <div className="All-content-container">
+          <header className="header-picture1"></header>
+          <div className="All-content-container Green-background">
+            <div id="error-msg-playerid">{this.state.errorMessage}</div>
+          </div>
+        </div>
+      )
+
+    }
 
 
 
@@ -180,9 +201,8 @@ class PlayerIdPage extends React.PureComponent {
     return (
       <div className="All-content-container">
         <header className="header-picture1"></header>
-        <div className="All-content-container Green-pic-background">
-          <Loader className={loaderclass}></Loader>
-          <div className={contentclass}>
+        <div className="All-content-container Green-background">
+          <div className='Content-width' id="content-playerid">
 
 
 

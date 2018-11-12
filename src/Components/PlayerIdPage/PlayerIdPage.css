@@ -1,7 +1,10 @@
-.All-content-container.Green-pic-background {
-  background-image: url(/bg_standard.jpg);
-  min-height: 800px;
-  padding-bottom: 100px;
+#error-msg-playerid{
+  margin-top: 150px;
+  font-size: 1.3em;
+}
+
+#content-playerid{
+  margin-bottom: 30px;
 }
 
 .Flag-playerid {

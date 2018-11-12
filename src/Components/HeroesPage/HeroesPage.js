@@ -85,7 +85,7 @@ class HeroesPage extends React.PureComponent {
     return (
       <div className="All-content-container">
         <header className="header-picture1"></header>
-        <div id="hero-page-bg01">
+        <div className="All-content-container Green-background">
           <div id="hero-page-content01">
             <div id="hero-info-container">
               <div id="hero-name-container-heropage"> {heroname}</div>

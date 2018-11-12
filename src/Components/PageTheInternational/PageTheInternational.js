@@ -32,7 +32,7 @@ class PageTheInternational extends React.PureComponent {
           </div>
 
           </div>
-          <div className="All-content-container" id="international-allpages-bg">
+          <div className="All-content-container Green-background" id="international-allpages-bg">
 
           <Switch>
             <Route exact path='/The International/Overview' render={(props) => <PageTIOverview />}

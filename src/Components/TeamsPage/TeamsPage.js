@@ -5,6 +5,7 @@ import Loader from '../Loader/Loader';
 import classNames from 'classnames';
 import TeamContainer from './TeamContainer/TeamContainer';
 import TeamsPagePageNumbers from './TeamsPagePageNumber/TeamsPagePageNumbers';
+import './TeamsPage.css';
 
 class TeamsPage extends React.Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class TeamsPage extends React.Component {
 
 
   componentDidMount() {
-    if(this.props.proTeams===null || this.props.proTeams==='Something went wrong, pls try later'){
+    if(this.props.proTeams===null || this.props.proTeams==='Something went wrong, please try again later'){
       fetch('https://api.opendota.com/api/teams')
       .then(response=> response.json())
       .then(response =>
@@ -37,7 +38,7 @@ class TeamsPage extends React.Component {
       })});
     }
 
-    if (this.props.proTeams) {
+    if (this.props.proTeams!==null && this.props.proTeams!=='Something went wrong, please try again later') {
       let maxpages=Math.ceil(this.props.proTeams.length/16);
       this.setState({maxPages: maxpages, loaderActive: false, })
     }
@@ -57,12 +58,11 @@ class TeamsPage extends React.Component {
       this.setState({maxPages: maxpages })}
   }
   render(){
-    console.log(this.state.maxPages)
     if (this.state.loaderActive) {
       return (
         <div className= "All-content-container">
           <header className="header-picture1"></header>
-          <div id="teams-page-allbg">
+          <div className="All-content-container Green-background">
             <Loader className='Loader'></Loader>
           </div>
         </div>
@@ -73,7 +73,7 @@ class TeamsPage extends React.Component {
       return (
         <div className= "All-content-container">
           <header className="header-picture1"></header>
-          <div id="teams-page-allbg">
+          <div className="All-content-container Green-background">
             <div className="Error-message" id="error-message-teams">Something went wrong, please try again later</div>
           </div>
         </div>
@@ -103,7 +103,7 @@ class TeamsPage extends React.Component {
     return (
       <div className= "All-content-container">
         <header className="header-picture1"></header>
-        <div id="teams-page-allbg">
+        <div className="All-content-container Green-background">
           <div className='Content-container'>
             <div id="content-teams">
               {showtopteams}

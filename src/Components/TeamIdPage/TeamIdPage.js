@@ -136,7 +136,7 @@ class TeamIdPage extends React.PureComponent {
 
       <div className="All-content-container">
         <header className="header-picture1"></header>
-        <div id="page-teamId-allbg">
+        <div className="All-content-container Green-background">
           {loader}
           <div className={content01class}>
           <div className="Content-left-container">

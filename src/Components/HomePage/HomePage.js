@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import YouTube from 'react-youtube';
+import './HomePage.css';
 
 class HomePage extends React.PureComponent {
 
@@ -8,8 +9,8 @@ class HomePage extends React.PureComponent {
     return (
       <div className="All-content-container">
         <header className="header-picture1"></header>
-        <div id="home-container-bg01" className="Container-bg">
-            <div className="Content-container" id="content-container-home01">
+        <div id="home-container-bg01" className="Home-bg-container">
+            <div className="Content-width" id="content-container-home01">
               <div id="content-home01">
                 <h1>The most-played game on Steam.</h1>
                 <p>Every day, millions of players worldwide enter battle as one of
@@ -20,8 +21,8 @@ class HomePage extends React.PureComponent {
               </div>
             </div>
         </div>
-        <div id="home-container-bg02" className="Container-bg">
-            <div className="Content-container" id="content-container-home02">
+        <div id="home-container-bg02" className="Home-bg-container">
+            <div className="Content-width" id="content-container-home02">
               <div id="content-home02">
                 <h1>One Battlefield. Infinite Possibilities.</h1>
                 <p>When it comes to diversity of heroes, abilities, and powerful
@@ -32,8 +33,8 @@ class HomePage extends React.PureComponent {
               </div>
             </div>
         </div>
-      <div id="home-container-bg03" className="Container-bg">
-          <div className="Content-container" id="content-container-home03">
+      <div id="home-container-bg03" className="Home-bg-container">
+          <div className="Content-width" id="content-container-home03">
             <div id="content-home03">
               <h1>All heroes are free.</h1>
               <p>Competitive balance is Dota's crown jewel, and to ensure everyone
@@ -45,8 +46,8 @@ class HomePage extends React.PureComponent {
             </div>
           </div>
       </div>
-      <div id="home-container-bg04" className="Container-bg">
-        <div className="Content-container">
+      <div id="home-container-bg04" className="Home-bg-container">
+        <div className="Content-width">
           <YouTube
             videoId="SmnqsdeHFT0"
             className="YT-home"

@@ -24,8 +24,8 @@ class PageTIStandings extends React.PureComponent {
       )
     })
     return (
-      <div className="All-content-container">
-        <div id="international-standings-bg01">
+      <div className="All-content-container" id="international-standings-bg01">
+
         <div id="international-standings-content01">
           <table id="international-standings-table">
             <thead>
@@ -39,7 +39,7 @@ class PageTIStandings extends React.PureComponent {
           </table>
 
         </div>
-      </div>
+
       </div>
     )
   }

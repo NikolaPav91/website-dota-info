@@ -1,0 +1,76 @@
+
+
+
+#content-home01, #content-home02, #content-home03 {
+  width: 550px;
+  font-family: 'Radiance';
+  position: relative;
+
+}
+#content-home01>h1, #content-home02>h1, #content-home03>h1 {
+  font-size: 2em;
+  padding: 0 10px;
+}
+#content-home01>p, #content-home02>p, #content-home03>p {
+  font-size: 1.4em;
+  line-height: 1.5em;
+  padding: 0 10px;
+}
+
+.Home-bg-container {
+
+  background-repeat: no-repeat;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 600px;
+  background-position: center;
+  box-shadow: -0px 15px 50px black inset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#home-container-bg01 {
+  background-image: url(http://cdn.dota2.com/apps/dota2/images/blog/play/bg_04.jpg);
+
+}
+
+
+#content-container-home01 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 70px;
+
+}
+
+#home-container-bg02 {
+  background-image: url(http://cdn.dota2.com/apps/dota2/images/blog/play/bg_05.jpg);
+}
+#content-container-home02 {
+  display: flex;
+  align-items: center;
+}
+#content-container-home03 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#home-container-bg03 {
+  background-image: url(http://cdn.dota2.com/apps/dota2/images/blog/play/bg_06.jpg);
+}
+#home-container-bg04 {
+  height: 720px;
+  background-image: url(http://cdn.dota2.com/apps/dota2/images/blog/play/bg_02.jpg);
+}
+
+
+@media (max-width: 900px) {
+  .Menu-link {
+    padding: 5px 10px;
+  }
+}

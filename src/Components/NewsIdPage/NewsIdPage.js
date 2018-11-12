@@ -28,7 +28,7 @@ export default class NewsIdPage extends React.PureComponent {
     })
     let storyHTML=(<div dangerouslySetInnerHTML={{__html: story.text}}></div>)
     return (
-      <div className= "Content-allbg">
+      <div className= "All-content-container Green-background">
         <div id="newsid-content01" className="Content-width">
           <div className="News-id-story">
             <h1 className="Story-title-newsid">{story.title}</h1>

@@ -7,7 +7,7 @@ class PageTIMedia extends React.PureComponent {
 
   render() {
     return (
-      <div className="All-content-container" id="international-media-allbg">
+      <div className="All-content-container">
         <div className="YT-container">
         <YouTube
           videoId="videoseries?list=PLxkyNsoBqOdBZElEzwP2B9HX3rsVuFz47&v=LpqIj5PtSjY"

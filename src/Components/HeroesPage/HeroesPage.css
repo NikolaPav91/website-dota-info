@@ -1,18 +1,10 @@
-#hero-page-bg01 {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background-image: url(/bg_standard.jpg);
-  padding-bottom: 60px;
-  min-height: 400px;
-}
-
 #hero-page-content01 {
   display: flex;
   width: 1100px;
   flex-flow: column;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 20px;
+  margin-bottom:20px;
 }
 
 #hero-info-container {

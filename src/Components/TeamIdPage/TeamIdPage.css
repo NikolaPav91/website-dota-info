@@ -1,17 +1,9 @@
-#page-teamId-allbg {
-  background-image: url(/bg_standard.jpg);
-  width: 100%;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  min-height: 400px;
-  padding-bottom: 60px;
-}
 
 .page-teamId-content01 {
   display: flex;
   justify-content: space-between;
   width: 1100px;
+  margin-bottom: 20px;
 }
 
 

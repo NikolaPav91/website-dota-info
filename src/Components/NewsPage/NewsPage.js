@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import News from '../MyDatabase/News-objects.js';
-import NewsSlider from '../NewsSlider/NewsSlider';
+import NewsSlider from './NewsSlider/NewsSlider';
 import './NewsPage.css';
-import RecentStories from '../RecentStories/RecentStories';
+import RecentStories from './RecentStories/RecentStories';
 import RecentMatches from '../RecentMatches/RecentMatches';
 
 class NewsPage extends React.PureComponent {
