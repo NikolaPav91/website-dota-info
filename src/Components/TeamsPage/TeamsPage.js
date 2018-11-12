@@ -1,10 +1,9 @@
 import React from 'react';
-import MenuBarLink from '../MenuBarLink/MenuBarLink';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 import classNames from 'classnames';
-import TeamContainer from '../TeamContainer/TeamContainer';
+import TeamContainer from './TeamContainer/TeamContainer';
 import TeamsPagePageNumbers from './TeamsPagePageNumber/TeamsPagePageNumbers';
 
 class TeamsPage extends React.Component {
@@ -23,6 +22,12 @@ class TeamsPage extends React.Component {
     if(this.props.proTeams===null || this.props.proTeams==='Something went wrong, pls try later'){
       fetch('https://api.opendota.com/api/teams')
       .then(response=> response.json())
+      .then(response =>
+       response
+        .map((item,index)=> { item.rank= index + 1 + ".";
+          return item
+        } )
+      )
       .then(response=>  {this.props.setProTeams(response); this.setState({
         loaderActive: false,
         maxPages: Math.ceil(response.length/16),
@@ -88,7 +93,6 @@ class TeamsPage extends React.Component {
 
            <TeamContainer
              teamInfo={item}
-             teamRank={index+1+ (this.state.currentPage-1)*16}
            />
          </Link>
        )

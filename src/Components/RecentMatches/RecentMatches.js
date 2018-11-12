@@ -20,7 +20,7 @@ class RecentMatches extends React.PureComponent {
     .then(response=> response.json())
     .then(response=>
       response
-      .filter(item=>(item.leagueid===10326 || item.leagueid===10132 || item.leagueid===10145))
+      .filter(item=>(item.leagueid===10326 || item.leagueid===10132 || item.leagueid===10296))
       .slice(0,32 )
       .map((item,index)=>{return {id: item["match_id"]
     }})

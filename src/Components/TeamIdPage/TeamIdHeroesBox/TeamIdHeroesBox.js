@@ -9,7 +9,7 @@ const TeamIdHeroesBox= ({mostPlayedHeroes, pageName})=> {
       'Hero-container-teamid': true,
       'Uneven-row': index%2===0,
     })
-
+    if (item["hero_id"]==121) return // 121 is missing from my database
     let heroobj=heroesobj.find(heroitem=> heroitem.id==item["hero_id"]);
     let heropicurl=heroobj["url_small_portrait"];
     let heroname=heroobj["localized_name"];

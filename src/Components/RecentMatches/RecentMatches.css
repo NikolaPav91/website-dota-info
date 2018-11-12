@@ -30,6 +30,8 @@
 }
 
 .Result-teamlogo {
-  height: 30px;
+  max-height: 30px;
+  height: auto;
+  min-height: 22px;
   width: 30px;
 }

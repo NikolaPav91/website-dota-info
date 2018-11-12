@@ -1,6 +1,7 @@
 .All-content-container.Green-pic-background {
   background-image: url(/bg_standard.jpg);
   min-height: 800px;
+  padding-bottom: 100px;
 }
 
 .Flag-playerid {

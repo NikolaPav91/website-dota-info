@@ -1,11 +1,9 @@
 .Loader {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
   border-radius: 10px;
   position: relative;
   top: 100px;
-  margin: 0 auto;
 }
 
 

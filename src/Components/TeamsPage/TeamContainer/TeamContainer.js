@@ -2,11 +2,11 @@ import React from 'react';
 import './TeamContainer.css';
 import classNames from 'classnames';
 
-const TeamContainer= ({teamInfo,teamRank})=> {
+const TeamContainer= ({teamInfo})=> {
   let rankclass= classNames({
     "Rank-number-teams-page": true,
-    'Smaller-rank': teamRank>99,
-    'Smallest-rank': teamRank>999,
+    'Smaller-rank': teamInfo.rank>99,
+    'Smallest-rank': teamInfo.rank>999,
 
   })
   let picturesrc=teamInfo["logo_url"];
@@ -34,7 +34,7 @@ const TeamContainer= ({teamInfo,teamRank})=> {
         <span className="Team-textlabels-teams-page">Rank:</span>
         <img className="Rank-symbol-teams-page" src="/images.png"></img>
 
-        <span className={rankclass}>{teamRank}. </span>
+        <span className={rankclass}>{teamInfo.rank}</span>
       </div>
     </div>
 

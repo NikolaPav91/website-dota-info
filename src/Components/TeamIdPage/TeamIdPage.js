@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Loader from '../Loader/Loader';
 import classNames from 'classnames';
-import TeamContainer from '../TeamContainer/TeamContainer';
 import TeamInfoBox from './TeamInfoBox/TeamInfoBox';
 import './TeamIdPage.css';
 import TeamPlayersBox from './TeamPlayersBox/TeamPlayersBox';
@@ -49,11 +48,12 @@ class TeamIdPage extends React.PureComponent {
         fetch('https://api.opendota.com/api/teams')
         .then(response=> response.json())
 
-        // .then(response =>
-        //  response
-        //   .map((item,index)=> {return {id: item["team_id"], name: item.name, tag: item.tag,
-        //   logo: item["logo_url"],eloRating: item.rating, wins: item.wins, losses: item.losses,
-        //   rank: index + 1 +".", lastMatchTime: item["last_match_time"], "logo_url":item["logo_url"], }}))
+        .then(response =>
+         response
+          .map((item,index)=> { item.rank= index + 1 + ".";
+            return item
+          } )
+        )
         .then(response=>  {this.props.setProTeams(response); return response})
         .then(response=> response.find(item=> item["team_id"]==this.props.match.params.teamId))
       )

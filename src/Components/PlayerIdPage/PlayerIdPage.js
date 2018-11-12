@@ -52,11 +52,15 @@ class PlayerIdPage extends React.PureComponent {
           return (
             fetch('https://api.opendota.com/api/teams/' + teamid)
             .then(response=> response.json())
+            .catch(response=> '?')
           )
         } else {
+          let teaminfo=this.props.proTeams.find(item=> item["team_id"]==teamid);
+          if(teaminfo===undefined)
             return (
-              this.props.proTeams.find(item=> item["team_id"]==teamid)
+              '?'
             )
+          return teaminfo
           }
         }
 

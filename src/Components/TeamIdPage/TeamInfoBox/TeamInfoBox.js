@@ -28,7 +28,7 @@ const TeamInfoBox= ({teamInfo})=> {
       <p><span className= "Team-textlabels-teamId-page">Rank: </span>{teamInfo.rank}</p>
       <p><span className="Team-textlabels-teamId-page">Wins: </span>{teamInfo.wins}</p>
       <p><span className="Team-textlabels-teamId-page">Losses: </span>{teamInfo.losses}</p>
-      <p><span className="Team-textlabels-teamId-page"> EloRating: </span>{teamInfo.eloRating} </p>
+      <p><span className="Team-textlabels-teamId-page"> EloRating: </span>{teamInfo.rating} </p>
       <p><span className="Team-textlabels-teamId-page">Last match played: </span>{lastmatchtime}</p>
     </div>
  </div>

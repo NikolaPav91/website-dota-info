@@ -83,7 +83,7 @@ body {
 
 #search-container {
   width: 200px;
-  height: 40px;
+  height: 35px;
   text-align: left;
   display: flex;
   align-items: center;
@@ -123,10 +123,11 @@ body {
 .Search-all-results-container {
   position: absolute;
   top: 100%;
+  left:0px;
   width: 100%;
   max-height: 400px;
   z-index: 15;
-  background: #1d1e21c8;
+  background: rgba(29, 30, 33, 0.75);
 }
 
 .Search-result-link {
@@ -145,6 +146,7 @@ body {
 }
 .Search-result-link:hover {
   outline: 1px solid white;
+  background: gray;
 }
 .Search-result-item>img {
   margin-right: 5px;
