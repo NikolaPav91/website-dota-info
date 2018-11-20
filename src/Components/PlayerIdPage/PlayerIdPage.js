@@ -6,6 +6,7 @@ import TeammatesBox from './TeammatesBox/TeammatesBox';
 import Countries from '../MyDatabase/countries-json';
 import Loader from '../Loader/Loader';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 class PlayerIdPage extends React.PureComponent {
   constructor(props) {
@@ -36,45 +37,66 @@ class PlayerIdPage extends React.PureComponent {
     )
   }
 
-  getPlayerTeamInfo(){
-    return (
-    fetch('https://api.opendota.com/api/proPlayers')
-    .then(response=>response.json())
-    .then(response=>
-      response
-      .find(item => item["account_id"]==this.props.routerprops.match.params.playerId)["team_id"]
-    )
-    .then( response=> {
-      if(response)
-
-      {
-        let teamid=  response;
-        if(this.props.proTeams===null || this.props.proTeams==='Something went wrong, pls try later'){
-          return (
-            fetch('https://api.opendota.com/api/teams/' + teamid)
-            .then(response=> response.json())
-            .catch(response=> '?')
-          )
-        } else {
-          let teaminfo=this.props.proTeams.find(item=> item["team_id"]==teamid);
-          if(teaminfo===undefined)
-            return (
-              '?'
-            )
-          return teaminfo
-          }
-        }
-
-
-
-        else {
-          return "?"
-        }
-      }
-
-
+  getProPlayers() {
+      return (
+        fetch('https://api.opendota.com/api/proPlayers')
+        .then(response=>response.json())
       )
-    )
+  }
+
+  async getPlayerTeamInfo(){
+    let proplayers;
+    if (this.props.proPlayers===null) {
+      proplayers= await this.getProPlayers()} else {
+      proplayers=this.props.proPlayers;
+    }
+    let teamid= proplayers.find(item => item["account_id"]==this.props.routerprops.match.params.playerId)["team_id"];
+    if (teamid) {
+      if(this.props.proTeams===null || this.props.proTeams==='Something went wrong, pls try later'){
+        console.log('req teams')
+        return (
+          fetch('https://api.opendota.com/api/teams/')
+          .then(response=> response.json())
+          .then(response=> {
+            this.props.setProTeams(response);
+            this.props.setProPlayers(proplayers.map(item=> {
+              let playerteam= response.find(team=> team["team_id"]==item["team_id"] );
+              if (playerteam===undefined) {
+                item["team_logo"]= '';
+                } else {
+                item["team_logo"]= playerteam["logo_url"];
+              } return item
+            } ))
+             return response})
+          .then(response=> response.find(item=> item["team_id"]==teamid))
+          .then(response=> {
+            if (response===undefined) {return '?'} else {return response}
+          })
+          .catch(response=>'?')
+        )
+      } else {
+        console.log('got teams')
+        this.props.setProPlayers(proplayers.map(item=> {
+          let playerteam= this.props.proTeams.find(team=> team["team_id"]==item["team_id"] );
+          if (playerteam===undefined) {
+            item["team_logo"]= '';
+            } else {
+            item["team_logo"]= playerteam["logo_url"];
+            }
+          return item
+        }))
+
+
+        let teaminfo=this.props.proTeams.find(item=> item["team_id"]==teamid);
+        if(teaminfo===undefined)
+          return (
+            '?'
+          )
+        return teaminfo
+        }
+    } else {
+      return "?"
+    }
   }
 
   getMostGamesPlayedWith() {
@@ -107,6 +129,7 @@ class PlayerIdPage extends React.PureComponent {
   componentDidMount() {
     this.getAllPlayerInfo()
       .then(response=> this.setState({
+        proPlayerInfo: this.props.proPlayers.find(item=> item["account_id"]=== response[0].profile["account_id"]),
         basicPlayerInfo: response[0],
         playerTeamInformation: response[1],
         mostGamesPlayedWith: response[2],
@@ -154,8 +177,6 @@ class PlayerIdPage extends React.PureComponent {
 
 
 
-
-    console.log('playedwith: '+ JSON.stringify(this.state.mostGamesPlayedWith))
     let playername,mmr,country,leaderboardrank;
     let winandloss=this.state.winAndLossNr
     if (this.state.basicPlayerInfo.profile) {
@@ -194,8 +215,16 @@ class PlayerIdPage extends React.PureComponent {
   let teamlogo;
   let teamname="?";
   if (this.state.playerTeamInformation!=="?") {
-    teamlogo=<img className="Team-logo-playerid" title={this.state.playerTeamInformation.name} src={this.state.playerTeamInformation["logo_url"]}></img> ;
+    teamlogo=
+      <Link className="Team-logo-link-playerid"to={'/Teams/'+ this.state.playerTeamInformation["team_id"] }>
+        <img className="Team-logo-playerid" title={this.state.playerTeamInformation.name}
+         src={this.state.playerTeamInformation["logo_url"]}></img>
+       </Link>;
     teamname=this.state.playerTeamInformation.name;
+  } else {
+    if (this.state.proPlayerInfo["team_name"]) {
+      teamname=this.state.proPlayerInfo["team_name"];
+    }
   }
 
     return (
@@ -205,22 +234,17 @@ class PlayerIdPage extends React.PureComponent {
           <div className='Content-width' id="content-playerid">
 
 
-
+            <h1 className="Player-name-playerid">
+              {playername} {teamlogo} {country}
+            </h1>
             <div id="playerid-content01">
 
               <div className="Player-info-container-playerid">
-                <div className="Player-name-and-picture-playerid">
-                  <h1 className="Player-name-playerid">
-                    {playername} {teamlogo} {country}
-                  </h1>
-                  <img className="Player-picture-playerid" title="no player picture" src="/no-image-icon.png"></img>
-
-                </div>
-
-                 <div className="Player-info-right-container-playerid">
-                   <div><span className="Player-info-labels-playerid">Team:</span> {teamname} </div>
-                  {mmr}
-                  {leaderboardrank}
+                <img className="Player-picture-playerid" title="no player picture" src="/no-image-icon.png"></img>
+                <div className="Player-info-right-container-playerid">
+                  <div><span className="Player-info-labels-playerid">Team:</span> {teamname} </div>
+                    {mmr}
+                    {leaderboardrank}
                   <div>
                     <span className="Player-info-labels-playerid">W/L:</span>
                     {winandloss.win}/{winandloss.lose} ({Math.round(winandloss.win/(winandloss.win+winandloss.lose)*1000)/10}%)
@@ -246,7 +270,7 @@ class PlayerIdPage extends React.PureComponent {
                   pageName='player page'
                 />
               </div>
-              <div>
+              <div id="teammates-playerid">
                 <h2 className="Container-label-playerid">Most games played with:</h2>
                 <TeammatesBox teamMates={this.state.mostGamesPlayedWith}/>
               </div>
@@ -264,6 +288,7 @@ class PlayerIdPage extends React.PureComponent {
 const mapStateToProps= (state) => {
   return {
     proTeams: state.proTeams,
+    proPlayers: state.proPlayers
   }
 }
 const mapDispatchToProps= (dispatch)=> {
@@ -275,6 +300,12 @@ const mapDispatchToProps= (dispatch)=> {
         teamList: teams,
       });
     },
+    setProPlayers: (players) => {
+      dispatch ({
+        type: 'SET_PRO_PLAYERS',
+        playerList: players,
+      })
+    }
   }
 }
 

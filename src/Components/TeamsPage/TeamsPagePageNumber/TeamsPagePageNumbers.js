@@ -1,15 +1,9 @@
 import React from 'react';
 
 export default class TeamsPagePageNumbers extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentPageNumbers: [1,2,3,4,5],
-    }
-  }
 
     render() {
-      let currentpagenumbers=[1,2,3,4,5];
+      let currentpagenumbers;
       if (this.props.maxPages) {
         if (this.props.currentPage<4) {
           currentpagenumbers=[1,2,3,4,5]
@@ -20,6 +14,15 @@ export default class TeamsPagePageNumbers extends React.PureComponent {
         } else {   currentpagenumbers= [this.props.currentPage-2, this.props.currentPage-1,
           this.props.currentPage, this.props.currentPage+1, this.props.currentPage+2]}
         }
+      }
+      if (this.props.maxPages<5) {
+        currentpagenumbers=[];
+        for (let i = 1; i <= this.props.maxPages; i++) {
+          currentpagenumbers.push(i);
+        }
+      }
+      if (this.props.maxPages===1) {
+        currentpagenumbers=[];
       }
 
       let showpagenumbers= currentpagenumbers.map(item=> {
@@ -44,12 +47,12 @@ export default class TeamsPagePageNumbers extends React.PureComponent {
       }
 
       let firstbtn;
-      if (this.props.currentPage> 3) {
+      if ((this.props.currentPage> 3)  && (this.props.maxPages>5)) {
         firstbtn= <li id="teams-page-button-first" onClick={()=> this.props.setCurrentPage(1)}> First</li>
       }
 
       let lastbtn;
-      if (this.props.currentPage< this.props.maxPages-2) {
+      if ((this.props.currentPage< this.props.maxPages-2) && (this.props.maxPages>5)) {
         lastbtn= <li id="teams-page-button-last" onClick={()=> this.props.setCurrentPage(this.props.maxPages)}> Last</li>
       }
 
@@ -62,17 +65,22 @@ export default class TeamsPagePageNumbers extends React.PureComponent {
         return (
         <option value={item}>{item}</option>)
       })
-      console.log(this.props.currentPage)
+      console.log(this.props.currentPage);
+      console.log(this.props.maxPages);
 
 
+      let showselect
+      if (this.props.maxPages>1) {
+        showselect= <select className="custom-select" onChange={(event)=>this.props.setCurrentPage(Number(event.target.value))}>
+          {showoptions}
+        </select>
+      }
 
 
 
       return (
-        <div id="teams-page-number-list-container">
-          <select className="custom-select" onChange={(event)=>this.props.setCurrentPage(Number(event.target.value))}>
-            {showoptions}
-          </select>
+        <div id={this.props.containerId} className="Number-navi-container">
+          {showselect}
           <ul>
             {firstbtn}
             {previousbtn}

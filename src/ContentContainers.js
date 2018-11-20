@@ -9,6 +9,7 @@ import TeamIdPageContainer from './Components/TeamIdPage/TeamIdPage';
 import News from './Components/MyDatabase/News-objects';
 import NewsIdPage from './Components/NewsIdPage/NewsIdPage';
 import PlayerIdPageContainer from './Components/PlayerIdPage/PlayerIdPage';
+import SearchResultsPageContainer from './Components/SearchResultsPage/SearchResultsPage';
 
 
 const ContentContainers= ()=> (
@@ -26,13 +27,13 @@ const ContentContainers= ()=> (
     <Route path='/The International' render={(props) => <PageTheInternational routerprops={props} />}
     />
 
-    <Route exact path='/Teams/:teamId' component= {TeamIdPageContainer}
+    <Route exact path='/News/:newsId' render={(props) => <NewsIdPage key={props.match.params.newsId} currentNews={News} routerprops={props}/>}
     />
-    <Route exact path='/News/:newsId' render={(props) => <NewsIdPage currentNews={News} routerprops={props}/>}
-    />
-    <Route exact path='/Teams/:teamId' component= {TeamIdPageContainer}
+    <Route exact path='/Teams/:teamId' render= {(props)=> <TeamIdPageContainer key={props.match.params.teamId} routerprops={props}/>}
     />
     <Route exact path='/Player/:playerId' render= {(props)=> <PlayerIdPageContainer key={props.match.params.playerId} routerprops={props}/>}
+    />
+    <Route exact path='/Search/:searchWord' render= {(props)=> <SearchResultsPageContainer key={props.match.params.searchWord} routerprops={props}/>}
     />
 
 

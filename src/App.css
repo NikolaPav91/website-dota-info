@@ -13,7 +13,7 @@
 
 
 
-html { font-size: 1em; }
+html { font-size: 16px; }
 
 iframe {
   border: 0px;
@@ -29,11 +29,24 @@ a{
   font-family: CustomFont;
   color: white;
   min-height: 750px;
+  min-width: 250px;
   width: 100%;
   background-color: black;
+  line-height: 1.2em;
 
 }
 
+.App h1 {
+  line-height: 1.2em
+}
+.App h2 {
+  line-height: 1.2em
+}
+/* @media(max-width: 1300px)  {
+  .App {
+    line-height: 1.2em;
+  }
+} */
 #navi-bar-bg {
   width: 100%;
   display: flex;
@@ -57,12 +70,19 @@ a{
 }
 
 .Menu-link {
-  padding: 5px 20px;
+  padding: 5px 15px;
   color: #cecece;
   font-size: 1.2em;
   text-decoration: none;
-  margin-right: 1px;
+  margin-right: 6px;
+  margin-left: 6px;
   position: relative;
+}
+.Menu-link:first-child {
+  margin-left: 0px;
+}
+.Menu-link:last-child {
+  margin-right: 0px;
 }
 
 .Menu-link:hover {
@@ -77,20 +97,21 @@ a{
   content:"";
   position: absolute;
   bottom: 0px;
-  left: 10%;
+  left: 5%;
   height: 2px;
   background-color: white;
-  width: 80%;
+  width: 90%;
 
 }
 
 #search-container {
   width: 200px;
-  height: 35px;
+  height: 32px;
   text-align: left;
   display: flex;
   align-items: center;
   position: relative;
+  margin: 0 5px 0 5px;
 }
 
 #search-container> input {
@@ -128,9 +149,13 @@ a{
   top: 100%;
   left:0px;
   width: 100%;
-  max-height: 400px;
   z-index: 15;
-  background: rgba(29, 30, 33, 0.75);
+  background: rgba(51, 52, 56, 0.75);
+  min-height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .Search-result-link {
@@ -141,13 +166,21 @@ a{
 }
 .Search-result-item {
   font-size: 0.9em;
-  width: 95%;
+  width: 97%;
   height: 100%;
   display: flex;
   align-items: center;
 
 }
 .Search-result-link:hover {
+  outline: 1px solid white;
+  background: gray;
+}
+.Search-result-link.Selected {
+  outline: 1px solid white;
+  background: gray;
+}
+.Search-result-link:focus {
   outline: 1px solid white;
   background: gray;
 }
@@ -211,4 +244,139 @@ a{
   display: flex;
   justify-content: center;
 
+}
+
+
+@media (max-width: 1120px) {
+  .Content-container, .Content-width {
+    width: 98.5%;
+  }
+}
+
+@media(max-width: 800px) {
+  .All-content-container.Green-background {
+    min-height: 1000px;
+  }
+}
+
+@media (max-width: 797px) {
+  .Active-menulink.All-pages:after {
+    left: 5%;
+    width: 90%;
+  }
+  .Menu-link.All-pages {
+    padding: 5px 9px;
+    margin-right: 2px;
+    margin-left: 2px;
+  }
+  .Menu-link.All-pages:first-child {
+    margin-left: 0px;
+  }
+  .Menu-link.All-pages:last-child {
+    margin-right: 0px;
+  }
+}
+
+@media(max-width: 700px) {
+  #navi-bar-bg {
+    height: auto;
+    font-size: 0.9em;
+  }
+  #navi-bar-container {
+    margin-top: 7px;
+  }
+  #navi-bar-container>.Menu-bar {
+    justify-content: space-around;
+    width: 74%;
+    flex-shrink: 100;
+  }
+  .Menu-link.All-pages {
+    padding: 5px 5px;
+  }
+  .Active-menulink.All-pages:after {
+    width: 100%;
+    left: 0;
+  }
+
+  #search-container {
+    width: 160px;
+    height: 30px;
+    flex-shrink: 0;
+  }
+
+}
+
+@media(max-width: 590px) {
+  .Active-menulink.All-pages:after {
+    left: 0;
+    width: 100%;
+  }
+  #navi-bar-bg {
+    height: auto;
+  }
+  #navi-bar-container {
+    align-items: flex-end;
+
+  }
+  #navi-bar-container>.Menu-bar {
+    margin: 0 10px 0 10px;
+    width: 100%;
+    justify-content: space-between;
+
+  }
+  .Menu-link.All-pages {
+    padding: 6px 2px;
+  }
+  #search-container {
+    height: 30px;
+  }
+}
+
+@media (max-width:580px) {
+  #navi-bar-bg {
+    border: none;
+    background: none;
+  }
+  #navi-bar-container {
+    flex-flow: column;
+
+  }
+  #navi-bar-container>.Menu-bar {
+      border-bottom: 1px solid white;
+      justify-content: space-around;
+      margin-right: 0;
+  }
+
+  #search-container {
+    align-self: flex-end;
+    margin-top: 3px;
+    width: 200px;
+  }
+  .Search-result-link {
+    height: 40px;
+  }
+  .header-picture1 {
+    background-size: 800px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 450px) {
+  .Active-menulink.All-pages:after {
+    height: 2px;
+  }
+  #navi-bar-container {
+    font-size: 0.9em;
+  }
+  #navi-bar-container>.Menu-bar {
+    width: 100%;
+  }
+  #search-container {
+    width: 170px;
+  }
+}
+@media (max-width: 400px) {
+  .Search-result-link {
+    line-height: 1.2em;
+  }
 }

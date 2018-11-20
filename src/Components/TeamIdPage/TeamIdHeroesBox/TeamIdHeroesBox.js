@@ -33,9 +33,9 @@ const TeamIdHeroesBox= ({mostPlayedHeroes, pageName})=> {
     )
   })
 
-  if (mostPlayedHeroes.length===0) return <div className="Team-no-heroes-box"> No heroes found</div>
+  if (mostPlayedHeroes.length===0) return <div className="No-heroes-box"> No heroes found</div>
   else {
-    return <div className="Team-with-players-box">{showheroes}</div>
+    return <div className="Most-played-heroes-box">{showheroes}</div>
   }
 }
 

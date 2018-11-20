@@ -1,14 +1,88 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+import { Route, Redirect } from 'react-router';
 
 class SearchField extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       searchResult: null,
-      proPlayers: null,
       errorMessage: null,
+      selectedResultIndex: 0,
+      redirectTo:false,
+
+    }
+  }
+  goToSearchPage() {
+    if (document.getElementById('search-input').value!=='') {
+      this.setState({
+        redirectTo: '/Search/'+ document.getElementById('search-input').value.toLowerCase(),
+      })
+    }
+
+  }
+  changeHighlightedResult(event) {
+    if ((this.state.searchResult===null) || (this.state.searchResult.length===0)) {
+      return
+    }
+    if (event.keyCode==13) { //on Enter key
+      if ((Array.isArray(this.state.searchResult)) && (this.state.searchResult.length>0)) {
+        if (this.state.selectedResultIndex===0) { //if there are no highlighted results redirect to search result page
+          this.setState({
+            redirectTo: '/Search/'+ event.target.value.toLowerCase(),
+          })
+        } else { //redirect to highlighted player or team page
+          let selectedobj=this.state.searchResult[this.state.selectedResultIndex-1];
+          if (selectedobj["account_id"]) {
+            if (window.location.pathname==='/Player/'+ selectedobj["account_id"]) {
+              return
+            }
+            window.location.pathname='/Player/'+ selectedobj["account_id"]
+          } else {
+            if (  window.location.pathname==='/Teams/'+ selectedobj["team_id"]) {
+              return
+            }
+            this.setState({
+              redirectTo: '/Teams/'+ selectedobj["team_id"]
+            })
+          }
+        }
+      }
+    }
+    if (event.keyCode==27) {
+      this.setState({
+        selectedResultIndex: 0,
+        searchResult: null,
+      });
+      event.target.blur();
+    }
+    if (event.keyCode==38) {
+      event.preventDefault();
+      if (this.state.selectedResultIndex<= 1) {
+        this.setState({
+          selectedResultIndex: this.state.searchResult.length,
+        })
+      } else {
+      this.setState({
+        selectedResultIndex: this.state.selectedResultIndex -1,
+      });
+    }
+    }
+
+    if (event.keyCode==40) {
+      event.preventDefault();
+      if (this.state.selectedResultIndex== this.state.searchResult.length) {
+        this.setState({
+          selectedResultIndex: 1,
+        })
+      } else {
+        this.setState({
+          selectedResultIndex: this.state.selectedResultIndex +1,
+        });
+      }
+
     }
   }
 
@@ -17,10 +91,11 @@ class SearchField extends React.PureComponent {
     event.stopPropagation();
     this.setState({
       searchResult: null,
+      selectedResultIndex: 0,
     })
   }
 
-  getTeams(string) {
+  getTeams() {
 
     if(this.props.proTeams===null || this.props.proTeams==='Something went wrong, please try again later') { return (
       fetch('https://api.opendota.com/api/teams')
@@ -38,12 +113,13 @@ class SearchField extends React.PureComponent {
     }
   }
 
-  getProPlayers(string) {
-    if (this.state.proPlayers===null) { return (
-      fetch('https://api.opendota.com/api/proPlayers')
-      .then(response=>response.json())
+  getProPlayers() {
+    if (this.props.proPlayers===null) {
+       return (
+        fetch('https://api.opendota.com/api/proPlayers')
+        .then(response=>response.json())
     )} else {
-      return this.state.proPlayers
+      return this.props.proPlayers
     }
   }
 
@@ -51,12 +127,13 @@ class SearchField extends React.PureComponent {
       if (!string) {this.setState({
           searchResult: null,
           errorMessage: null,
+          selectedResultIndex: 0,
         }); return
       }
 
-      Promise.all([this.getTeams(string), this.getProPlayers(string)])
+      Promise.all([this.getTeams(), this.getProPlayers()])
       .then(([teams,players])=> {
-        if (this.state.proPlayers===null) {
+        if (this.props.proPlayers===null) {
           let improvedplayersobj= players.map(item=> {
             let playerteam= teams.find(team=> team["team_id"]==item["team_id"] );
             if (playerteam===undefined) {
@@ -66,13 +143,10 @@ class SearchField extends React.PureComponent {
             } return item
           } );
 
-          this.setState({
-            proPlayers: improvedplayersobj,
-          });
-          console.log('seting pro players:' + JSON.stringify(improvedplayersobj));
+          this.props.setProPlayers(improvedplayersobj);
 
           return [teams,improvedplayersobj]
-        } else return [teams, this.state.proPlayers]
+        } else return [teams, this.props.proPlayers]
 
       })
       .then(([teams,players])=> {
@@ -95,11 +169,17 @@ class SearchField extends React.PureComponent {
         })
         this.setState({
           searchResult: mergedarrays.slice(0,6),
+          selectedResultIndex: 0,
         })
+        // if (mergedarrays.length==0) {
+        //   this.setState({
+        //     searchResult: null,
+        //   })
+        // }
       })
-      // .catch(response=> this.setState({
-      //   errorMessage: "something went wrong with the search",
-      // }))
+      .catch(response=> this.setState({
+        errorMessage: "something went wrong with the search",
+      }))
   }
 
   componentDidUpdate() {
@@ -114,10 +194,27 @@ class SearchField extends React.PureComponent {
   }
 
     render() {
+      if(this.state.redirectTo!==false) {
+        this.setState({
+          searchResult: null,
+          errorMessage: null,
+          selectedResultIndex: 0,
+          redirectTo:false,
+        })
+        return (
+          <Redirect to={this.state.redirectTo}/>
+        )
+      }
+
+
       let results;
       let showresults;
       if (this.state.searchResult) {
-        results= this.state.searchResult.map(item=> {
+        results= this.state.searchResult.map((item,index)=> {
+          let searchresultclass= classNames({
+            'Search-result-link': true,
+            'Selected': index==this.state.selectedResultIndex-1,
+          })
           let itemisplayer= item["account_id"];
           if(itemisplayer)  {
             let playerpictureurl=item["team_logo"];
@@ -125,7 +222,7 @@ class SearchField extends React.PureComponent {
             return (
               <Link
                 onClick={(e)=> this.resetResults(e)}
-                className="Search-result-link"
+                className={searchresultclass}
                 to={'/Player/'+ item["account_id"] }>
                 <div className="Search-result-item"><img src={playerpictureurl}></img>{item.name}</div>
               </Link>
@@ -137,9 +234,11 @@ class SearchField extends React.PureComponent {
 
               <Link
                 onClick={(e)=> this.resetResults(e)}
-                className="Search-result-link"
+                className={searchresultclass}
                 to={'/Teams/'+ item["team_id"] }>
-                <div className="Search-result-item"><img src={teampictureurl}></img>{item.name}</div>
+                <div className="Search-result-item"><img src={teampictureurl}
+                 onError={(e)=>{e.target.onerror = null; e.target.src="/group-of-people-icon.png"}} //its not working (not existing img is blinking) but on teampage same code for same img is working (team shazam, nr72)
+                 ></img>{item.name}</div>
               </Link>
             )
           }
@@ -147,13 +246,17 @@ class SearchField extends React.PureComponent {
         showresults=<div className="Search-all-results-container">{results}</div>
       }
       if (this.state.errorMessage!== null) {showresults=<div className="Search-all-results-container">{this.state.errorMessage}</div>}
+      if (Array.isArray(this.state.searchResult) && this.state.searchResult.length===0) {
+        showresults= <div className="Search-all-results-container">Nothing found</div>
+      }
 
       return (
         <div id="search-container" > <input id="search-input"
-          onChange={(event)=>this.getSearchResult(event.target.value)}
-          onFocus={(event)=>this.getSearchResult(event.target.value)}
+          onChange={(event)=>this.getSearchResult(event.target.value.toLowerCase())}
+          onFocus={(event)=>this.getSearchResult(event.target.value.toLowerCase())}
+          onKeyDown={(event)=>this.changeHighlightedResult(event)}
           type="text" placeholder="Search.."></input>
-        <button type="submit"><i className="fa fa-search"></i></button>
+        <button onClick={()=>this.goToSearchPage()} type="submit"><i className="fa fa-search"></i></button>
         {showresults}
         </div>
     )
@@ -170,12 +273,19 @@ const mapDispatchToProps= (dispatch)=> {
         teamList: teams,
       });
     },
+    setProPlayers: (players) => {
+      dispatch ({
+        type: 'SET_PRO_PLAYERS',
+        playerList: players,
+      })
+    },
   }
 }
 
 const mapStateToProps=(state)=> {
   return {
     proTeams: state.proTeams,
+    proPlayers: state.proPlayers,
   }
 }
 

@@ -1,5 +1,5 @@
 
-.page-teamId-content01 {
+.Page-teamId-content01 {
   display: flex;
   justify-content: space-between;
   width: 1100px;
@@ -13,12 +13,12 @@
 
 .Content-left-container {
   width: 600px;
+  margin-right: 8px;
 }
 
 .Team-container-teamId-page{
   display: flex;
   background-color: #1d1e21;
-  width: 600px;
   height: 300px;
   justify-content: space-between;
   align-items: center;
@@ -56,7 +56,7 @@
   margin-top: 50px;
 }
 
-.Team-with-players-box {
+.Team-with-players-box,.Most-played-heroes-box {
   background-color: #1d1e21;
   display: flex;
   flex-wrap: wrap;
@@ -84,14 +84,18 @@
     margin: 5px 10px;
 }
 
-.Hero-name, .Hero-games-played-teamid {
+.Hero-name {
   margin: 5px 10px;
-  width: 34%;
+  width: 40%;
 }
 
-.Hero-wins-teamid {
+ .Hero-games-played-teamid {
   margin: 5px 10px;
-  width: 20%;
+  width: 22%;
+}
+.Hero-wins-teamid {
+ margin: 5px 5px 5px 25px;
+ width: 22%;
 }
 
 .Hero-name>div {
@@ -135,11 +139,11 @@
 
 
 .Content-right-container {
-  width: 300px;
+  width: 280px;
 }
 
 .Latest-matches-box-header {
-  margin-top: 150px;
+margin-top: 40px;
 }
 
 .TeamId-result {
@@ -168,6 +172,10 @@
   width: auto;
   margin-left: 4px;
 }
+.Logo-unknown {
+  background: white;
+  margin-left: 10px;
+}
 
 .Latest-match-container {
   width: 100%;
@@ -184,4 +192,83 @@
 
 .Latest-match-container.Uneven-row {
   background-color: black;
+}
+
+@media(max-width: 1125px) {
+  .Page-teamId-content01 {
+    width: 98%;
+  }
+}
+
+@media (max-width: 740px) {
+  .Page-teamId-content01 {
+    flex-direction: column;
+    align-items: center;
+  }
+  .Latest-matches-box-header {
+    margin-top: 60px;
+  }
+  .Content-right-container {
+    width: 300px;
+  }
+  .Content-left-container {
+    margin-right: 0px;
+  }
+
+}
+@media (max-width: 650px) {
+  .Content-left-container {
+    width: 98%;
+  }
+}
+
+@media (max-width: 455px) {
+  .Team-container-teamId-page {
+    height: 270px;
+  }
+  .Team-right-container-teamId-page{
+    position: relative;
+    height: 95%;
+    border-left: none;
+  }
+  .Team-right-container-teamId-page::before{
+    content: '';
+    height: 90%;
+    position: absolute;
+    width: 2px;
+    background: gray;
+    left: 0px;
+  }
+  .Team-left-container-teamId-page {
+    margin-left: 15px;
+    margin-right: 10px;
+  }
+  .Teamlogo-teamId-page {
+    margin-left: 0px;
+    width: 150px;
+    height: 150px;
+  }
+
+}
+
+@media (max-width: 400px) {
+  .Team-right-container-teamId-page {
+    padding: 0 10px;
+  }
+  .Team-right-container-teamId-page::before{
+    left: -5px;
+  }
+}
+
+@media (max-width: 390px) {
+  .Page-teamId-content01 {
+    line-height: 1.15em;
+  }
+  .Team-container-teamId-page {
+    height: 250px;
+  }
+  .Teamlogo-teamId-page {
+    width: 120px;
+    height: 120px;
+  }
 }

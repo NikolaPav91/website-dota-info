@@ -59,6 +59,9 @@ class RecentMatches extends React.PureComponent {
           'Result-container': true,
           'Even-row': index%2===1,
           'Uneven-row': index % 2 ===0,
+          'First-two': Math.ceil(index/2)%2===1,
+          'Second-two': Math.ceil(index/2)%2===0,
+
         })
         let result= "1 : 0";
         if (item["radiant_win"]===false) {
@@ -79,7 +82,7 @@ class RecentMatches extends React.PureComponent {
         return (
           <div className={resultcontainerclass}>
             <div className="Result-radiant-team"><img className="Result-teamlogo" src={radiantlogosrc}></img> <span>{radiantname}</span> </div>
-          {result}
+          <span>{result}</span>
             <div className="Result-dire-team"><span>{direname}</span> <img className="Result-teamlogo" src={direlogosrc}></img> </div>
         </div>
         )
@@ -90,10 +93,13 @@ class RecentMatches extends React.PureComponent {
 
       return (
         <div id={this.props.containerId}>
-          Recent games:
+          <span>Latest games:</span>
+        <div className="Recent-matches-inner-container">
+
           <Loader className={loaderclass}></Loader>
           {showmatches}
         </div>
+      </div>
     )
   }
 }

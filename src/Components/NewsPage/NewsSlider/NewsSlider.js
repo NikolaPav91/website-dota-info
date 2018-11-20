@@ -1,5 +1,4 @@
 import React from 'react';
-import './NewsSlider.css';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom'
 
@@ -58,7 +57,11 @@ export default class NewsSlider extends React.PureComponent {
         })
       return (
         <li className= {sliderstoryclass} storyIndex={index}>
-          <img className="Sliderstory-picture" src={item.picturesrc}></img>
+            <Link
+              to={'/News/'+ item.id}
+              className="Picture-link">
+              <img className="Sliderstory-picture" src={item.picturesrc}></img>
+            </Link>
           <div className="Sliderstory-info-container">
             <div className="Sliderstory-info-content">
               <h3>{item.title}</h3>
@@ -83,7 +86,7 @@ export default class NewsSlider extends React.PureComponent {
           "Active": index===this.state.showingStoryIndex,
         })
         }
-          style={{width: 1100/numberofbuttons -2 +"px"}}
+          style={{width: 99/numberofbuttons + "%"}}
           onClick={()=>this.onSliderButtonClick(index)}
           sliderIndex={index}></div>
       )

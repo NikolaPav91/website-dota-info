@@ -1,0 +1,153 @@
+#search-results-page-content {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+#no-results-msg-searchid {
+  margin-top: 30px;
+  font-size: 1.3em;
+}
+#search-results-header-container {
+  width: 92%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Search-filter-form {
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+  font-size: 1.05em;
+}
+
+.Search-result-searchid {
+  margin-left: 3px;
+  margin-right: 3px;
+  margin-bottom: 5px;
+  width: 300px;
+  height: 100px;
+  background: #555658;
+  border: 1px solid #a39180;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+}
+.Search-result-searchid:hover {
+  outline: 1px solid white;
+}
+.Search-result-searchid>img {
+  height: 70px;
+  width: 90px;
+}
+.Search-result-searchid.Team-result>img {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+.Result-info-searchid {
+  width: 200px;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.Result-info-searchid >h3  {
+  min-height: 35%;
+  max-height: 49%;
+  width: 100%;
+  display: flex;
+  margin: 0px;
+  align-items: center;
+
+}
+
+.Result-info-searchid >h3>img {
+  max-height: 25px;
+  width: 28px;
+  height: auto;
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
+.Result-player-teaminfo-container {
+  min-height: 35%;
+  max-height: 49%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+}
+
+.Result-label {
+  color: gold;
+  font-size: 0.8em;
+}
+
+.Result-player-teaminfo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3px;
+  font-size: 1.2em;
+  min-height: 25px;
+}
+
+.Result-team-rank-container {
+  min-height: 35%;
+  max-height: 49%;
+  width: 100%;
+  margin: 0px;
+}
+
+.Result-team-rank {
+  display: inline-block;
+  font-size: 1.3em;
+  margin-left: 3px;
+}
+
+.Result-player-teaminfo>img {
+  max-height: 27px;
+  width: 28px;
+  height: auto;
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
+#search-result-number-navi-container {
+  width: 95%;
+  margin-top: 5px;
+}
+
+@media(max-width:1000px) {
+  #search-results-page-content {
+    justify-content: space-around;
+  }
+}
+@media(max-width: 955px) {
+  #search-result-number-navi-container {
+    display: flex;
+    justify-content: center;
+  }
+  #search-results-header-container {
+    width: 86%;
+  }
+}
+
+@media(max-width:643px) {
+  #search-results-header-container {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 120px;
+  }
+  #search-results-header-container>h1{
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 390px) {
+  .Search-result-searchid {
+    line-height: 1.2em;
+  }
+}

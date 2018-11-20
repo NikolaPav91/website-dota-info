@@ -3,7 +3,7 @@ import React from 'react';
 const TeamsTI= ({teams})=> {
   let showteams=teams.map((item,index)=> {
     const teamlogostyle = {
-  backgroundImage: 'url(' + item.logo + ')',
+  backgroundImage: 'url("' + item.logo + '")',
 };
     return (
       <div className="International-team-container">

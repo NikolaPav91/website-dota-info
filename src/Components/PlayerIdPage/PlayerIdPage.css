@@ -5,31 +5,30 @@
 
 #content-playerid{
   margin-bottom: 30px;
+
 }
 
 .Flag-playerid {
   height: 25px;
   width: auto;
   margin-left: 10px;
-  margin-top: 4px;
 }
 .Player-name-playerid {
-  margin: 10px 0px 0px 15px;
+  margin: 30px 0px 0px 2px;
   display: flex;
   align-items: center;
   height: 38px;
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
 #playerid-content01 {
   display: flex;
   justify-content: space-between;
-  margin-top: 30px;
 }
 
 .Player-info-container-playerid {
   background-color: #1d1e21;
-  width: 660px;
+  width: 640px;
   height: 250px;
   font-size: 1.4em;
   display: flex;
@@ -38,16 +37,14 @@
   justify-content: space-between;
 }
 
-.Player-name-and-picture-playerid {
-  height: 100%;
-  margin-left: 10px;
-}
-
 .Player-picture-playerid {
-  margin-top: 10px;
+  margin-left: 20px;
+
   height: 170px;
   width: auto;
+  border-radius: 50%;
 }
+
 
 .Player-info-right-container-playerid {
   display: flex;
@@ -64,6 +61,9 @@
   font-size: 0.7em;
   display: block;
 }
+.Team-logo-link-playerid {
+  height: 100%;
+}
 
 .Team-logo-playerid {
   margin-left: 10px;
@@ -79,6 +79,7 @@
   height: 250px;
   justify-content: space-around;
   align-items: center;
+  margin-left: 15px;
 
 }
 
@@ -110,16 +111,23 @@
 
 .Container-label-playerid {
   margin-bottom: 5px;
+  margin-left: 5px;
 }
 
 #most-played-heroes-playerid {
   width: 500px;
 }
 
+
+#teammates-playerid {
+  margin-left: 15px;
+  width: 500px;
+}
+
 #teammates-container {
   display: flex;
   flex-flow: column;
-  width: 500px;
+
   background: #1d1e21;
 }
 
@@ -130,7 +138,7 @@
   border-right: 0px solid gray;
   display: flex;
   justify-content: space-between;
-  height: 55px;
+  min-height: 55px;
 }
 
 .Teammate-name-playerid {
@@ -139,12 +147,12 @@
 }
 .Teammate-games-played {
   margin: 5px 10px;
-  width: 24%;
+  width: 22%;
 }
 
 .Teammate-wins {
-  margin: 5px 10px;
-  width: 24%;
+  margin: 5px 5px 5px 25px;
+  width: 22%;
 }
 
 .Teammate-name-playerid>div {
@@ -161,4 +169,106 @@
 
 .Teammates-container-playerid.Uneven-row {
   background-color: black;
+}
+
+@media(max-width: 800px) {
+  #playerid-content02 {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  #content-playerid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #playerid-content01 {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .Player-name-playerid {
+    width: 80%;
+    margin-bottom: 5px;
+  }
+  .Player-info-container-playerid {
+    width: 80%;
+  }
+  #player-stats {
+    width: 80%;
+    flex-flow: row wrap;
+    height: 150px;
+    margin-left: 0px;
+  }
+  #player-stats>div {
+    width: auto;
+    margin-right: 15px;
+    margin-left: 15px;
+    justify-content: flex-start;
+  }
+  #teammates-playerid {
+    margin-left: 0px;
+    width: 80%;
+  }
+  #most-played-heroes-playerid {
+    width: 80%;
+  }
+}
+
+
+@media(max-width: 540px) {
+  .Player-name-playerid {
+    width: 93%;
+  }
+  .Player-info-container-playerid {
+    width: 93%;
+  }
+  #player-stats {
+    width: 93%;
+  }
+  #most-played-heroes-playerid {
+    width: 100%;
+  }
+  #teammates-playerid {
+    width: 100%;
+  }
+  .Player-info-right-container-playerid {
+    margin-right: 10px;
+    padding-left: 15px;
+  }
+}
+
+@media(max-width: 480px) {
+  .Player-picture-playerid {
+    height: 130px;
+    width: auto;
+  }
+}
+
+@media(max-width: 430px) {
+  .Player-picture-playerid {
+    margin-left: 5px;
+
+  }
+}
+
+@media(max-width: 400px) {
+  #player-stats {
+    flex-flow: column;
+    width: 80%;
+    justify-content: space-around;
+  }
+  #player-stats>div{
+    width: 90%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 380px) {
+  #content-playerid {
+    line-height: 1.2em;
+  }
+  #player-stats {
+    width: 90%;
+  }
 }

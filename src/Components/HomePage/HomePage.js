@@ -10,6 +10,7 @@ class HomePage extends React.PureComponent {
       <div className="All-content-container">
         <header className="header-picture1"></header>
         <div id="home-container-bg01" className="Home-bg-container">
+          <div id="home-innerbg01" className="Home-innerbg">
             <div className="Content-width" id="content-container-home01">
               <div id="content-home01">
                 <h1>The most-played game on Steam.</h1>
@@ -20,8 +21,10 @@ class HomePage extends React.PureComponent {
                    features, and heroes, Dota 2 has truly taken on a life of its own.</p>
               </div>
             </div>
+          </div>
         </div>
         <div id="home-container-bg02" className="Home-bg-container">
+          <div id="home-innerbg02" className="Home-innerbg">
             <div className="Content-width" id="content-container-home02">
               <div id="content-home02">
                 <h1>One Battlefield. Infinite Possibilities.</h1>
@@ -32,8 +35,10 @@ class HomePage extends React.PureComponent {
                      on how to play, it empowers you to express your own style..</p>
               </div>
             </div>
+          </div>
         </div>
       <div id="home-container-bg03" className="Home-bg-container">
+        <div id="home-innerbg03" className="Home-innerbg">
           <div className="Content-width" id="content-container-home03">
             <div id="content-home03">
               <h1>All heroes are free.</h1>
@@ -45,17 +50,16 @@ class HomePage extends React.PureComponent {
                  your first match.</p>
             </div>
           </div>
+        </div>
       </div>
       <div id="home-container-bg04" className="Home-bg-container">
-        <div className="Content-width">
-          <YouTube
-            videoId="SmnqsdeHFT0"
-            className="YT-home"
-            opts= {
-              {width: "100%",
-              height: '637px',}
-            }
-          />
+        <div className="Content-width" id="content-home04">
+          <div className="Youtube-container-home">
+            <YouTube
+              videoId="SmnqsdeHFT0"
+              className="YT-home"
+            />
+          </div>
         </div>
       </div>
 

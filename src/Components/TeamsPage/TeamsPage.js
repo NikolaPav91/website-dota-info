@@ -7,7 +7,7 @@ import TeamContainer from './TeamContainer/TeamContainer';
 import TeamsPagePageNumbers from './TeamsPagePageNumber/TeamsPagePageNumbers';
 import './TeamsPage.css';
 
-class TeamsPage extends React.Component {
+class TeamsPage extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -108,11 +108,14 @@ class TeamsPage extends React.Component {
             <div id="content-teams">
               {showtopteams}
             </div>
+            <div id="teams-page-number-navi-box">
             <TeamsPagePageNumbers
               currentPage={this.state.currentPage}
               setCurrentPage={(n)=> this.setCurrentPage(n)}
               maxPages={this.state.maxPages}
+              containerId={"teams-page-number-navi-container"}
             />
+          </div>
 
           </div>
         </div>

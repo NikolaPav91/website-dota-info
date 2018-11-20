@@ -3,25 +3,32 @@ import Script from 'react-load-script';
 import { Tweet } from 'react-twitter-widgets';
 import './NewsIdPage.css';
 import RecentMatches from '../RecentMatches/RecentMatches';
+import YouTube from 'react-youtube';
 
 export default class NewsIdPage extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      scriptLoaded: false,
-    }
-  }
-
-
-
     render() {
     let story=this.props.currentNews.find((item)=> item.id===this.props.routerprops.match.params.newsId);
     let storyshow= story.text.map((item)=> {
       if (item.startsWith("tweetId='")===true){
         return (
         <Tweet tweetId={item.slice(9,-1)}
-      /> )}
-      else {
+      /> )};
+      if (item.startsWith("Youtube-id='")===true) {
+        return (
+          <div className="YT-container-newsid">
+            <YouTube
+              videoId={item.slice(12,-1)}
+              className="YT-newsid"
+            />
+          </div>
+        )}
+        if (item.startsWith("QUOTEDIV:'")) {
+          return(
+            <div className="Quote-container">
+              <i className="fas fa-quote-right Quote-icon-newsid"></i> <div className="Story-text-container" dangerouslySetInnerHTML={{__html: item.slice(10,-1)}}></div>
+            </div>
+          )
+        } else {
         return (
           <div className="Story-text-container" dangerouslySetInnerHTML={{__html: item}}></div>
       )}

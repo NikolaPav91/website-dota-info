@@ -14,10 +14,17 @@ const TeamIdLatestMatchesBox= ({latestMatches})=> {
       result =<div className="TeamId-result Loss">Loss</div>
     }
 
+    let teamlogourl= item["opposing_team_logo"];
+    if (teamlogourl===null) {
+      teamlogourl="/no-image-icon.png"
+    }
+
     return (
       <div className={matchcontainerclass}>
         {result} <span> VS </span>
-        <div className="Opposing-team-teamId"> {item["opposing_team_name"]} <img src={item["opposing_team_logo"]} className="Opposing-team-logo-teamId"></img> </div>
+        <div className="Opposing-team-teamId"> {item["opposing_team_tag"]}
+          <img src={teamlogourl } onError={(e)=>{e.target.onerror = null; e.target.src="/no-image-icon.png";}} className='Opposing-team-logo-teamId'></img>
+         </div>
        </div>
     )
   })

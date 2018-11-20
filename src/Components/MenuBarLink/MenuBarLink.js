@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 export default class MenuBarLink extends React.Component {
 
   render() {
-    console.log('itemtxt'+ this.props.text);
     let theclass=this.props.className;
     let menulinkclass= classNames({
       [theclass]: true,

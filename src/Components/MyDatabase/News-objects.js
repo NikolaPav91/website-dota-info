@@ -14,10 +14,9 @@ const News=[
       of Brazilian Dota 2. Finally South America has the attention it deserves. However,
       cheering for the Brazilian teams is not well documented so far. We asked a real SA
       expert to teach us five memes and chat phrases we can use in the future.
-      <br/><br/><br/>
-      <iframe class="News-id-video"
-        src="https://www.youtube-nocookie.com/embed/v7TkQNLKaHg?rel=0"
-        allowfullscreen="true"></iframe>`
+      <br/><br/><br/>`,
+
+      `Youtube-id='v7TkQNLKaHg'`
     ],
   },
   { id: "002",

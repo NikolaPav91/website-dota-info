@@ -2,6 +2,7 @@ import React from 'react';
 import HeroeGroupContainer from './HeroGroupContainer/HeroGroupContainer';
 import './HeroesPage.css';
 import Loader from '../Loader/Loader';
+import classNames from 'classnames';
 
 class HeroesPage extends React.PureComponent {
   constructor(props) {
@@ -10,23 +11,96 @@ class HeroesPage extends React.PureComponent {
       allHeroes:[],
       visibleHeroDetails: {},
       loaderActive: true,
+      heroInfoPosition: 'relative',
+      windowSize: null,
+    }
+    this.scrollHandler = this.scrollHandler.bind(this)
+    this.resizeHandler = this.resizeHandler.bind(this)
+  }
+
+  resizeHandler() {
+    if (window.matchMedia("(max-width: 730px)").matches) {
+      if (this.state.windowSize==='big') {
+        this.setState({
+          windowSize:'small'
+        })
+        if (document.querySelector('.Hero-info-container').getBoundingClientRect().top<-5) {
+          this.setState({
+            heroInfoPosition: 'fixed'
+          })
+        } else {
+          this.setState({
+            heroInfoPosition: 'relative'
+          })
+        }
+        window.addEventListener("scroll", this.scrollHandler)
+      } else return;
+    } else {
+      if (this.state.windowSize==='small') {
+        this.setState({
+          heroInfoPosition: 'relative',
+          windowSize: 'big',
+        });
+        window.removeEventListener('scroll', this.scrollHandler)
+      } else return;
+    }
+  }
+  scrollHandler() {
+    if (document.querySelector('.Hero-info-container').getBoundingClientRect().top<-5) {
+      this.setState({
+        heroInfoPosition: 'fixed'
+      })
+    };
+    if (document.querySelector('.Hero-info-container').getBoundingClientRect().top+1<document.getElementById('hero-info-wrapper').getBoundingClientRect().top) {
+      this.setState({
+        heroInfoPosition: 'relative',
+      })
     }
   }
 
 
-  componentDidMount() {
+  adaptHeroInfoPositionToScreenSize() {
+      if (window.matchMedia("(max-width: 730px)").matches) {
+        this.setState({
+          windowSize:'small'
+        });
+        if (document.querySelector('.Hero-info-container').getBoundingClientRect().top<-5) {
+          this.setState({
+            heroInfoPosition: 'fixed'
+          })
+        };
+        window.addEventListener("scroll", this.scrollHandler)
+      } else {
+        this.setState({
+          windowSize: 'big',
+        })
+      }
 
-      fetch('https://api.opendota.com/api/heroes')
-      .then(response=>response.json())
-      .then(response=> this.setState({
-        allHeroes: response,
-        loaderActive: false,
-      }))
-      .catch(response=> this.setState({
-        allHeroes: "Error",
-        loaderActive: false,
-      }))
-    }
+
+      window.addEventListener("resize", this.resizeHandler);
+  }
+
+
+  componentDidMount() {
+    fetch('https://api.opendota.com/api/heroes')
+    .then(response=>response.json())
+    .then(response=> this.setState({
+      allHeroes: response,
+      loaderActive: false,
+    }))
+    .then( response=> this.adaptHeroInfoPositionToScreenSize()
+
+    )
+    .catch(response=> this.setState({
+      allHeroes: "Error",
+      loaderActive: false,
+    }))
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.scrollHandler);
+    window.removeEventListener('resize', this.resizeHandler);
+  }
 
   setVisibleHeroDetails(item) {
     let newhero;
@@ -44,7 +118,7 @@ class HeroesPage extends React.PureComponent {
   render() {
     if (this.state.allHeroes==="Error") {
       return (
-        <div className="All-content-container">
+        <div className="All-content-container  Green-background">
           <header className="header-picture1"></header>
           <div id="hero-page-bg01">
             <div id="error-message-heroes"> Something went wrong, please try again later</div>
@@ -54,7 +128,7 @@ class HeroesPage extends React.PureComponent {
     }
     if (this.state.loaderActive) {
       return (
-        <div className="All-content-container">
+        <div className="All-content-container Green-background">
           <header className="header-picture1"></header>
           <div id="hero-page-bg01">
             <Loader className="Loader"/>
@@ -81,16 +155,23 @@ class HeroesPage extends React.PureComponent {
       herorolesdiv=<div id="hero-role-container">{heroatack} <span>{heroroles}</span></div>
   }
 
+  let heroinfoclass= classNames({
+    'Position-fixed': this.state.heroInfoPosition==='fixed',
+    'Position-relative': this.state.heroInfoPosition==='relative',
+    'Hero-info-container': true,
+  })
 
     return (
       <div className="All-content-container">
         <header className="header-picture1"></header>
         <div className="All-content-container Green-background">
           <div id="hero-page-content01">
-            <div id="hero-info-container">
+            <div id="hero-info-wrapper">
+            <div className={heroinfoclass}>
               <div id="hero-name-container-heropage"> {heroname}</div>
               {herorolesdiv}
             </div>
+          </div>
             <div id="all-hero-groups-container">
               <HeroeGroupContainer
                 setVisibleHeroDetails={(item)=> this.setVisibleHeroDetails(item)}

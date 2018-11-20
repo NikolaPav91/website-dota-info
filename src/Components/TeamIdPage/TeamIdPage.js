@@ -24,7 +24,7 @@ class TeamIdPage extends React.PureComponent {
   getPlayers() {
     return (
       fetch('https://api.opendota.com/api/teams/' +
-      this.props.match.params.teamId +"/players")
+      this.props.routerprops.match.params.teamId +"/players")
       .then(response=> response.json())
       .then(response =>
        response
@@ -36,7 +36,7 @@ class TeamIdPage extends React.PureComponent {
 
   getHeroes() {
     return (
-      fetch('https://api.opendota.com/api/teams/'+ this.props.match.params.teamId +'/heroes')
+      fetch('https://api.opendota.com/api/teams/'+ this.props.routerprops.match.params.teamId +'/heroes')
       .then(response=> response.json())
       .then(response=> response.slice(0,6))
     )
@@ -55,19 +55,20 @@ class TeamIdPage extends React.PureComponent {
           } )
         )
         .then(response=>  {this.props.setProTeams(response); return response})
-        .then(response=> response.find(item=> item["team_id"]==this.props.match.params.teamId))
+        .then(response=> response.find(item=> item["team_id"]==this.props.routerprops.match.params.teamId))
+        .catch(response=> this.props.setProTeams('Something went wrong, please try again later') )
       )
 
     } else {
       return (
-        this.props.proTeams.find(item=> item["team_id"]==this.props.match.params.teamId)
+        this.props.proTeams.find(item=> item["team_id"]==this.props.routerprops.match.params.teamId)
       )
     }
   }
 
   getMatches() {
     return (
-      fetch('https://api.opendota.com/api/teams/' + this.props.match.params.teamId +  '/matches')
+      fetch('https://api.opendota.com/api/teams/' + this.props.routerprops.match.params.teamId +  '/matches')
       .then(response=> response.json())
       .then(response=> response.slice(0,15))
     )
@@ -83,11 +84,23 @@ class TeamIdPage extends React.PureComponent {
     });
     this.getPlayersAndTeaminfo()
     .then(([players,teaminfo,heroes,matches])=> {
+      let improvedmatches= matches.map(item=> {
+        let opposingteam= this.props.proTeams.find(findteam=>findteam["team_id"]==item["opposing_team_id"]);
+        if (opposingteam===undefined) {
+          item["opposing_team_tag"]='No Tag'
+        } else {
+          item["opposing_team_tag"]= opposingteam.tag; }
+        if (((opposingteam !==undefined) && (item["opposing_team_logo"]===null))) {
+          item["opposing_team_logo"]= opposingteam["logo_url"];
+        }
+        return ( item );
+      } );
+      console.log(JSON.stringify(improvedmatches))
       this.setState({
         mostPlayedHeroes: heroes,
         currentMembers: players,
         teamInfo: teaminfo,
-        latestMatches: matches,}); return [players,teaminfo,heroes,matches]})
+        latestMatches: improvedmatches,}); return [players,teaminfo,heroes,improvedmatches]})
     .then(([players,teaminfo,heroes,matches])=>
        [players.map(item=>
         fetch('https://api.opendota.com/api/players/' + item["account_id"])
@@ -102,11 +115,10 @@ class TeamIdPage extends React.PureComponent {
       memberBonusInfo: players,
       });
     })
-    .catch(response => this.setState({loaderActive: false, errorMsg: "Something went wrong, try again"}))
+    // .catch(response => this.setState({loaderActive: false, errorMsg: "Something went wrong, try again"}))
   }
 
   render() {
-    console.log('matches:' + JSON.stringify(this.state.recentMatches))
     let loader;
     if (this.state.loaderActive) {loader=<Loader className='Loader'></Loader>}
 
@@ -126,7 +138,7 @@ class TeamIdPage extends React.PureComponent {
     if (!name) {name="?"};
     if (!tag) {tag="?"};
     let content01class= classNames({
-      'page-teamId-content01': !this.state.loaderActive,
+      'Page-teamId-content01': !this.state.loaderActive,
       'Display-none': this.state.loaderActive
     })
 

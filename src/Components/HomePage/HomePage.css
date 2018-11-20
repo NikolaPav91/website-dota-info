@@ -9,12 +9,12 @@
 }
 #content-home01>h1, #content-home02>h1, #content-home03>h1 {
   font-size: 2em;
-  padding: 0 10px;
+  padding: 0 20px;
 }
 #content-home01>p, #content-home02>p, #content-home03>p {
   font-size: 1.4em;
   line-height: 1.5em;
-  padding: 0 10px;
+  padding: 0 20px;
 }
 
 .Home-bg-container {
@@ -33,6 +33,14 @@
   align-items: center;
 }
 
+.Home-innerbg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #home-container-bg01 {
   background-image: url(http://cdn.dota2.com/apps/dota2/images/blog/play/bg_04.jpg);
 
@@ -40,6 +48,7 @@
 
 
 #content-container-home01 {
+  color: black;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -55,6 +64,7 @@
   align-items: center;
 }
 #content-container-home03 {
+  color: black;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -68,9 +78,77 @@
   background-image: url(http://cdn.dota2.com/apps/dota2/images/blog/play/bg_02.jpg);
 }
 
+#content-home04 {
+  display: flex;
+  justify-content: center;
+}
 
-@media (max-width: 900px) {
-  .Menu-link {
-    padding: 5px 10px;
+.YT-home {
+  width: 1000px;
+  height: 561px;
+}
+
+@media(max-width: 1098px) {
+  #home-container-bg04 {
+    height: auto;
+  }
+  #content-home04 {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 8%;
+    padding-bottom: 8%;
+  }
+  .Youtube-container-home {
+    position: relative;
+    width: 85%;
+    padding-bottom: 47%;
+    float: left;
+    height: 0;
+  }
+  .YT-home {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+  }
+}
+
+@media (max-width: 1030px) {
+
+
+  #home-innerbg01,#home-innerbg03 {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  #home-innerbg02 {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .Home-bg-container {
+    background-size: auto 100%;
+  }
+}
+
+
+
+@media(max-width: 800px) {
+
+  #home-container-bg01,#home-container-bg03 {
+    background-position: left;
+  }
+  #home-container-bg02 {
+    background-position: right;
+  }
+  #content-container-home01,#content-container-home02,#content-container-home03 {
+    justify-content: center;
+  }
+}
+
+@media(max-width: 600px) {
+  .Home-bg-container {
+    font-size: 0.9em;
+  }
+  .Youtube-container-home {
+    width: 92%;
+    padding-bottom: 51%;
   }
 }

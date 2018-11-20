@@ -9,14 +9,14 @@ const proTeams= (state=null, action)=> {
   }
 }
 
-const visitingTeamId= (state=null, action) => {
-  switch (action.type) {
-    case 'SET_VISITING_TEAM_ID':
-      return action.teamid;
+
+const proPlayers= (state= null, action) => {
+  switch(action.type) {
+    case 'SET_PRO_PLAYERS':
+     return action.playerList;
     default:
       return state
   }
 }
-
-const reducers= combineReducers({proTeams, visitingTeamId})
+const reducers= combineReducers({proTeams, proPlayers})
 export default reducers
