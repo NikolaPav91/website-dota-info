@@ -1,16 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import News from './News';
-import NewsSlider from '../NewsSlider/NewsSlider';
+import News from '../MyDatabase/News-objects.js';
+import NewsSlider from './NewsSlider/NewsSlider';
 import './NewsPage.css';
-import RecentStories from '../RecentStories/RecentStories';
+import RecentStories from './RecentStories/RecentStories';
 import RecentMatches from '../RecentMatches/RecentMatches';
 
 class NewsPage extends React.PureComponent {
-
-  componentDidMount() {
-      this.props.setActiveIndex(1);
-    }
 
   render() {
     return (
@@ -25,7 +21,7 @@ class NewsPage extends React.PureComponent {
 
 
               <RecentStories recentNews={News}/>
-              <RecentMatches />
+              <RecentMatches containerId="news-page-recent-matches-container" />
           </div>
         </div>
       </div>
@@ -33,18 +29,5 @@ class NewsPage extends React.PureComponent {
   }
 }
 
-const mapDispatchToProps= (dispatch)=> {
-  return {
 
-    setActiveIndex: (index) => {
-      dispatch({
-        type: 'CHANGE_ACTIVE_INDEX',
-        index: index,
-      });
-    },
-  }
-}
-
-const NewsPageContainer= connect(null, mapDispatchToProps)(NewsPage);
-
-export default NewsPageContainer
+export default NewsPage

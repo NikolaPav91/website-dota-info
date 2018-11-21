@@ -7,7 +7,7 @@ import PageTIStandings from './PageTIStandings/PageTIStandings.js';
 import PageTITeams from './PageTITeams/PageTITeams';
 import PageTIMedia from './PageTIMedia/PageTIMedia';
 import { Switch, Route } from 'react-router-dom';
-import teamsarray from './TeamsArray.js';
+import teamsarray from '../MyDatabase/Teams-objects';
 
 class PageTheInternational extends React.PureComponent {
 
@@ -27,12 +27,12 @@ class PageTheInternational extends React.PureComponent {
               menuButtons={["Overview", "Standings", "Media", "Teams"]}
               currentURL={currenturl}
               subLink="The International/"
-              className="Menu-link"
+              className="Menu-link Page-international"
             />
           </div>
 
           </div>
-          <div className="All-content-container" id="international-allpages-bg">
+          <div className="All-content-container Green-background" id="international-allpages-bg">
 
           <Switch>
             <Route exact path='/The International/Overview' render={(props) => <PageTIOverview />}
@@ -52,18 +52,4 @@ class PageTheInternational extends React.PureComponent {
   }
 }
 
-
-const mapDispatchToProps= (dispatch)=> {
-  return {
-
-    setActiveIndex: (index) => {
-      dispatch({
-        type: 'CHANGE_ACTIVE_INDEX',
-        index: index,
-      });
-    },
-  }
-}
-
-const PageTheInternationalContainer= connect(null, mapDispatchToProps)(PageTheInternational);
-export default PageTheInternationalContainer
+export default PageTheInternational

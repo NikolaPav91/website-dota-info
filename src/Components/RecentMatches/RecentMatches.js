@@ -20,7 +20,7 @@ class RecentMatches extends React.PureComponent {
     .then(response=> response.json())
     .then(response=>
       response
-      .filter(item=>(item.leagueid===10332 || item.leagueid===10269 || item.leagueid===10145))
+      .filter(item=>(item.leagueid===10326 || item.leagueid===10132 || item.leagueid===10296))
       .slice(0,32 )
       .map((item,index)=>{return {id: item["match_id"]
     }})
@@ -30,15 +30,17 @@ class RecentMatches extends React.PureComponent {
       .map((item)=>
         fetch('https://api.opendota.com/api/matches/'+ item.id)
         .then(response=> response.json())
-
-    )
-
+      )
     )
     .then(async response=> await Promise.all(response)
     )
     .then(response=> this.setState({
       loaderActive: false,
       latestMatches: response,
+    }))
+    .catch(response=> this.setState({
+      loaderActive: false,
+      latestMatches: "Error"
     }))
 
   }
@@ -48,11 +50,22 @@ class RecentMatches extends React.PureComponent {
         'Display-none': !this.state.loaderActive
       })
       let matches= this.state.latestMatches;
-      let showmatches= matches.map((item,index)=> {
+      let showmatches;
+      if (this.state.latestMatches==="Error") {
+        showmatches=
+          <div className="Error-message" id="Error-recent-matches">
+            <p>Something went wrong, please try again later.</p>
+            <p>(Maximum of 60 calls per minute to opendota api probably exceeded)</p>
+          </div>
+      } else {
+      showmatches= matches.map((item,index)=> {
         let resultcontainerclass=classNames({
           'Result-container': true,
           'Even-row': index%2===1,
           'Uneven-row': index % 2 ===0,
+          'First-two': Math.ceil(index/2)%2===1,
+          'Second-two': Math.ceil(index/2)%2===0,
+
         })
         let result= "1 : 0";
         if (item["radiant_win"]===false) {
@@ -70,24 +83,27 @@ class RecentMatches extends React.PureComponent {
         if (!direname) {
           direname=item["dire_team"].name
         }
-
-
-
         return (
           <div className={resultcontainerclass}>
             <div className="Result-radiant-team"><img className="Result-teamlogo" src={radiantlogosrc}></img> <span>{radiantname}</span> </div>
-          {result}
+          <span>{result}</span>
             <div className="Result-dire-team"><span>{direname}</span> <img className="Result-teamlogo" src={direlogosrc}></img> </div>
         </div>
         )
       }
     )
+  }
+
+
       return (
-        <div id="recent-matches-container">
-          Recent games:
+        <div id={this.props.containerId}>
+          <span>Latest games:</span>
+        <div className="Recent-matches-inner-container">
+
           <Loader className={loaderclass}></Loader>
           {showmatches}
         </div>
+      </div>
     )
   }
 }

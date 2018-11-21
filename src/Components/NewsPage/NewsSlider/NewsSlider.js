@@ -1,5 +1,4 @@
 import React from 'react';
-import './NewsSlider.css';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom'
 
@@ -43,8 +42,8 @@ export default class NewsSlider extends React.PureComponent {
   }
 
   render() {
-    let lastfourstories=this.props.sliderNews;
-    let shownews=lastfourstories.map((item,index)=> {
+    let slidernews=this.props.sliderNews;
+    let shownews=slidernews.map((item,index)=> {
       let slidertext= item.teaser.slice(0,200);
       let slidertextend='...'
       if (slidertext.endsWith('.')===true) {
@@ -52,13 +51,17 @@ export default class NewsSlider extends React.PureComponent {
       }
       let sliderstoryclass= classNames({
         'Sliderstory': true,
-        'Next-story': ((index===this.state.showingStoryIndex+1) || (index===this.state.showingStoryIndex-lastfourstories.length +1)),
+        'Next-story': ((index===this.state.showingStoryIndex+1) || (index===this.state.showingStoryIndex-slidernews.length +1)),
         'Story-showing': index===this.state.showingStoryIndex,
-        'Story-removing': ((index===this.state.showingStoryIndex-1) || (index===this.state.showingStoryIndex + lastfourstories.length -1 )),
+        'Story-removing': ((index===this.state.showingStoryIndex-1) || (index===this.state.showingStoryIndex + slidernews.length -1 )),
         })
       return (
         <li className= {sliderstoryclass} storyIndex={index}>
-          <img className="Sliderstory-picture" src={item.picturesrc}></img>
+            <Link
+              to={'/News/'+ item.id}
+              className="Picture-link">
+              <img className="Sliderstory-picture" src={item.picturesrc}></img>
+            </Link>
           <div className="Sliderstory-info-container">
             <div className="Sliderstory-info-content">
               <h3>{item.title}</h3>
@@ -75,15 +78,15 @@ export default class NewsSlider extends React.PureComponent {
         </li>
       )
     })
-    let numberofbuttons= lastfourstories.length;
-    let sliderbuttons= lastfourstories.map((item, index)=>{
+    let numberofbuttons= slidernews.length;
+    let sliderbuttons= slidernews.map((item, index)=>{
       return (
         <div className={ classNames({
           "Sliderbuttons": true,
           "Active": index===this.state.showingStoryIndex,
         })
         }
-          style={{width: 1100/numberofbuttons -2 +"px"}}
+          style={{width: 99/numberofbuttons + "%"}}
           onClick={()=>this.onSliderButtonClick(index)}
           sliderIndex={index}></div>
       )

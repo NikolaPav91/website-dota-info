@@ -1,22 +1,22 @@
 import { combineReducers } from 'redux';
 
-const activeIndex= (state=0, action)=> {
+const proTeams= (state=null, action)=> {
   switch (action.type) {
-    case 'CHANGE_ACTIVE_INDEX':
-      return action.index;
+    case 'SET_PRO_TEAMS':
+      return action.teamList;
     default:
       return state
   }
 }
 
-const visitingTeamId= (state=null, action) => {
-  switch (action.type) {
-    case 'SET_VISITING_TEAM_ID':
-      return action.teamid;
+
+const proPlayers= (state= null, action) => {
+  switch(action.type) {
+    case 'SET_PRO_PLAYERS':
+     return action.playerList;
     default:
       return state
   }
 }
-
-const reducers= combineReducers({activeIndex, visitingTeamId})
+const reducers= combineReducers({proTeams, proPlayers})
 export default reducers

@@ -22,7 +22,6 @@
 }
 
 .Overview-box {
-  width: 300px;
   height: 160px;
   display: flex;
   flex-flow: column;
@@ -79,6 +78,7 @@
   width: 30%;
   padding:15px;
   font-family: TIWatchingCustomFont;
+  min-width: 250px;
 }
 
 .Watching-option-box>p {
@@ -97,9 +97,9 @@
 
 #international-overview-bg03 {
   background-image: url(http://cdn.dota2.com/apps/dota2/images/international2018/overview/bg_prize_pool.jpg);
-  height: 668px;
+  height: 600px;
   width: 100%;
-  background-position: center;
+  background-position: center bottom;
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
@@ -113,6 +113,7 @@
   width: 600px;
   position: relative;
   bottom: 30px;
+  margin-top: 30px;
 }
 
 #international-overview-content03>h1{
@@ -120,6 +121,7 @@
 }
 
 #international-overview-content03>p {
+  width: 100%;
   margin-top:30px;
   line-height: 1.6em;
   font-size: 1.2em;
@@ -128,9 +130,9 @@
 
 #international-overview-bg04 {
   background-image: url(http://cdn.dota2.com/apps/dota2/images/international2018/overview/bg_battlepass.jpg);
-  height: 946px;
+  height: 820px;
   width: 100%;
-  background-position: center;
+  background-position: center top;
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
@@ -146,7 +148,7 @@
 #battlepass-logo {
   background-image: url(http://cdn.dota2.com/apps/dota2/images/international2018/overview/battlepass_logo.png);
   height: 170px;
-  width: 1000px;
+  width: 600px;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -155,4 +157,150 @@
   width: 400px;
   line-height: 1.5em;
   text-align: center;
+}
+
+@media(max-width: 1030px) {
+  #overview-box1 {
+    margin-left: 15px;
+  }
+  #overview-box2 {
+    margin-right: 15px
+  }
+}
+@media(max-width: 940px) {
+
+  #watching-options {
+    justify-content: space-around;
+  }
+  .Watching-option-box {
+    padding-left: 15px;
+    padding-right: 5px;
+  }
+
+}
+@media(max-width: 900px) {
+  .Watching-option-box>h3  {
+    margin-top: 5px;
+  }
+  .Watching-option-box>p  {
+    margin-top: 5px;
+  }
+}
+
+@media(max-width: 800px) {
+  .Overview-box>p{
+    color: #d0bba8;
+  }
+  #international-overview-bg02 {
+    height: 850px;
+    background-size: cover;
+  }
+  #international-overview-content02 >h2 {
+    height: 65px;
+  }
+  #watching-options {
+    height: 785px;
+  }
+  .Watching-option-box {
+    padding: 0px 15px 0px 15px;
+    width: 42%;
+    min-width: 230px;
+  }
+  .Watching-option-box>h3  {
+    margin-top: 15px;
+  }
+  .Watching-option-box>p  {
+    margin-top: 5px;
+  }
+}
+
+@media (max-width: 630px) {
+  .Overview-box {
+    width: auto;
+    background: rgba(49,45,45,0.71);
+    padding-left: 5px;
+    padding-right: 5px;
+    min-width: 1px;
+  }
+  #overview-box1 {
+    margin-left: 0px;
+    margin-right: 7px;
+  }
+  #overview-box2 {
+    margin-right: 0px;
+  }
+
+  #international-overview-content03 {
+    width: 97%;
+  }
+
+  #international-overview-content04 {
+    width: 100%;
+  }
+  #battlepass-logo {
+    width: 100%;
+  }
+}
+
+@media(max-width: 540px) {
+
+
+  #international-overview-bg02 {
+    height: 1480px;
+  }
+  #watching-options {
+    height: 1365px;
+    align-items:  center;
+  }
+  #international-overview-content02 >h2 {
+    height: 115px;
+  }
+  .Watching-option-box>h3  {
+    margin-top: 10px;
+  }
+}
+
+@media(max-width: 490px) {
+  #international-overview-content03 >h1 {
+    width: 250px;
+  }
+  #international-overview-content03 {
+    width: 95%;
+  }
+}
+
+@media (max-width: 468px) {
+  #international-allpages-bg p {
+    line-height: 1.2em;
+  }
+  #international-header-logo {
+    background-size: 130%;
+    }
+  #international-overview-content01 {
+    flex-flow: column;
+    justify-content: flex-start;
+  }
+  .Overview-box {
+    height: 110px;
+  }
+  #overview-box1 {
+    border-bottom: 1px solid white;
+    margin-right: 0px;
+  }
+  #battlepass-logo{
+    background-size: contain;
+  }
+  #battlepass-info {
+    width: 90%;
+  }
+
+}
+
+@media (max-width: 365px) {
+  #international-navibar-content>.Menu-bar {
+    width: 100%;
+  }
+  .Menu-link.Page-international {
+    padding: 5px 4px;
+  }
 }

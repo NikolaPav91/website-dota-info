@@ -11,21 +11,59 @@
     src: url('/DUBIEL.TTF'); /*URL to font*/
 }
 
-/* #e01134 is red */
- /* #191b1e is black */
 
-html { font-size: 1em; }
-body {
+
+html { font-size: 16px; }
+
+iframe {
+  border: 0px;
+  margin: 0px;
 }
+
+a{
+  color:inherit;
+  text-decoration: none;
+}
+
 .App {
   font-family: CustomFont;
   color: white;
-  min-height: 900px;
+  min-height: 750px;
+  min-width: 250px;
   width: 100%;
   background-color: black;
+  line-height: 1.2em;
 
 }
 
+.App h1 {
+  line-height: 1.2em
+}
+.App h2 {
+  line-height: 1.2em
+}
+/* @media(max-width: 1300px)  {
+  .App {
+    line-height: 1.2em;
+  }
+} */
+.Error-message {
+  font-style: italic;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Error-message>p {
+  margin: 0px;
+}
+.Error-message.Big {
+  font-size: 1.2em;
+  max-width: 600px;
+}
+.Error-message.Big> p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 #navi-bar-bg {
   width: 100%;
   display: flex;
@@ -49,12 +87,19 @@ body {
 }
 
 .Menu-link {
-  padding: 5px 20px;
+  padding: 5px 15px;
   color: #cecece;
   font-size: 1.2em;
   text-decoration: none;
-  margin-right: 1px;
+  margin-right: 6px;
+  margin-left: 6px;
   position: relative;
+}
+.Menu-link:first-child {
+  margin-left: 0px;
+}
+.Menu-link:last-child {
+  margin-right: 0px;
 }
 
 .Menu-link:hover {
@@ -69,19 +114,24 @@ body {
   content:"";
   position: absolute;
   bottom: 0px;
-  left: 10%;
+  left: 5%;
   height: 2px;
   background-color: white;
-  width: 80%;
+  width: 90%;
 
 }
 
 #search-container {
   width: 200px;
-  height: 40px;
+  height: 32px;
   text-align: left;
   display: flex;
   align-items: center;
+  position: relative;
+  margin: 0 5px 0 5px;
+}
+#search-result-error-message {
+  padding: 3px;
 }
 
 #search-container> input {
@@ -114,6 +164,56 @@ body {
   color: #e01134;
 }
 
+.Search-all-results-container {
+  position: absolute;
+  top: 100%;
+  left:0px;
+  width: 100%;
+  z-index: 15;
+  background: rgba(51, 52, 56, 0.75);
+  min-height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Search-result-link {
+  height: 50px;
+  width: 100%;
+  overflow: hidden;
+  display: block;
+}
+.Search-result-item {
+  font-size: 0.9em;
+  width: 97%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+}
+.Search-result-link:hover {
+  outline: 1px solid white;
+  background: gray;
+}
+.Search-result-link.Selected {
+  outline: 1px solid white;
+  background: gray;
+}
+.Search-result-link:focus {
+  outline: 1px solid white;
+  background: gray;
+}
+.Search-result-item>img {
+  margin-right: 5px;
+  margin-left: 3px;
+  max-height: 95%;
+  max-width: 50px;
+  width: 40px;
+  height: auto;
+  min-height: 30px;
+}
+
 .header-picture1 {
   width: 100%;
   height: 300px;
@@ -123,243 +223,180 @@ body {
   box-shadow: 0px 15px 50px black inset, 0px -5px 50px black inset;
 }
 
-#header-top-container {
-  width: 1100px;
-  height: 70%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 
-}
-
-
-#header-bottom-container {
-  width: 1100px;
-  height: 30%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#home-container-bg01 {
-  background-image: url(http://cdn.dota2.com/apps/dota2/images/blog/play/bg_04.jpg);
-
-}
-.Home-inner-bg {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-}
-#home-inner-bg01 {
-  /* background: #ca9b314d; */
-
-
-}
-
-
-/* VAZNOOOO */
-.Content-container {
-  width: 1100px;
-}
- /* VAZNOOOOOOOO */
-iframe {
-  border: 0px;
-  margin: 0px;
-}
-
-#content-container-home01 {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-
-}
-
-#content-home01, #content-home02, #content-home03 {
-  width: 550px;
-  font-family: 'Radiance';
-  position: relative;
-  bottom: 35px;
-}
-#content-home01 {
-
-}
-#content-home01>h1, #content-home02>h1, #content-home03>h1 {
-  font-size: 2em;
-  padding: 0 10px;
-}
-#content-home01>p, #content-home02>p, #content-home03>p {
-  font-size: 1.4em;
-  line-height: 1.5em;
-  padding: 0 10px;
-}
-
-#home-container-bg02 {
-  background-image: url(http://cdn.dota2.com/apps/dota2/images/blog/play/bg_05.jpg);
-}
-#content-container-home02 {
-  display: flex;
-  align-items: center;
-}
-#content-container-home03 {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-#home-container-bg03 {
-  background-image: url(http://cdn.dota2.com/apps/dota2/images/blog/play/bg_06.jpg);
-  box-shadow: -0px -25px 50px #191a1b inset,-0px 15px 50px black inset;
-}
-#home-container-bg04 {
-  height: 720px;
-  background-image: url(http://cdn.dota2.com/apps/dota2/images/blog/play/bg_02.jpg);
-}
-
-
-.Container-bg {
-
-  background-repeat: no-repeat;
-  margin-right: auto;
-  margin-left: auto;
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 600px;
-  background-position: center;
-  box-shadow: -0px 15px 50px black inset;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-
-
-
-@media (max-width: 1100px) {
-  #header-top-container, #header-bottom-container {
-    width: 100%;
-  }
-}
-
-#content-bg {
-  width: 100%;
-  display: flex;
-  min-height: 500px;
-  justify-content: center;
-  position: relative;
-}
 
 .All-content-container {
   display: flex;
   flex-flow: column;
   width: 100%;
   align-items: center;
+  min-height: 600px;
 }
 
-/* .YT-home {
+.Content-container {
   width: 1100px;
-  height: auto;
-} */
-
-#content-teams-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-#content-teams {
-  margin-top: 10px;
-  width: 1100px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  position: relative;
-
-}
-
-.Team-link {
-  text-decoration: none;
-  color: white;
-}
-
-.Team-container {
-  width: 250px;
-  height: 200px;
-  margin: 15px 4px;
-  border: 1px solid white;
-  border-radius: 10px;
   display: flex;
   flex-flow: column;
-  background-color: #191b1e;
-  box-shadow: 3px 3px white;
+}
 
-  -webkit-transition: transform 1s; /* Safari */
-    transition: transform 1s;
+.Green-background {
+  background-image: url(/bg_standard.jpg);
+  padding-bottom: 50px;
+}
+
+.Content-width {
+  width: 1100px;
 }
 
 
-.Team-container:hover {
-  transform: scale(1.08,1.08);
-  cursor: pointer;
-}
 
-
-.Team-top-container {
-  height: 50%;
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
-}
-
-.Team-top-container> p, .Team-bottom-container>p {
-  width: 140px;
-  padding: 5px 0px 5px 0px;
-  margin: 0px;
-}
-
-.Team-name-block {
-  display: inline-block;
-}
-
-.Teamlogo {
-  height: 90px;
-  width: 100px;
-
-}
-
-.Team-textlabels {
-  font-size: 0.8em;
-}
-
-.Team-bottom-container {
-  height: 50%;
+#footer {
   display: flex;
   justify-content: center;
-  flex-flow: column wrap;
-  margin-left: 5px;
-
+  height: 170px;
+  width: 100%;
+  background: black;
+  border-top: 1px solid white;
 }
 
-.Rank-container {
-  height: 70px;
-  font-size: 0.9em;
+#footer-content {
+  width: 1100px;
   display: flex;
-  flex-flow: column wrap;
-  width: 100px;
+  justify-content: center;
+
 }
 
-.Rank-number {
- font-size: 3em;
+
+@media (max-width: 1120px) {
+  .Content-container, .Content-width {
+    width: 98.5%;
+  }
 }
 
-.Rank-symbol {
-  height: 33px;
-  width:33px;
+@media(max-width: 800px) {
+  .All-content-container.Green-background {
+    min-height: 1000px;
+  }
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@media (max-width: 797px) {
+  .Active-menulink.All-pages:after {
+    left: 5%;
+    width: 90%;
+  }
+  .Menu-link.All-pages {
+    padding: 5px 9px;
+    margin-right: 2px;
+    margin-left: 2px;
+  }
+  .Menu-link.All-pages:first-child {
+    margin-left: 0px;
+  }
+  .Menu-link.All-pages:last-child {
+    margin-right: 0px;
+  }
+}
+
+@media(max-width: 700px) {
+  #navi-bar-bg {
+    height: auto;
+    font-size: 0.9em;
+  }
+  #navi-bar-container {
+    margin-top: 7px;
+  }
+  #navi-bar-container>.Menu-bar {
+    justify-content: space-around;
+    width: 74%;
+    flex-shrink: 100;
+  }
+  .Menu-link.All-pages {
+    padding: 5px 5px;
+  }
+  .Active-menulink.All-pages:after {
+    width: 100%;
+    left: 0;
+  }
+
+  #search-container {
+    width: 160px;
+    height: 30px;
+    flex-shrink: 0;
+  }
+
+}
+
+@media(max-width: 590px) {
+  .Active-menulink.All-pages:after {
+    left: 0;
+    width: 100%;
+  }
+  #navi-bar-bg {
+    height: auto;
+  }
+  #navi-bar-container {
+    align-items: flex-end;
+
+  }
+  #navi-bar-container>.Menu-bar {
+    margin: 0 10px 0 10px;
+    width: 100%;
+    justify-content: space-between;
+
+  }
+  .Menu-link.All-pages {
+    padding: 6px 2px;
+  }
+  #search-container {
+    height: 30px;
+  }
+}
+
+@media (max-width:580px) {
+  #navi-bar-bg {
+    border: none;
+    background: none;
+  }
+  #navi-bar-container {
+    flex-flow: column;
+
+  }
+  #navi-bar-container>.Menu-bar {
+      border-bottom: 1px solid white;
+      justify-content: space-around;
+      margin-right: 0;
+  }
+
+  #search-container {
+    align-self: flex-end;
+    margin-top: 3px;
+    width: 200px;
+  }
+  .Search-result-link {
+    height: 40px;
+  }
+  .header-picture1 {
+    background-size: 800px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 450px) {
+  .Active-menulink.All-pages:after {
+    height: 2px;
+  }
+  #navi-bar-container {
+    font-size: 0.9em;
+  }
+  #navi-bar-container>.Menu-bar {
+    width: 100%;
+  }
+  #search-container {
+    width: 170px;
+  }
+}
+@media (max-width: 400px) {
+  .Search-result-link {
+    line-height: 1.2em;
+  }
 }

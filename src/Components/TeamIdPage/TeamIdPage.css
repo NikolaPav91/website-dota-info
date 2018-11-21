@@ -1,0 +1,278 @@
+
+.Page-teamId-content01 {
+  display: flex;
+  justify-content: space-between;
+  width: 1100px;
+  margin-bottom: 20px;
+}
+
+
+#error-page-teamId {
+  margin-top: 100px;
+}
+
+.Content-left-container {
+  width: 600px;
+  margin-right: 8px;
+}
+
+.Team-container-teamId-page{
+  display: flex;
+  background-color: #1d1e21;
+  height: 300px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Teamlogo-teamId-page{
+  margin-left: 20px;
+  height: 200px;
+  width: 200px;
+}
+
+.Team-right-container-teamId-page{
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  width: 150px;
+  height: 80%;
+  padding: 0px 20px;
+  border-left: 2px solid gray;
+}
+
+.Team-right-container-teamId-page>p {
+    margin:0px;
+    font-size: 1.5em;
+}
+
+.Team-right-container-teamId-page span {
+  color: #ca7;
+  font-size: 0.65em;
+}
+
+.Team-players-box-header {
+  margin: 0px;
+  margin-bottom: 10px;
+  margin-top: 50px;
+}
+
+.Team-with-players-box,.Most-played-heroes-box {
+  background-color: #1d1e21;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+
+.Player-info-container,.Hero-container-teamid {
+  width: 100%;
+  border-color: gray;
+  border-right: 0px solid gray;
+  display: flex;
+  justify-content: space-between;
+  min-height: 55px;
+}
+.Player-info-container:hover {
+  outline: 1px solid white;
+  z-index: 15;
+}
+.Player-name, .Player-country {
+  margin: 5px 10px;
+  width: 37%;
+}
+
+.Player-mmr {
+  width: 20%;
+    margin: 5px 10px;
+}
+
+.Hero-name {
+  margin: 5px 10px;
+  width: 40%;
+}
+
+ .Hero-games-played-teamid {
+  margin: 5px 10px;
+  width: 22%;
+}
+.Hero-wins-teamid {
+ margin: 5px 5px 5px 25px;
+ width: 22%;
+}
+
+.Hero-name>div {
+  display: flex;
+  align-items: center;
+}
+
+.Player-info-container.Uneven-row,.Hero-container-teamid.Uneven-row {
+  background-color: black;
+}
+.Player-info-label.TeamId-page, .Hero-info-label-teamid{
+  color: #ca7;
+  font-size: 0.85em;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.Country-label.TeamId-page {
+  display: block;
+  margin-bottom: 3px;
+}
+
+.Player-country.TeamId-page {
+  display: block;
+  height: 38px;
+  align-items: center;
+  font-size: 0.95em;
+}
+.Player-flag.TeamId-page {
+  width: auto;
+  height: 14px;
+}
+
+
+.Hero-picture-teamid {
+  height: 20px;
+  width: auto;
+  margin-right: 5px;
+}
+
+
+
+.Content-right-container {
+  width: 280px;
+}
+
+.Latest-matches-box-header {
+margin-top: 40px;
+}
+
+.TeamId-result {
+  width: 15%;
+  margin-left: 10px;
+}
+
+.TeamId-result.Win {
+  color: #0fd40f;
+}
+
+.TeamId-result.Loss {
+  color: red;
+}
+
+.Opposing-team-teamId {
+  min-width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.Opposing-team-logo-teamId {
+  height: 25px;
+  width: auto;
+  margin-left: 4px;
+}
+.Logo-unknown {
+  background: white;
+  margin-left: 10px;
+}
+
+.Latest-match-container {
+  width: 100%;
+  border-color: gray;
+  border-right: 0px solid gray;
+  display: flex;
+  align-items: center;
+  height: 55px;
+  justify-content: space-between;
+}
+.Latest-match-container>div {
+
+}
+
+.Latest-match-container.Uneven-row {
+  background-color: black;
+}
+
+@media(max-width: 1125px) {
+  .Page-teamId-content01 {
+    width: 98%;
+  }
+}
+
+@media (max-width: 740px) {
+  .Page-teamId-content01 {
+    flex-direction: column;
+    align-items: center;
+  }
+  .Latest-matches-box-header {
+    margin-top: 60px;
+  }
+  .Content-right-container {
+    width: 300px;
+  }
+  .Content-left-container {
+    margin-right: 0px;
+  }
+
+}
+@media (max-width: 650px) {
+  .Content-left-container {
+    width: 98%;
+  }
+}
+
+@media (max-width: 455px) {
+  .Team-container-teamId-page {
+    height: 270px;
+  }
+  .Team-right-container-teamId-page{
+    position: relative;
+    height: 95%;
+    border-left: none;
+  }
+  .Team-right-container-teamId-page::before{
+    content: '';
+    height: 90%;
+    position: absolute;
+    width: 2px;
+    background: gray;
+    left: 0px;
+  }
+  .Team-left-container-teamId-page {
+    margin-left: 15px;
+    margin-right: 10px;
+  }
+  .Teamlogo-teamId-page {
+    margin-left: 0px;
+    width: 150px;
+    height: 150px;
+  }
+
+}
+
+@media (max-width: 400px) {
+  .Team-right-container-teamId-page {
+    padding: 0 10px;
+  }
+  .Team-right-container-teamId-page::before{
+    left: -5px;
+  }
+}
+
+@media (max-width: 390px) {
+  .Page-teamId-content01 {
+    line-height: 1.15em;
+  }
+  .Team-container-teamId-page {
+    height: 250px;
+  }
+  .Teamlogo-teamId-page {
+    width: 120px;
+    height: 120px;
+  }
+}

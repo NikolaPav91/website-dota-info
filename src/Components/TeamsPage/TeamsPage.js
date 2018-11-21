@@ -1,67 +1,128 @@
 import React from 'react';
-import MenuBarLink from '../MenuBarLink/MenuBarLink';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 import classNames from 'classnames';
-import TeamContainer from '../TeamContainer/TeamContainer'
+import TeamContainer from './TeamContainer/TeamContainer';
+import TeamsPagePageNumbers from './TeamsPagePageNumber/TeamsPagePageNumbers';
+import './TeamsPage.css';
 
-class TeamsPage extends React.Component {
+class TeamsPage extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      topSixteen:[],
+      maxPages: null,
+      currentPage: 1,
+      loaderActive: true,
     }
   }
 
 
 
   componentDidMount() {
-    this.setState({
-      loaderActive: true,
-    })
-    fetch('https://api.opendota.com/api/teams')
-    .then(response=> {console.log(response.status); return response})
-    .then(response=> response.json())
+    if(this.props.proTeams===null || this.props.proTeams==='Something went wrong, please try again later'){
+      fetch('https://api.opendota.com/api/teams')
+      .then(response=> response.json())
+      .then(response =>
+       response
+        .map((item,index)=> { item.rank= index + 1 + ".";
+          return item
+        } )
+      )
+      .then(response=>  {this.props.setProTeams(response); this.setState({
+        loaderActive: false,
+        maxPages: Math.ceil(response.length/16),
+      })})
+      .catch(response=> { this.props.setProTeams('Something went wrong, please try again later'); this.setState({
+        loaderActive: false,
+      })});
+    }
 
-    .then(response =>
-     response
-      .slice(0,16)
-      .map((item,index)=> {return {id: item["team_id"], name: item.name, tag: item.tag, logo: item["logo_url"],
-       eloRating: item.rating, wins: item.wins, losses: item.losses, rank: index + 1, }}))
-    .then(response=> this.setState({loaderActive: false, topSixteen: response}))
-    .catch(alert);
-    this.props.setActiveIndex(2);
+    if (this.props.proTeams!==null && this.props.proTeams!=='Something went wrong, please try again later') {
+      let maxpages=Math.ceil(this.props.proTeams.length/16);
+      this.setState({maxPages: maxpages, loaderActive: false, })
+    }
+
+
   }
 
-  render(){
-    let loaderclass= classNames({
-      'Loader': this.state.loaderActive,
-      'Display-none': !this.state.loaderActive
-    })
+  setCurrentPage(n) {
+    this.setState({
+      currentPage: n,
+    });
+  }
 
-    let topteams= this.state.topSixteen;
-    let showtopteams= topteams.map((item)=> {
+  componentDidUpdate(prevProps) {
+    if (this.props.proTeams!== prevProps.proTeams) {
+      let maxpages=Math.ceil(this.props.proTeams.length/16);
+      this.setState({maxPages: maxpages })}
+  }
+  render(){
+    if (this.state.loaderActive) {
+      return (
+        <div className= "All-content-container">
+          <header className="header-picture1"></header>
+          <div className="All-content-container Green-background">
+            <Loader className='Loader'></Loader>
+          </div>
+        </div>
+      )
+    }
+
+    if (this.props.proTeams==='Something went wrong, please try again later') {
+      return (
+        <div className= "All-content-container">
+          <header className="header-picture1"></header>
+          <div className="All-content-container Green-background">
+            <div className="Error-message Big" id="error-message-teams">
+              <p>Something went wrong, please try again later.</p>
+              <p>(Maximum of 60 calls per minute to opendota api probably exceeded)</p>
+            </div>
+          </div>
+        </div>
+      )
+    }
+
+    let contentclass= classNames({
+      'Content-container': true,
+      'Display-none': !this.props.proTeams
+    })
+    let showtopteams= this.props.proTeams.slice((this.state.currentPage-1)*16, this.state.currentPage*16)
+      .map((item,index)=> {
        return (
          <Link
-           to={'/Teams/'+ item.id }
+           to={'/Teams/'+ item["team_id"] }
            className="Team-link">
 
            <TeamContainer
              teamInfo={item}
            />
          </Link>
-   ) })
+       )
+     });
+
+
+
     return (
       <div className= "All-content-container">
         <header className="header-picture1"></header>
-        <div id="content-teams-container">
-      <div id="content-teams">
-        <Loader className={loaderclass}></Loader>
-        {showtopteams}
+        <div className="All-content-container Green-background">
+          <div className='Content-container'>
+            <div id="content-teams">
+              {showtopteams}
+            </div>
+            <div id="teams-page-number-navi-box">
+            <TeamsPagePageNumbers
+              currentPage={this.state.currentPage}
+              setCurrentPage={(n)=> this.setCurrentPage(n)}
+              maxPages={this.state.maxPages}
+              containerId={"teams-page-number-navi-container"}
+            />
+          </div>
+
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
     )
   }
 }
@@ -70,15 +131,21 @@ class TeamsPage extends React.Component {
 const mapDispatchToProps= (dispatch)=> {
   return {
 
-    setActiveIndex: (index) => {
+    setProTeams: (teams) => {
       dispatch({
-        type: 'CHANGE_ACTIVE_INDEX',
-        index: index,
+        type: 'SET_PRO_TEAMS',
+        teamList: teams,
       });
     },
   }
 }
 
-const TeamsPageContainer= connect(null, mapDispatchToProps)(TeamsPage);
+const mapStateToProps=(state)=> {
+  return {
+    proTeams: state.proTeams,
+  }
+}
+
+const TeamsPageContainer= connect(mapStateToProps, mapDispatchToProps)(TeamsPage);
 
 export default TeamsPageContainer
