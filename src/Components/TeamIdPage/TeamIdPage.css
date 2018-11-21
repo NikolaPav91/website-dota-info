@@ -74,6 +74,10 @@
   justify-content: space-between;
   min-height: 55px;
 }
+.Player-info-container:hover {
+  outline: 1px solid white;
+  z-index: 15;
+}
 .Player-name, .Player-country {
   margin: 5px 10px;
   width: 37%;
@@ -152,7 +156,7 @@ margin-top: 40px;
 }
 
 .TeamId-result.Win {
-  color: green;
+  color: #0fd40f;
 }
 
 .TeamId-result.Loss {

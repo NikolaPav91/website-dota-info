@@ -134,7 +134,7 @@ class SearchResultsPage extends React.PureComponent {
       })
       .catch(response=> this.setState({
         loaderActive: false,
-        errorMessage: "something went wrong with the search",
+        errorMessage: "Something went wrong with the search.",
       }))
   }
 
@@ -161,7 +161,10 @@ class SearchResultsPage extends React.PureComponent {
         <div className="All-content-container">
           <header className="header-picture1"></header>
           <div className="All-content-container Green-background">
-            <div id="error-msg-searchid">{this.state.errorMessage}</div>
+            <div className="Error-message Big" id="error-msg-searchid">
+              <p>Something went wrong, please try again later.</p>
+              <p>(Maximum of 60 calls per minute to opendota api probably exceeded)</p>
+            </div>
           </div>
         </div>
       )

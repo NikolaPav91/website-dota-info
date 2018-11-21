@@ -178,7 +178,7 @@ class SearchField extends React.PureComponent {
         // }
       })
       .catch(response=> this.setState({
-        errorMessage: "something went wrong with the search",
+        errorMessage: "Something went wrong with the search.",
       }))
   }
 
@@ -245,7 +245,13 @@ class SearchField extends React.PureComponent {
         });
         showresults=<div className="Search-all-results-container">{results}</div>
       }
-      if (this.state.errorMessage!== null) {showresults=<div className="Search-all-results-container">{this.state.errorMessage}</div>}
+      if (this.state.errorMessage!== null) {showresults=
+        <div className="Search-all-results-container">
+          <div className="Error-message" id="search-result-error-message">
+            <p>Something went wrong, please try again later.</p>
+            <p>(Maximum of 60 calls per minute to opendota api probably exceeded)</p>
+          </div>
+        </div>}
       if (Array.isArray(this.state.searchResult) && this.state.searchResult.length===0) {
         showresults= <div className="Search-all-results-container">Nothing found</div>
       }

@@ -140,7 +140,10 @@
   justify-content: space-between;
   min-height: 55px;
 }
-
+.Teammates-container-playerid:hover {
+  outline: 1px solid white;
+  z-index: 2;
+}
 .Teammate-name-playerid {
   margin: 5px 10px;
   width: 40%;

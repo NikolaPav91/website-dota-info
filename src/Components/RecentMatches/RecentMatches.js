@@ -52,7 +52,11 @@ class RecentMatches extends React.PureComponent {
       let matches= this.state.latestMatches;
       let showmatches;
       if (this.state.latestMatches==="Error") {
-        showmatches= <div>Something went wrong, please try again later</div>
+        showmatches=
+          <div className="Error-message" id="Error-recent-matches">
+            <p>Something went wrong, please try again later.</p>
+            <p>(Maximum of 60 calls per minute to opendota api probably exceeded)</p>
+          </div>
       } else {
       showmatches= matches.map((item,index)=> {
         let resultcontainerclass=classNames({

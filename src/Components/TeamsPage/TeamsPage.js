@@ -74,7 +74,10 @@ class TeamsPage extends React.PureComponent {
         <div className= "All-content-container">
           <header className="header-picture1"></header>
           <div className="All-content-container Green-background">
-            <div className="Error-message" id="error-message-teams">Something went wrong, please try again later</div>
+            <div className="Error-message Big" id="error-message-teams">
+              <p>Something went wrong, please try again later.</p>
+              <p>(Maximum of 60 calls per minute to opendota api probably exceeded)</p>
+            </div>
           </div>
         </div>
       )

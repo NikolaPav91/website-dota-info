@@ -60,6 +60,7 @@ class HeroesPage extends React.PureComponent {
 
 
   adaptHeroInfoPositionToScreenSize() {
+    // if (this.state.allHeroes==="Error") return
       if (window.matchMedia("(max-width: 730px)").matches) {
         this.setState({
           windowSize:'small'
@@ -75,8 +76,6 @@ class HeroesPage extends React.PureComponent {
           windowSize: 'big',
         })
       }
-
-
       window.addEventListener("resize", this.resizeHandler);
   }
 
@@ -118,20 +117,27 @@ class HeroesPage extends React.PureComponent {
   render() {
     if (this.state.allHeroes==="Error") {
       return (
-        <div className="All-content-container  Green-background">
+        <div className="All-content-container">
           <header className="header-picture1"></header>
-          <div id="hero-page-bg01">
-            <div id="error-message-heroes"> Something went wrong, please try again later</div>
+          <div className="All-content-container  Green-background">
+            <div id="hero-page-bg01">
+              <div className="Error-message Big" id="error-message-heroes">
+                <p>Something went wrong, please try again later.</p>
+                <p>(Maximum of 60 calls per minute to opendota api probably exceeded)</p>
+              </div>
+            </div>
           </div>
         </div>
       )
     }
     if (this.state.loaderActive) {
       return (
-        <div className="All-content-container Green-background">
+        <div className="All-content-container">
           <header className="header-picture1"></header>
-          <div id="hero-page-bg01">
-            <Loader className="Loader"/>
+          <div className="All-content-container  Green-background">
+            <div id="hero-page-bg01">
+              <Loader className="Loader"/>
+            </div>
           </div>
         </div>
       )

@@ -115,7 +115,7 @@ class TeamIdPage extends React.PureComponent {
       memberBonusInfo: players,
       });
     })
-    // .catch(response => this.setState({loaderActive: false, errorMsg: "Something went wrong, try again"}))
+    .catch(response => this.setState({loaderActive: false, errorMsg: "Something went wrong, please try again later."}))
   }
 
   render() {
@@ -125,8 +125,11 @@ class TeamIdPage extends React.PureComponent {
     if (this.state.errorMsg) return (
       <div className="All-content-container">
         <header className="header-picture1"></header>
-        <div id="page-teamId-allbg">
-          <div id="error-page-teamId">{this.state.errorMsg}</div>
+        <div className="All-content-container Green-background">
+          <div className="Error-message Big" id="error-page-teamId">
+            <p>Something went wrong, please try again later.</p>
+            <p>(Maximum of 60 calls per minute to opendota api probably exceeded)</p>
+          </div>
         </div>
       </div>)
 
