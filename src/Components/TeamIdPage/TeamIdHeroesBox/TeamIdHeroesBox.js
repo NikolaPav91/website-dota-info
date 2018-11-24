@@ -9,8 +9,7 @@ const TeamIdHeroesBox= ({mostPlayedHeroes, pageName})=> {
       'Hero-container-teamid': true,
       'Uneven-row': index%2===0,
     })
-    if (item["hero_id"]==121) return // 121 is missing from my database
-    let heroobj=heroesobj.find(heroitem=> heroitem.id==item["hero_id"]);
+    let heroobj=heroesobj.find(heroitem=> heroitem.id==item["hero_id"]);  // i dont use === because hetoitem.id is string
     let heropicurl=heroobj["url_small_portrait"];
     let heroname=heroobj["localized_name"];
     let gamesplayed=item["games_played"];
@@ -21,7 +20,7 @@ const TeamIdHeroesBox= ({mostPlayedHeroes, pageName})=> {
     }
 
     return (
-      <div className={herocontainerclass}>
+      <div key={item["hero_id"]} className={herocontainerclass}>
         <div className="Hero-name">
           <span className="Hero-info-label-teamid">Hero:</span>
           <div><img className="Hero-picture-teamid" src={heropicurl}></img> {heroname} </div> </div>

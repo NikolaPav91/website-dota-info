@@ -23,7 +23,7 @@ const TeamPlayersBox= ({currentMembers, memberBonusInfo})=> {
     }
 
     return (
-      <Link to={'/Player/' + item["account_id"]} className={membercontainerclass}>
+      <Link key={item["account_id"]} to={'/Player/' + item["account_id"]} className={membercontainerclass}>
 
         <div className="Player-name"><span className="Player-info-label TeamId-page">Nickname:</span> {item.name} </div>
         <div className="Player-country TeamId-page">

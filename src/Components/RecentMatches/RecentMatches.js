@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Loader from '../Loader/Loader';
 import { connect } from 'react-redux';
 
-class RecentMatchez extends React.PureComponent {
+class RecentMatches extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,12 +15,12 @@ class RecentMatchez extends React.PureComponent {
 
   groupIntoMatches(matches) {
       let matchesid=matches.map(item=> item["series_id"]);
-      let uniqueids=matchesid.filter((item,index,self)=> (index==self.indexOf(item) ));
-      let uniquematches= uniqueids.map(item=> matches.filter(matchitem=> matchitem["series_id"]==item));
+      let uniqueids=matchesid.filter((item,index,self)=> (index===self.indexOf(item) ));
+      let uniquematches= uniqueids.map(item=> matches.filter(matchitem=> matchitem["series_id"]===item));
       return uniquematches
   }
 
-  getLatestRelevantMatches() {
+  getLatestRelevantMatches() {  // By matches i mean series (series can be best of 1,2,3 or 5)
     return (
       fetch('https://api.opendota.com/api/proMatches')
       .then(response=> response.json())
@@ -91,7 +91,6 @@ class RecentMatchez extends React.PureComponent {
             <p>(Maximum of 60 calls per minute to opendota api probably exceeded)</p>
           </div>
       } else {
-        console.log(matches);
       showmatches= matches.map((item,index)=> {
         let resultcontainerclass=classNames({
           'Result-container': true,
@@ -143,10 +142,16 @@ class RecentMatchez extends React.PureComponent {
         if (!direlogosrc) {direlogosrc="/no-image-icon.png"}
 
         return (
-          <div className={resultcontainerclass}>
-            <div className="Result-radiant-team"><img className="Result-teamlogo" src={radiantlogosrc}></img> <span>{radianttag}</span> </div>
+          <div key={item[0]["series_id"]} className={resultcontainerclass}>
+            <div className="Result-radiant-team">
+              <img className="Result-teamlogo" alt={radianttag + " logo"} src={radiantlogosrc}></img>
+              <span>{radianttag}</span>
+            </div>
           <span>{result}</span>
-            <div className="Result-dire-team"><span>{diretag}</span> <img className="Result-teamlogo" src={direlogosrc}></img> </div>
+            <div className="Result-dire-team">
+              <span>{diretag}</span>
+              <img className="Result-teamlogo" alt={diretag + " logo"} src={direlogosrc}></img>
+            </div>
         </div>
         )
       }
@@ -185,6 +190,6 @@ const mapDispatchToProps= (dispatch)=> {
   }
 }
 
-const RecentMatches= connect(mapStateToProps, mapDispatchToProps)(RecentMatchez);
+const RecentMatchesContainer= connect(mapStateToProps, mapDispatchToProps)(RecentMatches);
 
-export default RecentMatches
+export default RecentMatchesContainer

@@ -17,14 +17,8 @@ const TeammateBox=({teamMates})=> {
         winrate=Math.round(item.win/item.games*1000)/10
       }
 
-      // <div className="Teammate-container-playerid">
-      //   <div>{item.name}</div>
-      //   <div>{item.games}</div>
-      //   <div>{Math.round(item.win/item.games*1000)/10 }%</div>
-      // </div>
-
       return (
-        <Link to={'/Player/' + item["account_id"]} className={teammatecontainerclass}>
+        <Link key={item["account_id"]} to={'/Player/' + item["account_id"]} className={teammatecontainerclass}>
           <div className="Teammate-name-playerid">
             <span className="Teammate-info-label">Player:</span>
             <div> {player} </div> </div>

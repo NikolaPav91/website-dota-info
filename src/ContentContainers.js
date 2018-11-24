@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import TeamsPageContainer from './Components/TeamsPage/TeamsPage';
 import HomePage from './Components/HomePage/HomePage';
@@ -10,6 +10,7 @@ import News from './Components/MyDatabase/News-objects';
 import NewsIdPage from './Components/NewsIdPage/NewsIdPage';
 import PlayerIdPageContainer from './Components/PlayerIdPage/PlayerIdPage';
 import SearchResultsPageContainer from './Components/SearchResultsPage/SearchResultsPage';
+import NonExistentPage from './Components/NonExistentPage/NonExistentPage'
 
 
 const ContentContainers= ()=> (
@@ -34,6 +35,8 @@ const ContentContainers= ()=> (
     <Route exact path='/Player/:playerId' render= {(props)=> <PlayerIdPageContainer key={props.match.params.playerId} routerprops={props}/>}
     />
     <Route exact path='/Search/:searchWord' render= {(props)=> <SearchResultsPageContainer key={props.match.params.searchWord} routerprops={props}/>}
+    />
+    <Route path='/' component= {NonExistentPage}
     />
 
 

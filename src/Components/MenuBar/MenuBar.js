@@ -15,6 +15,7 @@ class MenuBar extends React.Component {
             active= {this.props.currentURL.startsWith("/" +this.props.subLink+ item)}
             subLink={this.props.subLink}
             className={this.props.className}
+            key={this.props.subLink + item}
           />
         }
       )}

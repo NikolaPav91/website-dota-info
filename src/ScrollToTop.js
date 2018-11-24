@@ -12,7 +12,6 @@ class ScrollToTop extends React.PureComponent {
   }
 
   render() {
-    console.log(this.props.location)
     return this.props.children;
   }
 }

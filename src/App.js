@@ -6,9 +6,6 @@ import ContentContainers from './ContentContainers';
 import SearchFieldContainer from './Components/SearchField/SearchField';
 
 class App extends Component {
-  componentDidUpdate() {
-    console.log(this.props.location.pathname);
-  }
   render() {
     let currenturl= this.props.location.pathname;
     if (currenturl==="/") {currenturl="/About"}

@@ -6,7 +6,7 @@ const TeamsTI= ({teams})=> {
   backgroundImage: 'url("' + item.logo + '")',
 };
     return (
-      <div className="International-team-container">
+      <div key={item.id} className="International-team-container">
       <div style={teamlogostyle} className="International-team-box">
         <div className="Names-box">
           <p><span>{item.players[0].nick}</span> {item.players[0].name}</p>

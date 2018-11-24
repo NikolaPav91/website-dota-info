@@ -38,7 +38,7 @@ class PageTIMedia extends React.PureComponent {
             <div id="instagram-feed-container">
               <h3>INSTAGRAM</h3>
               <iframe src="http://snapwidget.com/p/widget/?id=IKDEYwHqYk&amp;t=941" title="Instagram Widget"
-               allowtransparency="true" frameborder="0" scrolling="yes"
+               allowtransparency="true" scrolling="yes"
                className="Instagram-feed"></iframe>
             </div>
           </div>

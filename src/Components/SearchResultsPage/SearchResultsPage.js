@@ -143,7 +143,6 @@ class SearchResultsPage extends React.PureComponent {
   }
 
   render() {
-
     if (this.state.loaderActive) {
       return (
         <div className="All-content-container">

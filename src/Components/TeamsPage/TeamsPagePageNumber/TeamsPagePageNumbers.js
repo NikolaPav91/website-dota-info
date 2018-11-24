@@ -28,11 +28,11 @@ export default class TeamsPagePageNumbers extends React.PureComponent {
       let showpagenumbers= currentpagenumbers.map(item=> {
         if (item===this.props.currentPage) {
           return (
-            <li className="Current-page-number">{item}, </li>
+            <li key={item + "team page number"} className="Current-page-number">{item}, </li>
           )
         }
         else return (
-          <li onClick={()=>this.props.setCurrentPage(item)}>{item},</li>
+          <li key={item + "team page number"} onClick={()=>this.props.setCurrentPage(item)}>{item},</li>
         )
       })
 
@@ -63,10 +63,8 @@ export default class TeamsPagePageNumbers extends React.PureComponent {
       }
       let showoptions= optionsarray.map(item=> {
         return (
-        <option value={item}>{item}</option>)
+        <option key={item + "option number"} value={item}>{item}</option>)
       })
-      console.log(this.props.currentPage);
-      console.log(this.props.maxPages);
 
 
       let showselect

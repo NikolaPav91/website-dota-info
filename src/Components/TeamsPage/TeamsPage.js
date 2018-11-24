@@ -91,6 +91,7 @@ class TeamsPage extends React.PureComponent {
       .map((item,index)=> {
        return (
          <Link
+           key= {item["team_id"] + "container"}
            to={'/Teams/'+ item["team_id"] }
            className="Team-link">
 

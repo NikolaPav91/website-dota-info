@@ -22,7 +22,7 @@ const WatchingOptions= ()=> {
    ]
   let showoptions= optionsarray.map((item)=> {
     return (
-      <div className="Watching-option-box">
+      <div key={item.title} className="Watching-option-box">
         <h3>{item.title}</h3>
         <p>{item.text}</p>
       </div>

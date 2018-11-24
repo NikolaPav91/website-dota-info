@@ -20,7 +20,7 @@ const TeamIdLatestMatchesBox= ({latestMatches})=> {
     }
 
     return (
-      <div className={matchcontainerclass}>
+      <div key={item["match_id"]} className={matchcontainerclass}>
         {result} <span> VS </span>
         <div className="Opposing-team-teamId"> {item["opposing_team_tag"]}
           <img src={teamlogourl } onError={(e)=>{e.target.onerror = null; e.target.src="/no-image-icon.png";}} className='Opposing-team-logo-teamId'></img>

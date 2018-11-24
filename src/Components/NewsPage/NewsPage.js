@@ -4,7 +4,7 @@ import News from '../MyDatabase/News-objects.js';
 import NewsSlider from './NewsSlider/NewsSlider';
 import './NewsPage.css';
 import RecentStories from './RecentStories/RecentStories';
-import RecentMatches from '../RecentMatches/RecentMatches';
+import RecentMatchesContainer from '../RecentMatches/RecentMatches';
 
 class NewsPage extends React.PureComponent {
 
@@ -21,7 +21,7 @@ class NewsPage extends React.PureComponent {
 
 
               <RecentStories recentNews={News}/>
-              <RecentMatches containerId="news-page-recent-matches-container" />
+              <RecentMatchesContainer containerId="news-page-recent-matches-container" />
           </div>
         </div>
       </div>

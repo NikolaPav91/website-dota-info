@@ -11,7 +11,7 @@ export default class NewsSlider extends React.PureComponent {
       showingStoryIndex: 0,
       buttonClick: false,
     }
-    let intervalId;
+    // let intervalId;    HOW IS IT WORKING WITHOUT IT?
   }
 
   onSliderButtonClick(index) {
@@ -56,7 +56,7 @@ export default class NewsSlider extends React.PureComponent {
         'Story-removing': ((index===this.state.showingStoryIndex-1) || (index===this.state.showingStoryIndex + slidernews.length -1 )),
         })
       return (
-        <li className= {sliderstoryclass} storyIndex={index}>
+        <li className= {sliderstoryclass} key={item.id}>
             <Link
               to={'/News/'+ item.id}
               className="Picture-link">
@@ -88,7 +88,9 @@ export default class NewsSlider extends React.PureComponent {
         }
           style={{width: 99/numberofbuttons + "%"}}
           onClick={()=>this.onSliderButtonClick(index)}
-          sliderIndex={index}></div>
+          key={item.id + "button"}>
+
+          </div>
       )
     })
     return (

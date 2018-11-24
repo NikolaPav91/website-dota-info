@@ -11,12 +11,15 @@ const RecentStories= ({recentNews})=> {
       storyteaserend='..'
     }
     return (
-    <Link to={'/News/'+ item.id} className="Recentstory-container">
+    <Link to={'/News/'+ item.id}
+      className="Recentstory-container"
+      key={item.id + "recent_story"}
+      >
 
-        <img src={item.picturesrc} className="Recentstory-picture"></img>
+        <img src={item.picturesrc} alt={""} className="Recentstory-picture"></img>
         <div className="Recentstory-title">{item.title}</div>
         <p className="Recentstory-teaser" dangerouslySetInnerHTML={{__html: storyteaser + storyteaserend}}></p>
-      
+
     </Link>
     )
   }

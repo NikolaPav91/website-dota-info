@@ -102,7 +102,6 @@ class HeroesPage extends React.PureComponent {
   }
 
   setVisibleHeroDetails(item) {
-    let newhero;
     if (item===this.state.visibleHeroDetails) {
       this.setState({
         visibleHeroDetails: {},

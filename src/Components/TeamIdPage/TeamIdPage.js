@@ -38,7 +38,9 @@ class TeamIdPage extends React.PureComponent {
     return (
       fetch('https://api.opendota.com/api/teams/'+ this.props.routerprops.match.params.teamId +'/heroes')
       .then(response=> response.json())
-      .then(response=> response.slice(0,6))
+      .then(response=> response
+        .filter(item=> item["hero_id"]!=="121")
+        .slice(0,6)) //121 is missing in my database
     )
   }
 
@@ -95,7 +97,6 @@ class TeamIdPage extends React.PureComponent {
         }
         return ( item );
       } );
-      console.log(JSON.stringify(improvedmatches))
       this.setState({
         mostPlayedHeroes: heroes,
         currentMembers: players,

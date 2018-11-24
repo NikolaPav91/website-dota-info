@@ -14,7 +14,7 @@ class PageTIStandings extends React.PureComponent {
         'Uneven-row': index % 2 ===1,
       })
       return (
-        <tr className={placementcontainerclass}>
+        <tr key={item.id} className={placementcontainerclass}>
           <td className="Col-1">{item.place}.</td>
           <td className="Col-2">
             <Link

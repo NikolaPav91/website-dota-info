@@ -2,7 +2,7 @@ import React from 'react';
 import Script from 'react-load-script';
 import { Tweet } from 'react-twitter-widgets';
 import './NewsIdPage.css';
-import RecentMatches from '../RecentMatches/RecentMatches';
+import RecentMatchesContainer from '../RecentMatches/RecentMatches';
 import YouTube from 'react-youtube';
 
 export default class NewsIdPage extends React.PureComponent {
@@ -42,7 +42,7 @@ export default class NewsIdPage extends React.PureComponent {
             <img className="Title-picture-newsid" src={story.picturesrc}></img>
               {storyshow}
           </div>
-          <RecentMatches containerId="newsid-recent-matches-container"/>
+          <RecentMatchesContainer containerId="newsid-recent-matches-container"/>
         </div>
       </div>
     )

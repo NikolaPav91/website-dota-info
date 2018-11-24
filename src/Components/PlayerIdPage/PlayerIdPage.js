@@ -37,66 +37,69 @@ class PlayerIdPage extends React.PureComponent {
     )
   }
 
-  getProPlayers() {
-      return (
-        fetch('https://api.opendota.com/api/proPlayers')
-        .then(response=>response.json())
-      )
+  getSimpleProPlayers() {
+    return (
+      fetch('https://api.opendota.com/api/proPlayers')
+      .then(response=>response.json())
+    )
   }
 
-  async getPlayerTeamInfo(){
-    let proplayers;
-    if (this.props.proPlayers===null) {
-      proplayers= await this.getProPlayers()} else {
-      proplayers=this.props.proPlayers;
-    }
-    let teamid= proplayers.find(item => item["account_id"]==this.props.routerprops.match.params.playerId)["team_id"];
-    if (teamid) {
-      if(this.props.proTeams===null || this.props.proTeams==='Something went wrong, pls try later'){
-        console.log('req teams')
-        return (
-          fetch('https://api.opendota.com/api/teams/')
-          .then(response=> response.json())
-          .then(response=> {
-            this.props.setProTeams(response);
-            this.props.setProPlayers(proplayers.map(item=> {
-              let playerteam= response.find(team=> team["team_id"]==item["team_id"] );
-              if (playerteam===undefined) {
-                item["team_logo"]= '';
-                } else {
-                item["team_logo"]= playerteam["logo_url"];
-              } return item
-            } ))
-             return response})
-          .then(response=> response.find(item=> item["team_id"]==teamid))
-          .then(response=> {
-            if (response===undefined) {return '?'} else {return response}
-          })
-          .catch(response=>'?')
+  getProTeams() {
+    if (this.props.proTeams===null || this.props.proTeams==='Something went wrong, please try again later') {
+      return (
+        fetch('https://api.opendota.com/api/teams/')
+        .then(response=> response.json())
+        .then(response =>
+         response
+          .map((item,index)=> { item.rank= index + 1 + ".";
+            return item
+          } )
         )
-      } else {
-        console.log('got teams')
-        this.props.setProPlayers(proplayers.map(item=> {
-          let playerteam= this.props.proTeams.find(team=> team["team_id"]==item["team_id"] );
-          if (playerteam===undefined) {
-            item["team_logo"]= '';
-            } else {
-            item["team_logo"]= playerteam["logo_url"];
-            }
-          return item
-        }))
-
-
-        let teaminfo=this.props.proTeams.find(item=> item["team_id"]==teamid);
-        if(teaminfo===undefined)
-          return (
-            '?'
-          )
-        return teaminfo
-        }
+        .then(response=> {this.props.setProTeams(response); return response})
+      )
     } else {
-      return "?"
+      return this.props.proTeams
     }
+  }
+
+  async getImprovedProPlayers() {
+
+    if (this.props.proPlayers===null) {
+      let simpleproplayers= await this.getSimpleProPlayers();
+      let proteams= await this.getProTeams();
+      let improvedproplayers=simpleproplayers.map(item=> {
+        let playerteam= proteams.find(team=> team["team_id"]==item["team_id"] );
+        if (playerteam===undefined) {
+          item["team_logo"]= '';
+          } else {
+          item["team_logo"]= playerteam["logo_url"];
+        } return item
+      } );
+      this.props.setProPlayers(improvedproplayers)
+      return improvedproplayers
+    } else {
+      return this.props.proPlayers
+    }
+  }
+
+  getPlayerTeamInfo() {
+    return (
+      Promise.all([this.getProTeams(), this.getImprovedProPlayers()])
+      .then(([teams,players])=> {
+        let teamid= players.find(item => item["account_id"]==this.props.routerprops.match.params.playerId)["team_id"];
+        if (teamid==0) {
+          return "?"
+        } else {
+          let teaminfo= teams.find(team=> team["team_id"]==teamid);
+
+          if (teaminfo===undefined) {
+            return "?"
+          } else {
+            return teaminfo
+          }
+        }
+        })
+    )
   }
 
   getMostGamesPlayedWith() {
@@ -110,7 +113,10 @@ class PlayerIdPage extends React.PureComponent {
     return (
       fetch('https://api.opendota.com/api/players/' + this.props.routerprops.match.params.playerId + '/heroes')
       .then(response=>response.json())
-      .then(response=>response.slice(0,8))
+      .then(response=>
+        response
+        .filter(item=> item["hero_id"]!=="121")
+        .slice(0,8))// 121 is missing in my database
     )
   }
 
@@ -147,7 +153,6 @@ class PlayerIdPage extends React.PureComponent {
   }
 
   render() {
-
 
 
     if (this.state.loaderActive) {

@@ -28,6 +28,7 @@ class HeroeGroupContainer extends React.PureComponent {
         setVisibleHeroDetails={(item)=>this.props.setVisibleHeroDetails(item)}
         isShowingBigHeroPic={isbigpic}
         heroInfo={item}
+        key={item.id}
 
       />
 
