@@ -26,11 +26,12 @@ class RecentMatches extends React.PureComponent {
       .then(response=> response.json())
       .then(response=>
         response
-        .filter(item=>((item.leagueid===10288 || item.leagueid===10132 || item.leagueid===10296) &&
+        .filter(item=>((item.leagueid===10482 || item.leagueid===10365) &&
                         (item["series_id"]!==0) && (item["radiant_team_id"]!==0) && (item["dire_team_id"]!==0)
                 ))
+
       )
-      .then(response=> this.groupIntoMatches(response))
+      .then(response=> this.groupIntoMatches(response).slice(0,26))
       .then(response=> response
       )
     )
@@ -144,13 +145,21 @@ class RecentMatches extends React.PureComponent {
         return (
           <div key={item[0]["series_id"]} className={resultcontainerclass}>
             <div className="Result-radiant-team">
-              <img className="Result-teamlogo" alt={radianttag + " logo"} src={radiantlogosrc}></img>
+              <img className="Result-teamlogo"
+                alt={radianttag + " logo"}
+                src={radiantlogosrc}
+                onError={(e)=>{e.target.onerror = null; e.target.src="/no-image-icon.png";}}>
+              </img>
               <span>{radianttag}</span>
             </div>
           <span>{result}</span>
             <div className="Result-dire-team">
               <span>{diretag}</span>
-              <img className="Result-teamlogo" alt={diretag + " logo"} src={direlogosrc}></img>
+              <img className="Result-teamlogo"
+                alt={diretag + " logo"}
+                src={direlogosrc}
+                onError={(e)=>{e.target.onerror = null; e.target.src="/no-image-icon.png";}}>
+              </img>
             </div>
         </div>
         )

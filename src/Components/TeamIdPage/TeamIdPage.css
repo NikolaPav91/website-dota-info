@@ -43,6 +43,7 @@
 .Team-right-container-teamId-page>p {
     margin:0px;
     font-size: 1.5em;
+    line-height: 1em;
 }
 
 .Team-right-container-teamId-page span {
@@ -172,8 +173,9 @@ margin-top: 40px;
 }
 
 .Opposing-team-logo-teamId {
-  height: 25px;
-  width: auto;
+  max-height: 40px;
+  min-height: 24px;
+  width: 34px;
   margin-left: 4px;
 }
 .Logo-unknown {
