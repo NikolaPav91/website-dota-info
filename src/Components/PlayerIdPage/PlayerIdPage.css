@@ -56,6 +56,10 @@
   padding-left: 20px;
 }
 
+.Team-link-playerid:hover {
+  text-decoration: underline;
+}
+
 .Player-info-labels-playerid {
   color: #ca7;
   font-size: 0.7em;

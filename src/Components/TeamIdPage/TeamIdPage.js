@@ -134,6 +134,16 @@ class TeamIdPage extends React.PureComponent {
         </div>
       </div>)
 
+      if (this.state.teamInfo===undefined) return (
+        <div className="All-content-container">
+          <header className="header-picture1"></header>
+          <div className="All-content-container Green-background">
+            <div className="Error-message Big" id="error-page-teamId">
+              <p>This team page does not exist.</p>
+            </div>
+          </div>
+        </div>)
+
 
 
     let teaminfo= this.state.teamInfo;

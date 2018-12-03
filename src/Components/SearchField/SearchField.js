@@ -118,6 +118,13 @@ class SearchField extends React.PureComponent {
        return (
         fetch('https://api.opendota.com/api/proPlayers')
         .then(response=>response.json())
+        .then(response=> {
+          if (this.props.proPlayers!== null) {
+            return this.props.proPlayers
+          } else {
+            return response
+          }
+        })
     )} else {
       return this.props.proPlayers
     }
@@ -130,7 +137,6 @@ class SearchField extends React.PureComponent {
           selectedResultIndex: 0,
         }); return
       }
-
       Promise.all([this.getTeams(), this.getProPlayers()])
       .then(([teams,players])=> {
         if (this.props.proPlayers===null) {
@@ -151,18 +157,17 @@ class SearchField extends React.PureComponent {
       })
       .then(([teams,players])=> {
         let filteredplayers= players.filter(item=> {
-          let spacedname= item.name.toLowerCase().replace(/_|-|\./g, " ");
-          return (item.name.toLowerCase().includes(string.toLowerCase()) || spacedname.includes(string.toLowerCase()))
+          return (item.name.toLowerCase().includes(this.searchInput.value.toLowerCase()) )
         } );
         let filteredteams= teams.filter(item=>
-          item.name.toLowerCase().includes(string.toLowerCase()) || item.tag.toLowerCase().includes(string.toLowerCase())
+          item.name.toLowerCase().includes(this.searchInput.value.toLowerCase()) || item.tag.toLowerCase().includes(this.searchInput.value.toLowerCase())
         );
         return [filteredteams, filteredplayers]
       })
       .then(([teams,players])=>{
         let mergedarrays= teams.concat(players);
         mergedarrays.sort( (a,b)=> {
-          if (a.name.toLowerCase().startsWith(string)) return -2;
+          if (a.name.toLowerCase().startsWith(this.searchInput.value)) return -2;
           if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
           if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
           return 0
@@ -224,7 +229,12 @@ class SearchField extends React.PureComponent {
                 onClick={(e)=> this.resetResults(e)}
                 className={searchresultclass}
                 to={'/Player/'+ item["account_id"] }>
-                <div className="Search-result-item"><img src={playerpictureurl}></img>{item.name}</div>
+                <div className="Search-result-item">
+                  <img src={playerpictureurl}
+                    onError={(e)=>{e.target.onerror = null; e.target.src="/single-person-icon.png";}}>
+                  </img>
+                  {item.name}
+                </div>
               </Link>
             )
           } else {
@@ -258,6 +268,7 @@ class SearchField extends React.PureComponent {
 
       return (
         <div id="search-container" > <input id="search-input"
+          ref={input => this.searchInput = input}
           onChange={(event)=>this.getSearchResult(event.target.value.toLowerCase())}
           onFocus={(event)=>this.getSearchResult(event.target.value.toLowerCase())}
           onKeyDown={(event)=>this.changeHighlightedResult(event)}

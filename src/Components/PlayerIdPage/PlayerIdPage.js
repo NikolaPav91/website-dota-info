@@ -224,9 +224,10 @@ class PlayerIdPage extends React.PureComponent {
   let teamname="?";
   if (this.state.playerTeamInformation!=="?") {
     teamlogo=
-      <Link className="Team-logo-link-playerid"to={'/Teams/'+ this.state.playerTeamInformation["team_id"] }>
+      <Link className="Team-logo-link-playerid" to={'/Teams/'+ this.state.playerTeamInformation["team_id"] }>
         <img className="Team-logo-playerid" title={this.state.playerTeamInformation.name}
-         src={this.state.playerTeamInformation["logo_url"]}></img>
+          onError={(e)=>{e.target.style.display='none'}}
+          src={this.state.playerTeamInformation["logo_url"]}></img>
        </Link>;
     teamname=this.state.playerTeamInformation.name;
   } else {
@@ -234,6 +235,13 @@ class PlayerIdPage extends React.PureComponent {
       teamname=this.state.proPlayerInfo["team_name"];
     }
   }
+  let teamnamelink;
+  if (teamname && this.state.playerTeamInformation["team_id"]) {
+    teamnamelink= <Link className="Team-link-playerid" to={'/Teams/'+ this.state.playerTeamInformation["team_id"] }> {teamname}
+  </Link>
+} else {
+  teamnamelink=teamname;
+}
 
     return (
       <div className="All-content-container">
@@ -250,7 +258,7 @@ class PlayerIdPage extends React.PureComponent {
               <div className="Player-info-container-playerid">
                 <img className="Player-picture-playerid" title="no player picture" src="/no-image-icon.png"></img>
                 <div className="Player-info-right-container-playerid">
-                  <div><span className="Player-info-labels-playerid">Team:</span> {teamname} </div>
+                  <div><span className="Player-info-labels-playerid">Team:</span> {teamnamelink} </div>
                     {mmr}
                     {leaderboardrank}
                   <div>
