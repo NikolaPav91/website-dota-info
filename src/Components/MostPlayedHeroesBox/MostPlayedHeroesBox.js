@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
-import heroes from '../../MyDatabase/HeroPictures-json';
+import heroes from '../MyDatabase/HeroPictures-json';
 
-const TeamIdHeroesBox= ({mostPlayedHeroes, pageName})=> {
+const MostPlayedHeroesBox= ({mostPlayedHeroes, pageName})=> {
   let heroesobj=JSON.parse(heroes);
   let showheroes= mostPlayedHeroes.map((item,index)=> {
     let herocontainerclass= classNames({
@@ -38,4 +38,4 @@ const TeamIdHeroesBox= ({mostPlayedHeroes, pageName})=> {
   }
 }
 
-export default TeamIdHeroesBox
+export default MostPlayedHeroesBox

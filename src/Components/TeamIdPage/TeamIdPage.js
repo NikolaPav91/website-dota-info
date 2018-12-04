@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import TeamInfoBox from './TeamInfoBox/TeamInfoBox';
 import './TeamIdPage.css';
 import TeamPlayersBox from './TeamPlayersBox/TeamPlayersBox';
-import TeamIdHeroesBox from './TeamIdHeroesBox/TeamIdHeroesBox';
+import MostPlayedHeroesBox from '../MostPlayedHeroesBox/MostPlayedHeroesBox';
 import TeamIdLatestMatchesBox from './TeamIdLatestMatches/TeamIdLatestMatches';
 
 class TeamIdPage extends React.PureComponent {
@@ -174,7 +174,7 @@ class TeamIdPage extends React.PureComponent {
               memberBonusInfo={this.state.memberBonusInfo}
             />
             <h3 className="Team-players-box-header">Most Played Heroes:</h3>
-            <TeamIdHeroesBox
+            <MostPlayedHeroesBox
               mostPlayedHeroes={this.state.mostPlayedHeroes}
             />
           </div>

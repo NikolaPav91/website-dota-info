@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './PlayerIdPage.css';
-import TeamIdHeroesBox from '../TeamIdPage/TeamIdHeroesBox/TeamIdHeroesBox';
+import MostPlayedHeroesBox from '../MostPlayedHeroesBox/MostPlayedHeroesBox';
 import TeammatesBox from './TeammatesBox/TeammatesBox';
 import Countries from '../MyDatabase/countries-json';
 import Loader from '../Loader/Loader';
@@ -281,7 +281,7 @@ class PlayerIdPage extends React.PureComponent {
             <div id="playerid-content02">
               <div id="most-played-heroes-playerid">
                 <h2 className="Container-label-playerid">Most played heroes:</h2>
-                <TeamIdHeroesBox
+                <MostPlayedHeroesBox
                   mostPlayedHeroes={this.state.mostPlayedHeroes}
                   pageName='player page'
                 />
