@@ -27,7 +27,10 @@ class App extends Component {
 
         <div id="footer">
           <div id="footer-content">
-              THE FOOTER
+            <p>This website is for demonstration purposes only.</p>
+            <p>The data on it is mainly based on the OpenDota API
+            which is not complete, <span>always fast or up to date.</span></p>
+            <p> You can contact me on: nikolapav991@gmail.com </p>
           </div>
 
         </div>
