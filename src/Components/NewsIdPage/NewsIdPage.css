@@ -70,7 +70,10 @@
   width: 330px;
   flex-shrink: 0;
 }
-
+#newsid-recent-matches-container> span {
+  font-size: 1.05em;
+  font-family: sans-serif;
+}
 #newsid-recent-matches-container> .Recent-matches-inner-container {
   min-height: 200px;
 }

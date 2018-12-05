@@ -158,6 +158,10 @@
 #news-page-recent-matches-container {
   margin-top: 20px;
 }
+#news-page-recent-matches-container>span {
+  font-size: 1.05em;
+  font-family: sans-serif;
+}
 #news-page-recent-matches-container>.Recent-matches-inner-container {
   width: 330px;
   flex-shrink: 0;

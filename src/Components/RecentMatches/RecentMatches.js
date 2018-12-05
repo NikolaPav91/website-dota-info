@@ -31,7 +31,7 @@ class RecentMatches extends React.PureComponent {
                 ))
 
       )
-      .then(response=> this.groupIntoMatches(response).slice(0,26))
+      .then(response=> this.groupIntoMatches(response).slice(0,24))
       .then(response=> response
       )
     )
