@@ -22,7 +22,7 @@
 
 .Result-container>div {
   height: 100%;
-  width: 40%;
+  width: 42%;
   display: flex;
   align-items: center;
 }
@@ -41,6 +41,7 @@
 }
 .Result-dire-team> span {
   text-align: right;
+  word-break: break-word;
 }
 
 .Result-teamlogo {
