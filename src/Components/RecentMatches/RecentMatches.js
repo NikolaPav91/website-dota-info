@@ -26,7 +26,7 @@ class RecentMatches extends React.PureComponent {
       .then(response=> response.json())
       .then(response=>
         response
-        .filter(item=>((item.leagueid===10482 || item.leagueid===10365) &&
+        .filter(item=>(
                         (item["series_id"]!==0) && (item["radiant_team_id"]!==0) && (item["dire_team_id"]!==0)
                 ))
 

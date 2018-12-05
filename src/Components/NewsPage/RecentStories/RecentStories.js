@@ -1,5 +1,4 @@
 import React from 'react';
-import './RecentStories.css';
 import { Link } from 'react-router-dom';
 
 const RecentStories= ({recentNews})=> {
