@@ -43,6 +43,9 @@
   text-align: right;
   word-break: break-word;
 }
+.Result-radiant-team>span {
+  word-break: break-word;
+}
 
 .Result-teamlogo {
   max-height: 30px;
