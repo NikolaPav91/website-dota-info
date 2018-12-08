@@ -17,7 +17,7 @@ const ContentContainers= ()=> (
   <Switch>
     <Route exact path='/' render={(props) => <HomePage />}
     />
-    <Route exact path='/About' render={(props) => <HomePage />}
+    <Route exact path='/Home' render={(props) => <HomePage />}
     />
     <Route exact path='/News' render={(props) => <NewsPage />}
     />
