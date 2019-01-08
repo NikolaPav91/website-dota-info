@@ -1,6 +1,6 @@
 import React from 'react';
-import heroes from '../../MyDatabase/HeroPictures-json';
 import classNames from 'classnames';
+import heroes from '../../MyDatabase/HeroPictures-json';
 import HeroPictureContainer from './HeroPictureContainer';
 
 
@@ -18,9 +18,10 @@ class HeroeGroupContainer extends React.PureComponent {
     let heroobj=JSON.parse(heroes);
     let emptyheroobject={};
     let showheroes= this.props.heroGroup.map((item)=>{
-      if (item.id==121) { return }
-        let heropictureinfo= heroobj.find(hero=> hero.id==item.id)
-        let isbigpic=item.id==this.props.visibleHeroDetailsId
+      if (item.id===121) { return null}
+      let heropictureinfo= heroobj.find(hero=> hero.id===item.id)
+      let isbigpic=item.id===this.props.visibleHeroDetailsId
+
 
       return (
       <HeroPictureContainer
@@ -34,9 +35,12 @@ class HeroeGroupContainer extends React.PureComponent {
 
       )
     })
+    let herogroupheaderclass= classNames({
+      "Hero-group-header": true,
+    }, this.props.mainAttribute)
     return (
       <div className="Hero-group-container">
-        <div className={"Hero-group-header" +" " + this.props.mainAttribute}>{this.props.mainAttribute.toUpperCase()}</div>
+        <div className={herogroupheaderclass}>{this.props.mainAttribute.toUpperCase()}</div>
         <div className="All-hero-pictures-container"
            onMouseLeave={()=>this.props.setVisibleHeroDetails(emptyheroobject)}>{showheroes} </div>
        </div>

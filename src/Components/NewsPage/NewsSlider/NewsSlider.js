@@ -11,12 +11,23 @@ export default class NewsSlider extends React.PureComponent {
       showingStoryIndex: 0,
       buttonClick: false,
     }
-    // let intervalId;    HOW IS IT WORKING WITHOUT IT?
+    this.sliderIntervalId=null
+  }
+
+  componentDidMount() {
+    document.addEventListener('visibilitychange', ()=> this.visibilityChangeHandler());
+    this.sliderIntervalId = setInterval(()=>this.sliderOnTimeChange(), 4500);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('visibilitychange', this.visibilityChangeHandler);
+    clearInterval(this.sliderIntervalId);
+    this.sliderIntervalId= null;
   }
 
   onSliderButtonClick(index) {
 
-    clearInterval(this.intervalId);
+    clearInterval(this.sliderIntervalId);
     this.setState({
       showingStoryIndex: index,
       buttonClick: true,
@@ -36,10 +47,16 @@ export default class NewsSlider extends React.PureComponent {
       showingStoryIndex: nextstoryindex,
     })
   }
-  componentDidMount() {
 
-    this.intervalId = setInterval(()=>this.sliderOnTimeChange(), 4500);
+  visibilityChangeHandler() {
+    if (document.hidden) {
+      clearInterval(this.sliderIntervalId);
+      this.sliderIntervalId=null;
+    } else {
+      this.sliderIntervalId = setInterval(()=>this.sliderOnTimeChange(), 4500);
+    }
   }
+
 
   render() {
     let slidernews=this.props.sliderNews;
@@ -60,7 +77,7 @@ export default class NewsSlider extends React.PureComponent {
             <Link
               to={'/News/'+ item.id}
               className="Picture-link">
-              <img className="Sliderstory-picture" src={item.picturesrc}></img>
+              <img className="Sliderstory-picture" src={item.picturesrc} alt=""></img>
             </Link>
           <div className="Sliderstory-info-container">
             <div className="Sliderstory-info-content">

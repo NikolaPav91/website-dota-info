@@ -5,7 +5,6 @@ import MostPlayedHeroesBox from '../MostPlayedHeroesBox/MostPlayedHeroesBox';
 import TeammatesBox from './TeammatesBox/TeammatesBox';
 import Countries from '../MyDatabase/countries-json';
 import Loader from '../Loader/Loader';
-import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
 class PlayerIdPage extends React.PureComponent {
@@ -68,7 +67,7 @@ class PlayerIdPage extends React.PureComponent {
       let simpleproplayers= await this.getSimpleProPlayers();
       let proteams= await this.getProTeams();
       let improvedproplayers=simpleproplayers.map(item=> {
-        let playerteam= proteams.find(team=> team["team_id"]==item["team_id"] );
+        let playerteam= proteams.find(team=> team["team_id"]===item["team_id"] );
         if (playerteam===undefined) {
           item["team_logo"]= '';
           } else {
@@ -87,10 +86,11 @@ class PlayerIdPage extends React.PureComponent {
       Promise.all([this.getProTeams(), this.getImprovedProPlayers()])
       .then(([teams,players])=> {
         let teamid= players.find(item => item["account_id"]==this.props.routerprops.match.params.playerId)["team_id"];
-        if (teamid==0) {
+        //didn't use === because routerprops.match.params.playerId is a string, not a number.
+        if (teamid===0) {
           return "?"
         } else {
-          let teaminfo= teams.find(team=> team["team_id"]==teamid);
+          let teaminfo= teams.find(team=> team["team_id"]===teamid);
 
           if (teaminfo===undefined) {
             return "?"
@@ -191,7 +191,7 @@ class PlayerIdPage extends React.PureComponent {
       playername=this.state.basicPlayerInfo.profile.name;
       if(this.state.basicPlayerInfo.profile.loccountrycode) {
         let countryobj=JSON.parse(Countries).find(item=> item.alpha2Code===this.state.basicPlayerInfo.profile.loccountrycode)
-        country=<img className="Flag-playerid" title={countryobj.name} src={countryobj.flag}></img>;
+        country=<img className="Flag-playerid" title={countryobj.name} alt={countryobj.name} src={countryobj.flag}></img>;
       }
     }
 
@@ -199,7 +199,7 @@ class PlayerIdPage extends React.PureComponent {
     if(this.state.basicPlayerInfo["leaderboard_rank"]) { leaderboardrank= <div><span className="Player-info-labels-playerid">Leadrboard rank:</span> {this.state.basicPlayerInfo["leaderboard_rank"]}</div> }
 
     let playerstats, gamesplayed, killsobj, killspergame, deathsobj, deathspergame, assistsobj, assistspergame,
-     gpmobj, gpmpergame, lasthitsobj, lasthitspergame, deniesobj, deniespergame, courierkillsobj, courierkillspergame;
+    lasthitsobj, lasthitspergame, deniesobj, deniespergame, courierkillsobj, courierkillspergame;
 
     if (this.state.playerStats.length>0) {
     playerstats=this.state.playerStats;
@@ -209,9 +209,7 @@ class PlayerIdPage extends React.PureComponent {
     deathsobj=  playerstats.find(item=> item.field==="deaths");
     deathspergame= Math.round(deathsobj.sum/deathsobj.n * 10)/10;
     assistsobj=  playerstats.find(item=> item.field==="assists");
-    assistspergame=Math.round( assistsobj.sum/assistsobj.n * 10)/10;
-    gpmobj=  playerstats.find(item=> item.field==="gold_per_min");
-    gpmpergame= Math.round(gpmobj.sum/gpmobj.n * 10)/10;
+    assistspergame=Math.round( assistsobj.sum/assistsobj.n * 10)/10;;
     lasthitsobj=  playerstats.find(item=> item.field==="last_hits");
     lasthitspergame= Math.round(lasthitsobj.sum/lasthitsobj.n * 10)/10;
     deniesobj=  playerstats.find(item=> item.field==="denies");
@@ -225,7 +223,7 @@ class PlayerIdPage extends React.PureComponent {
   if (this.state.playerTeamInformation!=="?") {
     teamlogo=
       <Link className="Team-logo-link-playerid" to={'/Teams/'+ this.state.playerTeamInformation["team_id"] }>
-        <img className="Team-logo-playerid" title={this.state.playerTeamInformation.name}
+        <img className="Team-logo-playerid" title={this.state.playerTeamInformation.name} alt=""
           onError={(e)=>{e.target.style.display='none'}}
           src={this.state.playerTeamInformation["logo_url"]}></img>
        </Link>;
@@ -256,7 +254,7 @@ class PlayerIdPage extends React.PureComponent {
             <div id="playerid-content01">
 
               <div className="Player-info-container-playerid">
-                <img className="Player-picture-playerid" title="no player picture" src="/no-image-icon.png"></img>
+                <img className="Player-picture-playerid" title="no player picture" src="/no-image-icon.png" alt=""></img>
                 <div className="Player-info-right-container-playerid">
                   <div><span className="Player-info-labels-playerid">Team:</span> {teamnamelink} </div>
                     {mmr}

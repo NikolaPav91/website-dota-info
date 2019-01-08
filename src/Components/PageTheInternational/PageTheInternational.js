@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import './PageTheInternational.css';
 import MenuBarContainer from '../MenuBar/MenuBar';
 import PageTIOverview from './PageTIOverview/PageTIOverview';

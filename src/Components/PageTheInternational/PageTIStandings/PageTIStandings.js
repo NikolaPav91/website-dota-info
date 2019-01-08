@@ -17,8 +17,10 @@ class PageTIStandings extends React.PureComponent {
         <tr key={item.id} className={placementcontainerclass}>
           <td className="Col-1">{item.place}.</td>
           <td className="Col-2">
-            <Link
-            to={'/Teams/'+ item.id }> <img src={item.logo}></img>{item.teamname}</Link></td>
+            <Link to={'/Teams/'+ item.id }>
+              <img src={item.logo} alt={item.teamname + " logo"}></img>{item.teamname}
+            </Link>
+          </td>
           <td className="Col-3">{item.prizeMoneyUsd}$</td>
           <td className="Col-4">{item.prizeMoneyEur}</td></tr>
       )

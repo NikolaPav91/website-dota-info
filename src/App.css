@@ -128,7 +128,7 @@ a{
   display: flex;
   align-items: center;
   position: relative;
-  margin: 0 5px 0 5px;
+  margin: 0 5px 2px 5px;
 }
 #search-result-error-message {
   padding: 3px;
@@ -176,6 +176,9 @@ a{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.Search-all-results-container.Not-transparent {
+  background: rgba(75, 75, 75, 1);
 }
 
 .Search-result-link {
