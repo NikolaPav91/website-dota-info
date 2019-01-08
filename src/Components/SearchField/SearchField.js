@@ -167,7 +167,7 @@ class SearchField extends React.PureComponent {
       .then(([teams,players])=>{
         let mergedarrays= teams.concat(players);
         mergedarrays.sort( (a,b)=> {
-          if (a.name.toLowerCase().startsWith(this.searchInput.value)) return -2;
+          if (a.name.toLowerCase().startsWith(this.searchInput.value.toLowerCase())) return -2;
           if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
           if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
           return 0
