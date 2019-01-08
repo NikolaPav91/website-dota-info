@@ -1,8 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
-import { Link } from 'react-router-dom';
 import MenuBarLink from '../MenuBarLink/MenuBarLink';
-import { connect } from 'react-redux';
 
 class MenuBar extends React.Component {
   render(){

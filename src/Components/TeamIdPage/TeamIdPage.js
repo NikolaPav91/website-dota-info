@@ -58,12 +58,14 @@ class TeamIdPage extends React.PureComponent {
         )
         .then(response=>  {this.props.setProTeams(response); return response})
         .then(response=> response.find(item=> item["team_id"]==this.props.routerprops.match.params.teamId))
+        //didn't use === because item["team_id"] is a number, but routerprops.match.params.teamId is string
         .catch(response=> this.props.setProTeams('Something went wrong, please try again later') )
       )
 
     } else {
       return (
         this.props.proTeams.find(item=> item["team_id"]==this.props.routerprops.match.params.teamId)
+        //didn't use === because item["team_id"] is a number, but routerprops.match.params.teamId is string
       )
     }
   }
@@ -87,7 +89,7 @@ class TeamIdPage extends React.PureComponent {
     this.getPlayersAndTeaminfo()
     .then(([players,teaminfo,heroes,matches])=> {
       let improvedmatches= matches.map(item=> {
-        let opposingteam= this.props.proTeams.find(findteam=>findteam["team_id"]==item["opposing_team_id"]);
+        let opposingteam= this.props.proTeams.find(findteam=>findteam["team_id"]===item["opposing_team_id"]);
         if (opposingteam===undefined) {
           item["opposing_team_tag"]='No Tag'
         } else {

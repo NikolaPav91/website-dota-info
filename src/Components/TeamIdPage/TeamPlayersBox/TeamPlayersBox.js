@@ -27,7 +27,7 @@ const TeamPlayersBox= ({currentMembers, memberBonusInfo})=> {
 
         <div className="Player-name"><span className="Player-info-label TeamId-page">Nickname:</span> {item.name} </div>
         <div className="Player-country TeamId-page">
-           <span className="Player-info-label TeamId-page Country-label">Country:</span> <img className="Player-flag TeamId-page" src={flagurl}></img> {countryname}
+           <span className="Player-info-label TeamId-page Country-label">Country:</span> <img className="Player-flag TeamId-page" alt="" src={flagurl}></img> {countryname}
          </div>
          <div className="Player-mmr"><span className="Player-info-label TeamId-page">Esimated MMR:</span> {estimatemmr}</div>
 

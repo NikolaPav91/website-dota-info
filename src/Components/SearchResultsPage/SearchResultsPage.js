@@ -1,5 +1,4 @@
 import Loader from '../Loader/Loader';
-import classNames from 'classnames';
 import React from 'react';
 import { connect } from 'react-redux';
 import './SearchResultsPage.css';
@@ -88,7 +87,7 @@ class SearchResultsPage extends React.PureComponent {
       .then(([teams,players])=> {
         if (this.props.proPlayers===null) {
           let improvedplayersobj= players.map(item=> {
-            let playerteam= teams.find(team=> team["team_id"]==item["team_id"] );
+            let playerteam= teams.find(team=> team["team_id"]===item["team_id"] );
             if (playerteam===undefined) {
               item["team_logo"]= '';
               } else {
@@ -126,7 +125,7 @@ class SearchResultsPage extends React.PureComponent {
           loaderActive: false,
           maxResultPages: Math.ceil(mergedarrays.length/24),
         })
-        if (mergedarrays.length==0) {
+        if (mergedarrays.length===0) {
           this.setState({
             searchResult: "no such players or teams found",
           })
@@ -187,7 +186,7 @@ class SearchResultsPage extends React.PureComponent {
         let playerpictureurl="/single-person-icon.png";
         let countryflag;
         let countryobj= countriesobj.find(countryitem=> countryitem.alpha2Code===item.loccountrycode);
-        if (countryobj!== undefined) { countryflag= <img src={countryobj.flag}></img>}
+        if (countryobj!== undefined) { countryflag= <img alt={countryobj.name} src={countryobj.flag}></img>}
 
         let playerteam= "no team";
         if(item["team_tag"]) {playerteam=item["team_tag"]}
@@ -196,14 +195,14 @@ class SearchResultsPage extends React.PureComponent {
         }
         let playerteamlogo;
         if(item["team_logo"]!== "") {
-          playerteamlogo= <img onError={(e)=>{e.target.onerror = null; e.target.style.display='none'}}></img>
+          playerteamlogo= <img src={item["team_logo"]} onError={(e)=>{e.target.onerror = null; e.target.style.display='none'}} alt=""></img>
         }
 
         return (
           <Link
             className={'Search-result-searchid Player-result'}
             to={'/Player/'+ item["account_id"] }>
-            <img src={playerpictureurl}></img>
+            <img src={playerpictureurl} alt=""></img>
             <div className="Result-info-searchid">
               <h3>{item.name} {countryflag}</h3>
               <div className="Result-player-teaminfo-container">
@@ -220,7 +219,7 @@ class SearchResultsPage extends React.PureComponent {
           <Link
             className={'Search-result-searchid Team-result'}
             to={'/Teams/'+ item["team_id"] }>
-            <img className="Team-logo-searchid" src={teampictureurl}
+            <img className="Team-logo-searchid" src={teampictureurl} alt=""
              onError={(e)=>{e.target.onerror = null; e.target.src="/group-of-people-icon.png"}}
              ></img>
             <div className="Result-info-searchid">

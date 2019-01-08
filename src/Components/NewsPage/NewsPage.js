@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import News from '../MyDatabase/News-objects.js';
 import NewsSlider from './NewsSlider/NewsSlider';
 import './NewsPage.css';

@@ -22,7 +22,9 @@ const TeamInfoBox= ({teamInfo})=> {
   return (
   <div className="Team-container-teamId-page">
     <div className="Team-left-container-teamId-page">
-      <img src={picturesrc} onError={(e)=>{e.target.onerror = null; e.target.src="/no-image-icon.png"}} className="Teamlogo-teamId-page"></img>
+      <img src={picturesrc} alt={"team " + teamInfo.tag + " logo"}  className="Teamlogo-teamId-page"
+        onError={(e)=>{e.target.onerror = null; e.target.src="/no-image-icon.png"}}>
+      </img>
     </div>
     <div className="Team-right-container-teamId-page">
       <p><span className= "Team-textlabels-teamId-page">Rank: </span>{teamInfo.rank}</p>

@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Loader from '../Loader/Loader';
-import classNames from 'classnames';
 import TeamContainer from './TeamContainer/TeamContainer';
 import TeamsPagePageNumbers from './TeamsPagePageNumber/TeamsPagePageNumbers';
 import './TeamsPage.css';
@@ -83,10 +82,6 @@ class TeamsPage extends React.PureComponent {
       )
     }
 
-    let contentclass= classNames({
-      'Content-container': true,
-      'Display-none': !this.props.proTeams
-    })
     let showtopteams= this.props.proTeams.slice((this.state.currentPage-1)*16, this.state.currentPage*16)
       .map((item,index)=> {
        return (

@@ -1,5 +1,4 @@
 import React from 'react';
-import Script from 'react-load-script';
 import { Tweet } from 'react-twitter-widgets';
 import './NewsIdPage.css';
 import RecentMatchesContainer from '../RecentMatches/RecentMatches';
@@ -33,13 +32,13 @@ export default class NewsIdPage extends React.PureComponent {
           <div className="Story-text-container" dangerouslySetInnerHTML={{__html: item}}></div>
       )}
     })
-    let storyHTML=(<div dangerouslySetInnerHTML={{__html: story.text}}></div>)
+
     return (
       <div className= "All-content-container Green-background">
         <div id="newsid-content01" className="Content-width">
           <div className="News-id-story">
             <h1 className="Story-title-newsid">{story.title}</h1>
-            <img className="Title-picture-newsid" src={story.picturesrc}></img>
+            <img className="Title-picture-newsid" src={story.picturesrc} alt=""></img>
               {storyshow}
           </div>
           <RecentMatchesContainer containerId="newsid-recent-matches-container"/>

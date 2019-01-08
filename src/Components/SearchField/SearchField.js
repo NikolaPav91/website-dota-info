@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import { Route, Redirect } from 'react-router';
+import { Redirect } from 'react-router';
 
 class SearchField extends React.PureComponent {
   constructor(props) {
@@ -27,7 +27,7 @@ class SearchField extends React.PureComponent {
     if ((this.state.searchResult===null) || (this.state.searchResult.length===0)) {
       return
     }
-    if (event.keyCode==13) { //on Enter key
+    if (event.keyCode===13) { //on Enter key
       if ((Array.isArray(this.state.searchResult)) && (this.state.searchResult.length>0)) {
         if (this.state.selectedResultIndex===0) { //if there are no highlighted results redirect to search result page
           this.setState({
@@ -51,14 +51,14 @@ class SearchField extends React.PureComponent {
         }
       }
     }
-    if (event.keyCode==27) {
+    if (event.keyCode===27) { //escape
       this.setState({
         selectedResultIndex: 0,
         searchResult: null,
       });
       event.target.blur();
     }
-    if (event.keyCode==38) {
+    if (event.keyCode===38) { //up arrow
       event.preventDefault();
       if (this.state.selectedResultIndex<= 1) {
         this.setState({
@@ -71,9 +71,9 @@ class SearchField extends React.PureComponent {
     }
     }
 
-    if (event.keyCode==40) {
+    if (event.keyCode===40) { //down arrow
       event.preventDefault();
-      if (this.state.selectedResultIndex== this.state.searchResult.length) {
+      if (this.state.selectedResultIndex=== this.state.searchResult.length) {
         this.setState({
           selectedResultIndex: 1,
         })
@@ -141,7 +141,7 @@ class SearchField extends React.PureComponent {
       .then(([teams,players])=> {
         if (this.props.proPlayers===null) {
           let improvedplayersobj= players.map(item=> {
-            let playerteam= teams.find(team=> team["team_id"]==item["team_id"] );
+            let playerteam= teams.find(team=> team["team_id"]===item["team_id"] );
             if (playerteam===undefined) {
               item["team_logo"]= '';
               } else {
@@ -211,6 +211,10 @@ class SearchField extends React.PureComponent {
         )
       }
 
+      let resultscontainerclass= classNames({
+        'Search-all-results-container': true,
+        'Not-transparent': window.location.pathname.startsWith('/News'),
+      })
 
       let results;
       let showresults;
@@ -218,7 +222,7 @@ class SearchField extends React.PureComponent {
         results= this.state.searchResult.map((item,index)=> {
           let searchresultclass= classNames({
             'Search-result-link': true,
-            'Selected': index==this.state.selectedResultIndex-1,
+            'Selected': index===this.state.selectedResultIndex-1,
           })
           let itemisplayer= item["account_id"];
           if(itemisplayer)  {
@@ -226,11 +230,12 @@ class SearchField extends React.PureComponent {
             if (playerpictureurl==="") {playerpictureurl="/single-person-icon.png"}
             return (
               <Link
+                key={"player" + item["account_id"]}
                 onClick={(e)=> this.resetResults(e)}
                 className={searchresultclass}
                 to={'/Player/'+ item["account_id"] }>
                 <div className="Search-result-item">
-                  <img src={playerpictureurl}
+                  <img src={playerpictureurl} alt=""
                     onError={(e)=>{e.target.onerror = null; e.target.src="/single-person-icon.png";}}>
                   </img>
                   {item.name}
@@ -243,27 +248,28 @@ class SearchField extends React.PureComponent {
             return (
 
               <Link
+                key={'Team'+ item["team_id"]}
                 onClick={(e)=> this.resetResults(e)}
                 className={searchresultclass}
                 to={'/Teams/'+ item["team_id"] }>
-                <div className="Search-result-item"><img src={teampictureurl}
+                <div className="Search-result-item"><img src={teampictureurl} alt=""
                  onError={(e)=>{e.target.onerror = null; e.target.src="/group-of-people-icon.png"}} //its not working (not existing img is blinking) but on teampage same code for same img is working (team shazam, nr72)
                  ></img>{item.name}</div>
               </Link>
             )
           }
         });
-        showresults=<div className="Search-all-results-container">{results}</div>
+        showresults=<div className={resultscontainerclass}>{results}</div>
       }
       if (this.state.errorMessage!== null) {showresults=
-        <div className="Search-all-results-container">
+        <div className={resultscontainerclass}>
           <div className="Error-message" id="search-result-error-message">
             <p>Something went wrong, please try again later.</p>
             <p>(Maximum of 60 calls per minute to opendota api probably exceeded)</p>
           </div>
         </div>}
       if (Array.isArray(this.state.searchResult) && this.state.searchResult.length===0) {
-        showresults= <div className="Search-all-results-container">Nothing found</div>
+        showresults= <div className={resultscontainerclass}>Nothing found</div>
       }
 
       return (
@@ -272,7 +278,8 @@ class SearchField extends React.PureComponent {
           onChange={(event)=>this.getSearchResult(event.target.value.toLowerCase())}
           onFocus={(event)=>this.getSearchResult(event.target.value.toLowerCase())}
           onKeyDown={(event)=>this.changeHighlightedResult(event)}
-          type="text" placeholder="Search.."></input>
+          type="text" placeholder="Search.."
+          autoComplete="off"></input>
         <button onClick={()=>this.goToSearchPage()} type="submit"><i className="fa fa-search"></i></button>
         {showresults}
         </div>

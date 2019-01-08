@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import MenuBar from './Components/MenuBar/MenuBar';
-import { Switch, Route } from 'react-router-dom';
 import ContentContainers from './ContentContainers';
 import SearchFieldContainer from './Components/SearchField/SearchField';
 
