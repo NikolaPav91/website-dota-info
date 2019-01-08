@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { Redirect } from 'react-router';
 
+
+// Note for later- Try to fix the getSearchResult function by setting a state to searchString
+// in the begining of the function. Check in the promise chain every time if the searchString
+// matches the string in the promise chain. If not, cancel the promise.
+
 class SearchField extends React.PureComponent {
   constructor(props) {
     super(props);
