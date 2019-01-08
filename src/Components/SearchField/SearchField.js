@@ -131,7 +131,11 @@ class SearchField extends React.PureComponent {
   }
 
   getSearchResult(string) {
-      if (!string) {this.setState({
+      this.setState({
+        searchString: string,
+      })
+      if (string=== "" ) {
+        this.setState({
           searchResult: null,
           errorMessage: null,
           selectedResultIndex: 0,
@@ -167,20 +171,23 @@ class SearchField extends React.PureComponent {
       .then(([teams,players])=>{
         let mergedarrays= teams.concat(players);
         mergedarrays.sort( (a,b)=> {
-          if (a.name.toLowerCase().startsWith(this.searchInput.value)) return -2;
+          if (a.name.toLowerCase().startsWith(this.searchInput.value.toLowerCase())) return -2;
           if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
           if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
           return 0
         })
-        this.setState({
-          searchResult: mergedarrays.slice(0,6),
-          selectedResultIndex: 0,
-        })
-        // if (mergedarrays.length==0) {
-        //   this.setState({
-        //     searchResult: null,
-        //   })
-        // }
+        if (this.state.searchString==="") { //fixing the bug when it's sometimes showing "random" results when deleting all search text
+          this.setState({
+            searchResult: null,
+            errorMessage: null,
+            selectedResultIndex: 0,
+          });
+        } else {
+          this.setState({
+            searchResult: mergedarrays.slice(0,6),
+            selectedResultIndex: 0,
+          })
+        }
       })
       .catch(response=> this.setState({
         errorMessage: "Something went wrong with the search.",
