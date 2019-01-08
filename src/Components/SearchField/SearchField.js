@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { Redirect } from 'react-router';
 
+
+// Note for later- Try to fix the getSearchResult function by setting a state to searchString
+// in the begining of the function. Check in the promise chain every time if the searchString
+// matches the string in the promise chain. If not, cancel the promise.
+
 class SearchField extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -131,7 +136,11 @@ class SearchField extends React.PureComponent {
   }
 
   getSearchResult(string) {
-      if (!string) {this.setState({
+      this.setState({
+        searchString: string,
+      })
+      if (string=== "" ) {
+        this.setState({
           searchResult: null,
           errorMessage: null,
           selectedResultIndex: 0,
@@ -167,20 +176,23 @@ class SearchField extends React.PureComponent {
       .then(([teams,players])=>{
         let mergedarrays= teams.concat(players);
         mergedarrays.sort( (a,b)=> {
-          if (a.name.toLowerCase().startsWith(this.searchInput.value)) return -2;
+          if (a.name.toLowerCase().startsWith(this.searchInput.value.toLowerCase())) return -2;
           if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
           if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
           return 0
         })
-        this.setState({
-          searchResult: mergedarrays.slice(0,6),
-          selectedResultIndex: 0,
-        })
-        // if (mergedarrays.length==0) {
-        //   this.setState({
-        //     searchResult: null,
-        //   })
-        // }
+        if (this.state.searchString==="") { //fixing the bug when it's sometimes showing "random" results when deleting all search text
+          this.setState({
+            searchResult: null,
+            errorMessage: null,
+            selectedResultIndex: 0,
+          });
+        } else {
+          this.setState({
+            searchResult: mergedarrays.slice(0,6),
+            selectedResultIndex: 0,
+          })
+        }
       })
       .catch(response=> this.setState({
         errorMessage: "Something went wrong with the search.",
