@@ -64,8 +64,7 @@ class PlayerIdPage extends React.PureComponent {
   async getImprovedProPlayers() {
 
     if (this.props.proPlayers===null) {
-      let simpleproplayers= await this.getSimpleProPlayers();
-      let proteams= await this.getProTeams();
+      let [simpleproplayers, proteams] = await Promise.all([this.getSimpleProPlayers(), this.getProTeams()]);
       let improvedproplayers=simpleproplayers.map(item=> {
         let playerteam= proteams.find(team=> team["team_id"]===item["team_id"] );
         if (playerteam===undefined) {

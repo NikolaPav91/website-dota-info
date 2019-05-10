@@ -29,7 +29,6 @@ class TeamIdPage extends React.PureComponent {
       .then(response =>
        response
         .filter(item=> item["is_current_team_member"]===true)
-
       )
     )
   }
@@ -110,10 +109,8 @@ class TeamIdPage extends React.PureComponent {
         .then(response=>response.json())
       ),teaminfo,heroes,matches]
     )
-    .then(async ([players,teaminfo,heroes,matches])=> [await Promise.all(players),teaminfo,heroes,matches]
-    )
-
-    .then( ([players,teaminfo,heroes,matches])=> {this.setState({
+    .then(async ([players,teaminfo,heroes,matches])=> [await Promise.all(players),teaminfo,heroes,matches])
+    .then(([players,teaminfo,heroes,matches])=> {this.setState({
       loaderActive: false,
       memberBonusInfo: players,
       });
@@ -199,9 +196,9 @@ const mapStateToProps= (state) => {
     proTeams: state.proTeams,
   }
 }
+
 const mapDispatchToProps= (dispatch)=> {
   return {
-
     setProTeams: (teams) => {
       dispatch({
         type: 'SET_PRO_TEAMS',
