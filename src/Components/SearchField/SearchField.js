@@ -166,7 +166,8 @@ class SearchField extends React.PureComponent {
       })
       .then(([teams,players])=> {
         let filteredplayers= players.filter(item=> {
-          return (item.name.toLowerCase().includes(this.searchInput.value.toLowerCase()) )
+          let spacedname= item.name.toLowerCase().replace(/_|-|\./g, " ");
+          return (item.name.toLowerCase().includes(string.toLowerCase()) || spacedname.includes(string.toLowerCase()))
         } );
         let filteredteams= teams.filter(item=>
           item.name.toLowerCase().includes(this.searchInput.value.toLowerCase()) || item.tag.toLowerCase().includes(this.searchInput.value.toLowerCase())
@@ -175,12 +176,21 @@ class SearchField extends React.PureComponent {
       })
       .then(([teams,players])=>{
         let mergedarrays= teams.concat(players);
-        mergedarrays.sort( (a,b)=> {
-          if (a.name.toLowerCase().startsWith(this.searchInput.value.toLowerCase())) return -2;
+        let startWith = mergedarrays.filter(item => item.name.toLowerCase().startsWith(string));
+        let rest = mergedarrays.filter(item => !item.name.toLowerCase().startsWith(string));
+        // separated into 2 arrays so the once that start with the matching string come first because
+        // i had a problem sorting them properly if in 1 array
+        startWith.sort( (a,b)=> {
           if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
           if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
           return 0
         })
+        rest.sort((a, b) => {
+          if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+          if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+          return 0
+        })
+        let improvedMergedArrays = startWith.concat(rest);
         if (this.state.searchString==="") { //fixing the bug when it's sometimes showing "random" results when deleting all search text
           this.setState({
             searchResult: null,
@@ -189,7 +199,7 @@ class SearchField extends React.PureComponent {
           });
         } else {
           this.setState({
-            searchResult: mergedarrays.slice(0,6),
+            searchResult: improvedMergedArrays.slice(0,6),
             selectedResultIndex: 0,
           })
         }

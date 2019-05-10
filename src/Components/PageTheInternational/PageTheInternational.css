@@ -6,9 +6,8 @@
   background-repeat: no-repeat;
   background-position: top center;
   margin-right: auto;
-margin-left: auto;
-position: relative;
-
+  margin-left: auto;
+  position: relative;
 }
 
 #international-header-logo {
@@ -16,7 +15,6 @@ position: relative;
   height: 100%;
   background-repeat: no-repeat;
   background-position: center;
-
 }
 
 #international-navibar-bg {
@@ -25,14 +23,9 @@ position: relative;
   background-position: center;
   width: 100%;
   height: 40px;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-
-}
-#international-navibar-content {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 #international-allpages-bg {

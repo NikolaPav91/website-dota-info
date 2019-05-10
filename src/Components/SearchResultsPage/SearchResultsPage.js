@@ -113,19 +113,28 @@ class SearchResultsPage extends React.PureComponent {
       })
       .then(([teams,players])=>{
         let mergedarrays= teams.concat(players);
-        mergedarrays.sort( (a,b)=> {
-          if (a.name.toLowerCase().startsWith(string)) return -2;
+        let startWith = mergedarrays.filter(item => item.name.toLowerCase().startsWith(string));
+        let rest = mergedarrays.filter(item => !item.name.toLowerCase().startsWith(string));
+        // separated into 2 arrays so the once that start with the matching string come first because
+        // i had a problem sorting them properly if in 1 array
+        startWith.sort( (a,b)=> {
           if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
           if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
           return 0
         })
-        this.setState({
-          searchResult: mergedarrays,
-          filteredSearchResult: mergedarrays,
-          loaderActive: false,
-          maxResultPages: Math.ceil(mergedarrays.length/24),
+        rest.sort((a, b) => {
+          if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+          if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+          return 0
         })
-        if (mergedarrays.length===0) {
+        let improvedMergedArrays = startWith.concat(rest);
+        this.setState({
+          searchResult: improvedMergedArrays,
+          filteredSearchResult: improvedMergedArrays,
+          loaderActive: false,
+          maxResultPages: Math.ceil(improvedMergedArrays.length/24),
+        })
+        if (improvedMergedArrays.length===0) {
           this.setState({
             searchResult: "no such players or teams found",
           })
