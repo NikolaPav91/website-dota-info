@@ -18,8 +18,9 @@ class HeroeGroupContainer extends React.PureComponent {
     let heroobj=JSON.parse(heroes);
     let emptyheroobject={};
     let showheroes= this.props.heroGroup.map((item)=>{
-      if (item.id===121) { return null}
+      if (item.id>120) { return null} // in case new heroes are available in the api
       let heropictureinfo= heroobj.find(hero=> hero.id===item.id)
+      console.log(heropictureinfo);
       let isbigpic=item.id===this.props.visibleHeroDetailsId
 
 
