@@ -75,3 +75,12 @@
     margin: 10px 7px;
   }
 }
+
+@media (min-width: 1600px) {
+  #international-teams-bg01{
+    background-size: cover;
+  }
+  #international-teams-content02{
+    width: 1400px;
+  }
+}
