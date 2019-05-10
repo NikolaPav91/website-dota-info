@@ -12,7 +12,7 @@ class NewsPage extends React.PureComponent {
       <div className="All-content-container" id="page-news-allbg">
         <div id="news-container-bg01">
 
-            <NewsSlider sliderNews={News.slice(-4).reverse()}
+            <NewsSlider sliderNews={News.slice(-4)}
             />
         </div>
         <div className="" id="news-container-bg02">

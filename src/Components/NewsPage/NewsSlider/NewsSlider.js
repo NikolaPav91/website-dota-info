@@ -59,8 +59,8 @@ export default class NewsSlider extends React.PureComponent {
 
 
   render() {
-    let slidernews=this.props.sliderNews;
-    let shownews=slidernews.map((item,index)=> {
+    let slidernews=this.props.sliderNews.slice();
+    let shownews=slidernews.reverse().map((item,index)=> {
       let slidertext= item.teaser.slice(0,200);
       let slidertextend='...'
       if (slidertext.endsWith('.')===true) {
