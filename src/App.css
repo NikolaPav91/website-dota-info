@@ -178,7 +178,7 @@ a{
   align-items: center;
 }
 .Search-all-results-container.Not-transparent {
-  background: rgba(75, 75, 75, 1);
+  background: rgba(75, 75, 75, 0.95);
 }
 
 .Search-result-link {
@@ -225,8 +225,6 @@ a{
   background-position: center;
   box-shadow: 0px 15px 50px black inset, 0px -5px 50px black inset;
 }
-
-
 
 .All-content-container {
   display: flex;
@@ -415,5 +413,20 @@ a{
 @media (max-width: 400px) {
   .Search-result-link {
     line-height: 1.2em;
+  }
+}
+
+@media(min-width: 1600px) {
+  .header-picture1 {
+    background-size: cover;
+  }
+  .Content-container {
+    width: 1400px;
+  }
+  .Content-width {
+    width: 1400px;
+  }
+  #navi-bar-container {
+    width: 1400px;
   }
 }

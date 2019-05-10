@@ -210,3 +210,12 @@
     margin-left: 2px;
   }
 }
+
+@media(min-width: 1600px) {
+  #hero-page-content01 {
+    width: 1400px;
+  }
+  .Hero-group-container {
+    width: 400px;
+  }
+}

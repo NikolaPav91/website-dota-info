@@ -88,3 +88,20 @@
     align-items: flex-start;
   }
 }
+
+@media(min-width: 1600px) {
+  .YT-ti-media {
+    width: 1400px;
+    height: 786px;
+  }
+  #international-media-content01 {
+    width: 1400px;
+    justify-content: space-between;
+  }
+  #twitter-feed {
+    width: 600px;
+  }
+  #instagram-feed-container {
+    width: 600px;
+  }
+}

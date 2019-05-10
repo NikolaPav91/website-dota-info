@@ -278,3 +278,9 @@ margin-top: 40px;
     height: 120px;
   }
 }
+
+@media(min-width: 1600px) {
+  .Page-teamId-content01 {
+    width: 1400px;
+  }
+}

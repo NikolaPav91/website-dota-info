@@ -64,3 +64,9 @@
     left: 0;
   }
 }
+
+@media (min-width: 1600px) {
+  #international-header-bg {
+    background-size: cover;
+  }
+}

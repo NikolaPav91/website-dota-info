@@ -91,6 +91,21 @@
   height: 561px;
 }
 
+@media(min-width: 1600px) {
+  #home-container-bg01 {
+    background-size: cover;
+  }
+  #home-container-bg02 {
+    background-size: cover;
+  }
+  #home-container-bg03 {
+    background-size: cover;
+  }
+  #home-container-bg04 {
+    background-size: cover;
+  }
+}
+
 @media(max-width: 1098px) {
   #home-container-bg04 {
     height: auto;
