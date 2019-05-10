@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const RecentStories= ({recentNews})=> {
-  let lastsixstories=recentNews.reverse().slice(0,6);
+  const copyOfNews = recentNews.slice();
+  let lastsixstories=copyOfNews.reverse().slice(0,6);
   let showstories= lastsixstories.map((item)=> {
     let storyteaser= item.teaser.slice(0,200);
     let storyteaserend='...'
