@@ -116,7 +116,6 @@ class SearchResultsPage extends React.PureComponent {
           item.name = item.name.trim();
           return item;
         });
-        alert(mergedarrays);
         let startWith = mergedarrays.filter(item => item.name.toLowerCase().startsWith(string));
         let rest = mergedarrays.filter(item => !item.name.toLowerCase().startsWith(string));
         // separated into 2 arrays so the once that start with the matching string come first because

@@ -69,7 +69,7 @@ export default class TeamsPagePageNumbers extends React.PureComponent {
 
       let showselect
       if (this.props.maxPages>1) {
-        showselect= <select className="custom-select" onChange={(event)=>this.props.setCurrentPage(Number(event.target.value))}>
+        showselect= <select className="custom-select" value={this.props.currentPage} onChange={(event)=>this.props.setCurrentPage(Number(event.target.value))}>
           {showoptions}
         </select>
       }
