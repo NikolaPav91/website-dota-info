@@ -61,7 +61,7 @@ class PlayerIdPage extends React.PureComponent {
     }
   }
 
-  async getImprovedProPlayers() {
+  async getImprovedProPlayers() { // finds and adds the team logo to every player
 
     if (this.props.proPlayers===null) {
       let [simpleproplayers, proteams] = await Promise.all([this.getSimpleProPlayers(), this.getProTeams()]);
