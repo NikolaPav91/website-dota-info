@@ -129,18 +129,12 @@
 #search-result-number-navi-container {
   width: 100%;
   margin-top: 5px;
-  grid-column: span 3;
+  grid-column: 1 / -1;
 }
 
 @media(max-width:1000px) {
   #search-results-page-content {
     justify-content: space-around;
-  }
-}
-@media(max-width: 955px) {
-  #search-result-number-navi-container {
-    display: flex;
-    justify-content: center;
   }
 }
 
@@ -152,6 +146,10 @@
   }
   #search-results-header-container>h1{
     margin-bottom: 10px;
+  }
+  #search-result-number-navi-container {
+    display: flex;
+    justify-content: center;
   }
 }
 
