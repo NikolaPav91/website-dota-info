@@ -175,7 +175,10 @@ class SearchField extends React.PureComponent {
         return [filteredteams, filteredplayers]
       })
       .then(([teams,players])=>{
-        let mergedarrays= teams.concat(players);
+        let mergedarrays= teams.concat(players).map(item => {
+          item.name = item.name.trim();
+          return item;
+        });
         let startWith = mergedarrays.filter(item => item.name.toLowerCase().startsWith(string));
         let rest = mergedarrays.filter(item => !item.name.toLowerCase().startsWith(string));
         // separated into 2 arrays so the once that start with the matching string come first because
