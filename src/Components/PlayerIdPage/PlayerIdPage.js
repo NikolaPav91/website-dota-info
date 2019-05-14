@@ -84,8 +84,7 @@ class PlayerIdPage extends React.PureComponent {
     return (
       Promise.all([this.getProTeams(), this.getImprovedProPlayers()])
       .then(([teams,players])=> {
-        let teamid= players.find(item => item["account_id"]==this.props.routerprops.match.params.playerId)["team_id"];
-        //didn't use === because routerprops.match.params.playerId is a string, not a number.
+        let teamid= players.find(item => item["account_id"]===Number(this.props.routerprops.match.params.playerId)["team_id"]);
         if (teamid===0) {
           return "?"
         } else {

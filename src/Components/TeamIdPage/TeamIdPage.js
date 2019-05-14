@@ -56,15 +56,13 @@ class TeamIdPage extends React.PureComponent {
           } )
         )
         .then(response=>  {this.props.setProTeams(response); return response})
-        .then(response=> response.find(item=> item["team_id"]==this.props.routerprops.match.params.teamId))
-        //didn't use === because item["team_id"] is a number, but routerprops.match.params.teamId is string
+        .then(response=> response.find(item=> item["team_id"]=== Number(this.props.routerprops.match.params.teamId)))
         .catch(response=> this.props.setProTeams('Something went wrong, please try again later') )
       )
 
     } else {
       return (
-        this.props.proTeams.find(item=> item["team_id"]==this.props.routerprops.match.params.teamId)
-        //didn't use === because item["team_id"] is a number, but routerprops.match.params.teamId is string
+        this.props.proTeams.find(item=> item["team_id"]===Number(this.props.routerprops.match.params.teamId))
       )
     }
   }

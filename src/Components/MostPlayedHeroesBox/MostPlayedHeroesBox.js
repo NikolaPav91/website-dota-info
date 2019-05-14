@@ -9,8 +9,7 @@ const MostPlayedHeroesBox= ({mostPlayedHeroes, pageName})=> {
       'Hero-container-teamid': true,
       'Uneven-row': index%2===0,
     })
-    let heroobj=heroesobj.find(heroitem=> heroitem.id==item["hero_id"]);  // i dont use === because
-          // item["hero_id"] is string when fetching most played heroes for a player, and heroitem.id is a number
+    let heroobj=heroesobj.find(heroitem=> heroitem.id===Number(item["hero_id"]));
     let heropicurl=heroobj["url_small_portrait"];
     let heroname=heroobj["localized_name"];
     let gamesplayed=item["games_played"];
